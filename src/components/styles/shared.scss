@@ -1,1 +1,11 @@
-@import './global'
+@import './global';
+
+@mixin flexBoxV {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flexBoxH {
+    display: flex;
+    flex-direction: row;
+}
