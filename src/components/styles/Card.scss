@@ -1,0 +1,23 @@
+@import './global', './shared.scss';
+.Card{
+    width: 300px;
+    height: 400px;
+    margin:15px;
+    border-radius: 25px;
+    background-color: $lightBg;
+}
+.btn{
+    background-color: $cream;
+}
+.projectImage{
+    width:300px;
+    height: 150px;
+    border-radius: 25px 25px 0 0;
+    margin-top: 0px;
+}
+.paragraph{
+    height: 160px;
+}
+.button{
+    height: 90px;
+}
