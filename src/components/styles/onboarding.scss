@@ -9,6 +9,7 @@
 }
 
 .leftSide {
+    display:flex;
     text-align: center;
     flex-direction: column;
     align-items: center;
@@ -16,6 +17,11 @@
     background-color: $dark;
     width: 50vw;
     color: white;
+}
+
+.copyRight {
+    position: absolute;
+    bottom: 10vh;
 }
 
 .rightSide {
@@ -40,6 +46,7 @@
     text-align: left;
     margin-bottom: 15px;
     color: $lightBg;
+    width: 300px;
 }
 
 .createAccount {

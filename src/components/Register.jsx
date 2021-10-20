@@ -36,19 +36,19 @@ export default function Register(props) {
                     <Form>
                         <FormGroup className={"formGroup"}>
                             <Label for="email">Correo:</Label>
-                            <Input id="email" onChange={handleOnChange} />
+                            <Input id="email" name="email" onChange={handleOnChange} />
                         </FormGroup>
                         <FormGroup className={"formGroup"}>
                             <Label for="studentGroup">Asociación:</Label>
-                            <Input id="studentGroup" onChange={handleOnChange} />
+                            <Input id="studentGroup" name="studentGroup" onChange={handleOnChange} />
                         </FormGroup>
                         <FormGroup className={"formGroup"}>
                             <Label for="password">Contraseña:</Label>
-                            <Input id="password" type="password" onChange={handleOnChange} />
+                            <Input id="password" name="password" type="password" onChange={handleOnChange} />
                         </FormGroup>
                         <FormGroup className={"formGroup"}>
                             <Label for="confirmPassword" >Confirma tu contraseña:</Label>
-                            <Input id="confirmPassword" type="password" onChange={handleOnChange} />
+                            <Input id="confirmPassword" name="confirmPassword" type="password" onChange={handleOnChange} />
                         </FormGroup>
                         <Button onClick={handleSubmit} className={"createAccount"}>Crear Cuenta</Button>
                     </Form>
