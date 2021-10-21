@@ -11,38 +11,37 @@ export default function NavHeader(props) {
 
     return (
             <Navbar color="black" expand="lg">
-                <div className='container'>
+                <div className='container' style={{}}>
                     <NavbarBrand className="mr-auto" href='/'>
                         <img src={photo} alt='ViutecaLogo' />
                     </NavbarBrand>
                     <Nav navbar>
-                        <NavItem>
-                            <Input ></Input>
+                        <NavItem >
+                            <Input></Input>
                         </NavItem>
-                        <NavItem>
-                            <ButtonDropdown isOpen={dropdownopen} toggle={toggle} color="black">
-                                <DropdownToggle >Menu</DropdownToggle>
-                                <DropdownMenu>
+                        <NavItem >
+                            <ButtonDropdown  direction="down" isOpen={dropdownopen} toggle={toggle}>
+                                <DropdownToggle style={{backgroundColor: 'black', border:'None'}} caret>Menu</DropdownToggle>
+                                <DropdownMenu  style={{backgroundColor: 'black'}}>
                                     <DropdownItem>
-                                        <NavLink className='nav-link' to='/'>
+                                        <NavLink style={{color:'white'}} className='nav-link' to='/'>
                                             Home
                                         </NavLink>
                                     </DropdownItem>
                                     <DropdownItem divider />
 
                                     <DropdownItem>
-                                        <NavLink className='nav-link' to='/register'>
+                                        <NavLink style={{color:'white'}} className='nav-link' to='/register'>
                                             Register
                                         </NavLink>
                                     </DropdownItem>
                                     <DropdownItem divider />
 
                                     <DropdownItem>
-                                        <NavLink className='nav-link' to='/projects'>
+                                        <NavLink style={{color:'white'}} className='nav-link' to='/projects'>
                                             Projects
                                         </NavLink>
                                     </DropdownItem>
-                                    <DropdownItem divider />
                                 </DropdownMenu>
                             </ButtonDropdown>
                         </NavItem>
