@@ -10,6 +10,7 @@ const notOnboarding = (path) => {
   return path !== '/login' && path != '/register';
 }
 
+
 function App() {
 
   return (
