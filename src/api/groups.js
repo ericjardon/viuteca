@@ -1,4 +1,4 @@
-import { db } from "../../base"
+import { db } from "../base"
 
 const controller = {}
 
