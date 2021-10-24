@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles/onboarding.scss'
-import { Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Spinner, Alert } from 'reactstrap';
 import photo from '../assets/viutecaLogoComplete.png'
-import authManager from '../firebase/authManager';
-import useLogin from '../hooks/useLogin'
+import authManager, {validateLogin} from '../firebase/authManager';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
+import useLogin from '../hooks/useLogin'
 
 export default function Login(props) {
 
-    const {loggedIn} = useLogin();
+    const loggedIn = useLogin();
+
+    const [redirect, setRedirect] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alert, setAlert] = useState(null);
 
     const [form, setForm] = useState({
         email: "",
@@ -25,18 +29,48 @@ export default function Login(props) {
         }))
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setShowSpinner(true);
-        const {email, password} = form;
-        const resp = await authManager.signIn(email, password);
-        console.log("Resp", resp);
-        setShowSpinner(false);
+    const handleKeyDown = async (e) => {
+        if (e.key === 'Enter') {
+            await tryLogin();
+        }
     }
 
-    if (loggedIn) return <Redirect to='/'/>
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await tryLogin();
+    }
+
+    const tryLogin = async () => {
+        setShowAlert(false);
+
+        let {valid} =  validateLogin(form);
+        if (!valid) {
+            return;
+        }
+
+        setShowSpinner(true);
+
+        const {email, password} = form;
+        const {ok, error, data} = await authManager.signIn(email, password);
+
+        // Successful login
+        if (ok) {
+            console.log("Successful login");
+            setTimeout(() => setRedirect(true), 1000);
+        } 
+        // Wrong credentials
+        else {
+            setShowSpinner(false);
+            console.log("Could not log in", error);
+            setAlert(<Alert color="warning">El correo o contraseña son incorrectos.</Alert>)
+            setShowAlert(true);
+        }
+    }
+
 
     return (
+        <>
+        {(loggedIn && <Redirect to="/" />)}
         <div className={"Main"}>
             <div className={"leftSide"}>
 
@@ -45,16 +79,17 @@ export default function Login(props) {
 
             </div>
             <div className={"rightSide"}>
+                {(showAlert && alert)}
                 <div className={"formContainer"}>
-                <p className={"formHeader"}>¡Inicia sesión para publicar tus videos!</p>
+                <p className={"formHeader"}>¡Inicia sesión para publicar videos!</p>
                     <Form>
                         <FormGroup className={"formGroup"}>
                             <Label for="email">Correo:</Label>
-                            <Input id="email" name="email" onChange={handleOnChange} />
+                            <Input id="email" name="email" onChange={handleOnChange} onKeyDown={handleKeyDown}/>
                         </FormGroup>
                         <FormGroup className={"formGroup"}>
                             <Label for="password">Contraseña:</Label>
-                            <Input id="password" name="password" type="password" onChange={handleOnChange} />
+                            <Input id="password" name="password" type="password" onChange={handleOnChange} onKeyDown={handleKeyDown}/>
                         </FormGroup>
                         <Button onClick={handleSubmit} className={"createAccount"}>
                             {showSpinner? <Spinner color="light" children="" /> : "Inicia Sesión"}
@@ -66,5 +101,6 @@ export default function Login(props) {
                 </p>
             </div>
         </div>
+        </>
     )
 }

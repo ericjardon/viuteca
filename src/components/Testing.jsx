@@ -1,8 +1,12 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Group from '../firebase/groups'
+//import {auth} from '../base'
 import authManager from '../firebase/authManager'
+import useLogin from '../hooks/useLogin'
 
 export default function Testing() {
+
+    const loggedIn = useLogin();
 
     const getGroup = async () => {
         console.log("Get group...")
@@ -20,10 +24,16 @@ export default function Testing() {
         console.log("Response", res);
     }
 
+    const logIn = async () => {
+        await authManager.signIn("geebproject@gmail.com", "123456")
+    }
+
     return (
-        <div style={{display:'flex', justifyContent:'center', alignItems: 'center', height:'300px', width:'100vw', backgroundColor:'green'}}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px', width: '100vw', backgroundColor: 'green' }}>
             <button onClick={getGroup}>Check existing Group</button>
-            <button onClick={logOut}>Log out</button>
+            {loggedIn ? <button onClick={logOut}>Log out</button>
+                : <button onClick={logIn}>Log In GEEB</button>}
+            <p>User is signed in? {loggedIn.toString()}</p>
         </div>
     )
 }

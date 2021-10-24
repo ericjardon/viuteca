@@ -61,6 +61,19 @@
     margin-bottom: 40px;
 }
 
+.formHeader-Register {
+    width: 60%;
+    font-size: 22px;
+    color: $lightBg;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.registerErrorMsg {
+    color: $dangerText;
+    font-size: 13px;
+}
+
 a.onboardingLink {
     @include textLink;
 }
