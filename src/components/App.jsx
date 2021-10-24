@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch, LinkProps, Link } from 'react-r
 import NavHeader from './NavBar';
 import Register from './Register';
 import Projects from './Projects';
+import Login from './Login'
 
 const notOnboarding = (path) => {
   return path !== '/login' && path != '/register';
@@ -39,6 +40,7 @@ function App() {
           {/* Add routes here */}
         </Switch>
         <Route exact path="/register" render={() => <Register />} />
+        <Route exact path="/login" render={() => <Login />} />
         <Route exact path="/projects" render={() => <Projects />} />
       </Router>
     </div>
