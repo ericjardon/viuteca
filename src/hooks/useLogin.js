@@ -1,24 +1,25 @@
 import {useState, useEffect} from 'react'
-import {firebase} from '../firebase/app'
+import {auth} from '../base'
 
+/* Use this hook in every component whose behavior might change depending on user login status */
 const useLogin = () => {
-    const [loginStatus, setLoginStatus] = useState(false);
+    const [loggedIn, setloggedIn] = useState(false);
 
     useEffect(() => {
         // Set up an auth observer
-        firebase.auth().onAuthStateChanged(function(user) {
+        auth.onAuthStateChanged(function(user) {
             if (user) {
               // User is signed in.
               console.log("Current user ", user.email);
-              setLoginStatus(true);
+              setloggedIn(true);
             } else {
               // No user is signed in.
               console.log("No user");
-              setLoginStatus(false);
+              setloggedIn(false);
             }
         });
     }, []);
-    return { loginStatus };
+    return { loggedIn };
 };
 
 export default useLogin;

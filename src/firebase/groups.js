@@ -1,4 +1,5 @@
 import { db } from "../base"
+import {doc, setDoc, getDoc} from 'firebase/firestore'
 
 const controller = {}
 
@@ -10,31 +11,31 @@ controller.createGroup = async (groupId, group) => {
         data: null,
     }
 
-    const ref = db.collection("groups").doc(groupId);
-    const doc_ = await ref.get()
-    // verify syntax: https://firebase.google.com/docs/firestore/query-data/get-data#web-version-8_1
-    if (doc_.exists) {
-        response.error = "El corre ya está registrado"
+    const docRef = doc(db, 'groups', groupId);
+    
+    // Verify account is not taken
+    const doc_ = await getDoc(docRef);
+    if (doc_.exists()) {
+        response.error = "Este correo ya está registrado con otra cuenta. Intenta con otro."
         return response;
     }
 
-    ref.set(
-        group
-    )
-    .then( newDoc => {
-        console.log("New group", group.name, "inserted succesfully");
-        response.ok = "New group " + group.name + " inserted succesfully"
-        response.data = newDoc
-        return response
-    })
-    .catch(err => {
-        console.log("Error:", err);
-        response.error = err;
+    // Save to database
+    try{
+        // setDoc does not return anything
+        await setDoc(doc(db, "groups", groupId), group)
+        response.ok = true
         return response;
-    })
+    }
+    catch (err) {
+        console.log("Error setting doc:", err);
+        response.error = err;
+        return response
+    }
+    
 }
 
-controller.getGroups = () => {
+controller.getAllGroups = () => {
 
     const response = {
         ok: null,

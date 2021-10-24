@@ -1,14 +1,14 @@
-// Import the functions you need from the SDKs you need
-import { firebase } from "@firebase/app";
-import "@firebase/auth";
-import {firebaseConfig} from './config/config'
-
-// As per the Docs
+// Import the functions you need from the SDKs you need.
+// Firebase version 9.0 and up has completely changed to a modular import syntax.
+// Reference: https://firebase.google.com/docs/firestore
+import { initializeApp } from "firebase/app";
+import {getAuth} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 
 // Your web app's Firebase configuration
-export const app = initializeApp(firebaseConfig);
+const firebaseConfig = require("./config/config").firebaseConfig;
 
-export const auth = firebase.auth();
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth();
 export const db = getFirestore();
