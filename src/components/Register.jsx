@@ -26,7 +26,7 @@ export default function Register(props) {
             ...prev,
             [e.target.name]: e.target.value
         }))
-        console.dir(form);
+        console.dir(e.target.name, ': ', form[e.target.name]);
     }
 
     const handleSubmit = async (e) => {
@@ -83,13 +83,14 @@ export default function Register(props) {
 
             <div className={"rightSide"}>
                 <div className={"formContainer"}>
+                <p className={"formHeader"}>Crea la cuenta de tu Asociación o Grupo Estudiantil.</p>
                     <Form>
                         <FormGroup className={"formGroup"}>
                             <Label for="email">Correo:</Label>
                             <Input id="email" name="email" onChange={handleOnChange} />
                         </FormGroup>
                         <FormGroup className={"formGroup"}>
-                            <Label for="studentGroup">Asociación:</Label>
+                            <Label for="studentGroup">Nombre de Grupo/Asociación:</Label>
                             <Input id="studentGroup" name="studentGroup" onChange={handleOnChange} />
                         </FormGroup>
                         <FormGroup className={"formGroup"}>
