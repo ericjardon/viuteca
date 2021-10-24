@@ -51,21 +51,22 @@ authManager.signIn = async (email, password) => {
     }
 }
 
-authManager.logOut = () => {
+authManager.logOut = async () => {
     console.log("Logging out...")
     const response = {
         ok: null,
         error: null,
     }
-
-    signOut(auth).then(() => {
+    try {
+        await signOut(auth)
         response.ok = true;
         return response;
-    })
-    .catch((err) => {
+    }
+    catch (err) {
+        console.log("ERROR SIGN OUT", err);
         response.error = err;
         return response;
-    })
+    }
 }
 
 export default authManager;

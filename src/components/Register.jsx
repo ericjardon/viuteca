@@ -26,7 +26,6 @@ export default function Register(props) {
             ...prev,
             [e.target.name]: e.target.value
         }))
-        console.dir(e.target.name, ': ', form[e.target.name]);
     }
 
     const handleSubmit = async (e) => {

@@ -3,6 +3,7 @@ import Card from './Card';
 import './styles/Projects.scss';
 import photo from '../assets/projectExample.png';
 import photo2 from '../assets/SuricataSol.png';
+
 function Projects() {
   const [projects, setProjects] = useState([
     {
