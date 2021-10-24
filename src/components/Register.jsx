@@ -104,6 +104,9 @@ export default function Register(props) {
                     </Form>
                 </div>
                 {showAlert && alert}
+                <p>¿Ya tienes cuenta? {" "} 
+                    <Link to='/login' className="onboardingLink">Inicia sesión aquí.</Link>
+                </p>
             </div>
         </div>
     )

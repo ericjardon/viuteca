@@ -65,6 +65,14 @@
     margin-bottom: 40px;
 }
 
+a.onboardingLink {
+    @include textLink;
+}
+
+a.onboardingLink:hover {
+    color: $cream;
+}
+
 
 @media (max-width: 767px) {
     .Main {

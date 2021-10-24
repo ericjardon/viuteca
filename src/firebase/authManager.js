@@ -1,5 +1,5 @@
 import {auth} from '../base'
-import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 
 const authManager = {}
@@ -38,15 +38,15 @@ authManager.signIn = async (email, password) => {
     
     try {
         // automatically signs them in
-        const credentials = await auth.signInWithEmailAndPassword(email, password);
+        const credentials = await signInWithEmailAndPassword(auth, email, password);
         response.ok = true;
         response.data = credentials.user;
 
         return response
+
     } catch (error) {
-        let errorCode = error.code;
-        let errorMsg = error.errorMsg
-        response.error = "ERROR " + errorCode + ": " + errorMsg;
+        console.log("ERROR", error);
+        response.error = "ERROR " + error;
         return response;
     }
 }
@@ -57,6 +57,7 @@ authManager.logOut = async () => {
         ok: null,
         error: null,
     }
+
     try {
         await signOut(auth)
         response.ok = true;
