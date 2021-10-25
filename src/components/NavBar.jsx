@@ -3,6 +3,7 @@ import styles from './styles/NavBar.module.scss'
 import { Navbar, NavbarBrand, Nav, NavItem, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Input, InputGroup, InputGroupAddon, InputGroupText, InputGroupButtonDropdown } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import photo from '../assets/viutecaLogoComplete.png'
+import mGlass from '../assets/mGlass.png'
 
 export default function NavHeader(props) {
     const [dropdownopen, setOpen] = useState(false);
@@ -13,22 +14,24 @@ export default function NavHeader(props) {
 
     return (
             <div>
-                <Navbar color="black">
-                    <NavbarBrand href='/' style={{width:"22%"}}>
-                            <img src={photo} alt='ViutecaLogo' />
+                <Navbar color="black" >
+                    <NavbarBrand href='/' >
+                            <img src={photo} alt='ViutecaLogo' style={{width:"auto", height:"auto"}}/>
                     </NavbarBrand>
-                    <InputGroup style={{width:"45%"}}>
-                        {/* <InputGroupAddon><InputGroupText style={{backgroundColor:"white"}}><span>lupa</span></InputGroupText></InputGroupAddon>  */}
-                        <Input placeholder="Busqueda" ></Input>
-                        <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
-                            <DropdownToggle split> </DropdownToggle>
-                            <DropdownMenu style={{backgroundColor: 'black', border:'None', fontSize:"100%"}}>
-                                <DropdownItem style={{color:'white'}}>Titulo</DropdownItem>
-                                <DropdownItem style={{color:'white'}}>Fecha</DropdownItem>
-                                <DropdownItem style={{color:'white'}}>Asosiación</DropdownItem>
-                            </DropdownMenu>
-                        </InputGroupButtonDropdown>
-                    </InputGroup>
+                    <div style={{width:"45%"}}>
+                        <InputGroup> 
+                            <InputGroupAddon><InputGroupText style={{backgroundColor:"transparent", border:"none"}}><img src={mGlass} style={{width:"30px"}}></img></InputGroupText></InputGroupAddon> 
+                            <Input placeholder="Busqueda"></Input>
+                            <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
+                                <DropdownToggle split style={{color:"white", backgroundColor:"transparent", border:"none"}}> </DropdownToggle>
+                                <DropdownMenu style={{backgroundColor: 'black', border:'None', fontSize:"100%"}}>
+                                    <DropdownItem style={{color:'white'}}>Titulo</DropdownItem>
+                                    <DropdownItem style={{color:'white'}}>Fecha</DropdownItem>
+                                    <DropdownItem style={{color:'white'}}>Asosiación</DropdownItem>
+                                </DropdownMenu>
+                            </InputGroupButtonDropdown>
+                        </InputGroup>
+                    </div>
                     <Nav navbar style={{width:"22%"}}>
                         <NavItem>
                             <ButtonDropdown  direction="down" isOpen={dropdownopen} toggle={toggle}>
