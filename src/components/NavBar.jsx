@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import styles from './styles/NavBar.module.scss'
-import { Navbar, NavbarBrand, Nav, NavItem, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Input, InputGroup, InputGroupAddon, InputGroupText, InputGroupButtonDropdown } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem, ButtonDropdown, DropdownToggle, 
+    DropdownMenu, DropdownItem, Input, InputGroup, InputGroupAddon, InputGroupText, 
+    InputGroupButtonDropdown } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { useMediaSize } from "use-media-size";
-import fullLogo from '../assets/viutecaLogoComplete.png'
-import iconLogo from '../assets/viutecaLogo.png'
-import mGlass from '../assets/mGlass.png'
+import fullLogo from '../assets/viutecaLogoComplete.png';
+import iconLogo from '../assets/viutecaLogo.png';
+import mGlass from '../assets/mGlass.png';
 
 export default function NavHeader(props) {
     const [dropdownopen, setOpen] = useState(false);
@@ -31,7 +33,7 @@ export default function NavHeader(props) {
                                 <DropdownMenu style={{backgroundColor: 'black', border:'None', fontSize:"100%"}}>
                                     <DropdownItem style={{color:'white'}}>Titulo</DropdownItem>
                                     <DropdownItem style={{color:'white'}}>Fecha</DropdownItem>
-                                    <DropdownItem style={{color:'white'}}>Asosiación</DropdownItem>
+                                    <DropdownItem style={{color:'white'}}>Asociación</DropdownItem>
                                 </DropdownMenu>
                             </InputGroupButtonDropdown>
                         </InputGroup>

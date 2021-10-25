@@ -17,15 +17,18 @@
 .cardContainer {
     // maybe add box shadow for aesthetic
     @include flexBoxV;
+    margin-top: 30px;
     align-items: center;
     border-radius: 15px;
     width: 800px;
-    height: 500px;
+    min-height: 500px;
     background-color: $lightBg;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 80px;
     padding-right: 80px;
+    margin-bottom: 80px;
+    box-shadow: 0 16px 28px 0 rgba(0, 29, 124, 0.08), 0 6px 5px -3px rgba(0, 0, 0, 0.12);
 }
 
 .titleOwner {
@@ -38,6 +41,7 @@
     margin-top: 20px;
     width: 100%;
     justify-content: space-between;
+
 }
 
 p.videoTitle {
@@ -53,4 +57,19 @@ p.videoOwner {
 .likesContainer {
     display: flex;
     align-items: center;
+}
+
+.descButton {
+    color: $green;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.videoPlayer {
+    width: 640px;
+    height: 480px;
+}
+
+.dateString {
+    font-style: italic;    
 }

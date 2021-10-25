@@ -1,5 +1,5 @@
 import { db } from "../base"
-import {doc, setDoc, getDoc} from 'firebase/firestore'
+import { doc, setDoc, getDoc } from 'firebase/firestore'
 
 
 const controller = {}
@@ -13,7 +13,7 @@ controller.createGroup = async (groupId, group) => {
     }
 
     const docRef = doc(db, 'groups', groupId);
-    
+
     // Verify account is not taken
     const doc_ = await getDoc(docRef);
     if (doc_.exists()) {
@@ -22,7 +22,7 @@ controller.createGroup = async (groupId, group) => {
     }
 
     // Save to database
-    try{
+    try {
         // setDoc does not return anything
         await setDoc(doc(db, "groups", groupId), group)
         result.ok = true
@@ -33,7 +33,7 @@ controller.createGroup = async (groupId, group) => {
         result.error = err;
         return result
     }
-    
+
 }
 
 controller.getAllGroups = () => {
@@ -45,7 +45,7 @@ controller.getAllGroups = () => {
     }
 
     db.collection("groups").get()
-    .then(data => {
+        .then(data => {
             let groups = []
 
             data.forEach(doc => {
@@ -57,12 +57,31 @@ controller.getAllGroups = () => {
             result.data = groups;
             return result;
         }
-    )
-    .catch(err => {
-        result.error = err;
-        return result
-    })
+        )
+        .catch(err => {
+            result.error = err;
+            return result
+        })
 }
+
+controller.getGroupByEmail = async (email) => {
+    const docRef = doc(db, "groups", email);
+    const group = await getDoc(docRef);
+
+    if (group.exists()) {
+        return {
+            group: group.data(),
+            error: null
+        };
+    } else {
+        return {
+            group: null,
+            error: "El documento especificado no existe",
+        }
+    }
+}
+
+
 
 controller.updateGroup = async (groupId, newData) => {
     // use Set to use previous id
@@ -74,7 +93,7 @@ controller.updateGroup = async (groupId, newData) => {
     // .set does not return anything
     try {
         await db.collection("groups").doc(groupId)
-        .set(newData)
+            .set(newData)
         result.ok = true;
         return result;
 
