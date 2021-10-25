@@ -4,7 +4,7 @@ GROUP
 *id: email
 name: string
 description: string
-profilePic: string(url)     -- EXTRA 
+profilePic: string(url)     -- POR DEFINIR 
 
 
 VIDEO
@@ -16,6 +16,7 @@ durationSecs: int
 img: string
 likes: int
 owner: string (email)
+url: string (url)
 title: string
 
 
