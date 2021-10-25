@@ -1,0 +1,59 @@
+@import './global', './shared.scss';
+
+body {
+    background-color: $cream !important;
+}
+
+.container {
+    @include flexBoxH;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 138px);
+}
+
+.spinner {
+    width: 13rem;
+    height: 13rem;
+}
+
+.cardContainer {
+    // maybe add box shadow for aesthetic
+    @include flexBoxV;
+    align-items: center;
+    border-radius: 15px;
+    width: 800px;
+    height: 500px;
+    background-color: $lightBg;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+.titleOwner {
+    @include flexBoxV;
+    text-align: left;
+}
+
+.videoInfo {
+    @include flexBoxH;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+p.videoTitle {
+    font-size: 24px;
+    margin: 0;
+}
+
+p.videoOwner {
+    font-weight: 600;
+    margin: 0;
+}
+
+.likesContainer {
+    display: flex;
+    align-items: center;
+}
