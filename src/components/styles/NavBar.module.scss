@@ -1,6 +1,11 @@
-@media (max-width: 1024px){
-    img{
-        display: none;
-    }
+
+.fullLogo {
+    width: 30vw;
+    max-width: 300px;
 }
- 
+
+.iconLogo {
+    width: 15vw;
+}
+
+/*Media query 425px should change header*/

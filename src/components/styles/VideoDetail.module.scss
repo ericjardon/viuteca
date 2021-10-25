@@ -1,8 +1,5 @@
 @import './global', './shared.scss';
 
-body {
-    background-color: $cream !important;
-}
 
 .container {
     @include flexBoxH;

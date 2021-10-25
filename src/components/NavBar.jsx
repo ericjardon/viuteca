@@ -2,21 +2,25 @@ import React, { useState } from 'react'
 import styles from './styles/NavBar.module.scss'
 import { Navbar, NavbarBrand, Nav, NavItem, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Input, InputGroup, InputGroupAddon, InputGroupText, InputGroupButtonDropdown } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
-import photo from '../assets/viutecaLogoComplete.png'
+import { useMediaSize } from "use-media-size";
+import fullLogo from '../assets/viutecaLogoComplete.png'
+import iconLogo from '../assets/viutecaLogo.png'
 import mGlass from '../assets/mGlass.png'
 
 export default function NavHeader(props) {
     const [dropdownopen, setOpen] = useState(false);
     const [splitButtonOpen, setSplitButtonOpen] = useState(false);
 
+    const { isMd, isSm } = useMediaSize(); 
     const toggle = () => setOpen(!dropdownopen);
     const toggleSplit = () => setSplitButtonOpen(!splitButtonOpen);    
+    console.log("Is Md", isMd);
 
     return (
             <div>
-                <Navbar color="black" >
-                    <NavbarBrand href='/' >
-                            <img src={photo} alt='ViutecaLogo' style={{width:"auto", height:"auto"}}/>
+                <Navbar color="black" style={{padding:0}}>
+                    <NavbarBrand href='/'>
+                            <img className={isMd ? styles.iconLogo : styles.fullLogo} src={isMd ? iconLogo : fullLogo} alt='ViutecaLogo'/>
                     </NavbarBrand>
                     <div style={{width:"45%"}}>
                         <InputGroup> 
@@ -35,7 +39,7 @@ export default function NavHeader(props) {
                     <Nav navbar style={{width:"22%"}}>
                         <NavItem>
                             <ButtonDropdown  direction="down" isOpen={dropdownopen} toggle={toggle}>
-                                <DropdownToggle style={{backgroundColor: 'black', border:'None', fontSize:"170%"}} caret>Menu</DropdownToggle>
+                                <DropdownToggle style={{backgroundColor: 'black', border:'None', fontSize: isSm? "18px" : "24px"}} caret>Menu</DropdownToggle>
                                 <DropdownMenu  style={{backgroundColor: 'black'}}>
                                     <DropdownItem>
                                         <NavLink style={{color:'white'}} className='nav-link' to='/'>
@@ -64,4 +68,3 @@ export default function NavHeader(props) {
             </div>
     )
 }
-
