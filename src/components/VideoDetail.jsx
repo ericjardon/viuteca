@@ -54,7 +54,7 @@ export default function VideoDetail(props) {
     return (
         <div className={styles.container}>
             <div className={styles.cardContainer}>
-                <div style={{ width: '640px', height: '480px' }}>
+                <div className={styles.videoPlayer}>
                     <iframe src={video.url} className={styles.videoPlayer} allow="autoplay"></iframe>
                 </div>
                 <div className={styles.videoInfo}>
@@ -73,7 +73,7 @@ export default function VideoDetail(props) {
                 </p>
                 <Collapse isOpen={toggleDescription}>
                     <Card>
-                        <CardBody style={{width:'640px'}}>
+                        <CardBody className={styles.videoDescContainer}>
                             <p>{video.description}</p>
                             <p className={styles.dateString}>Publicado: {dateString}</p>
                         </CardBody>
