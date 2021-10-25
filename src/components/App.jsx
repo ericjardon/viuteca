@@ -1,16 +1,12 @@
-import logo from '../assets/logo.svg';
+//import logo from '../assets/logo.svg';
 import './styles/App.scss';
-import { Button } from 'reactstrap'
-import { BrowserRouter as Router, Route, Switch, LinkProps, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import NavHeader from './NavBar';
 import Register from './Register';
 import Projects from './Projects';
+import Testing from './Testing';
 import Login from './Login'
-
-const notOnboarding = (path) => {
-  return path !== '/login' && path != '/register';
-}
-
+import Home from './Home'
 
 function App() {
 
@@ -40,11 +36,17 @@ function App() {
           {/* Add routes here */}
         </Switch>
         <Route exact path="/register" render={() => <Register />} />
+        <Route exact path="/" render={() => <Home />} />
+        <Route exact path="/testing" render={() => <Testing />} />
         <Route exact path="/login" render={() => <Login />} />
         <Route exact path="/projects" render={() => <Projects />} />
       </Router>
     </div>
   );
+}
+
+const notOnboarding = (path) => {
+  return path !== '/login' && path !== '/register';
 }
 
 export default App;

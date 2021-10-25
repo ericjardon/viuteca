@@ -19,10 +19,6 @@
     color: white;
 }
 
-.copyRight {
-    position: absolute;
-    bottom: 10vh;
-}
 
 .rightSide {
     display:flex;
@@ -53,6 +49,8 @@
 .createAccount {
     @include genericButton;
     margin-top: 20px !important; 
+    width: 150px;
+    height: 60px;
 }
 
 .formHeader {
@@ -61,6 +59,27 @@
     color: $lightBg;
     font-weight: bold;
     margin-bottom: 40px;
+}
+
+.formHeader-Register {
+    width: 60%;
+    font-size: 22px;
+    color: $lightBg;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.registerErrorMsg {
+    color: $dangerText;
+    font-size: 13px;
+}
+
+a.onboardingLink {
+    @include textLink;
+}
+
+a.onboardingLink:hover {
+    color: $cream;
 }
 
 
@@ -86,7 +105,5 @@
     .formHeader {
         font-size: 24px;
     }
-    .copyRight {
-        bottom: 2vh;
-    }
+
 }

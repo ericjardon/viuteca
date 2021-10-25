@@ -13,3 +13,9 @@
 @mixin genericButton {
     padding: 0.7rem 1.4rem !important;
 }
+
+@mixin textLink {
+    text-decoration: underline;
+    color: $dark;
+    font-weight: bold;
+}
