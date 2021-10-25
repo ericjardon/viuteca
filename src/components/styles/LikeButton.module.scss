@@ -1,0 +1,24 @@
+@import './global', './shared.scss';
+
+.buttonContainer {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70px;
+}
+
+.clapButton {
+    border: none;
+    background: transparent;
+    text-align:center;
+}
+
+.clapPNG {
+    width: 35px;
+    &:active {
+        width: 32px;
+    }
+}
+// When clicked, should compress a little
+
+// When released, should expand a little more

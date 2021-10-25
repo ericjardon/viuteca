@@ -1,0 +1,102 @@
+@import './global', './shared.scss';
+
+.container {
+    @include flexBoxH;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 138px);
+}
+
+.spinner {
+    width: 13rem;
+    height: 13rem;
+}
+
+.cardContainer {
+    @include flexBoxV;
+    margin-top: 30px;
+    align-items: center;
+    border-radius: 15px;
+    width: 800px;
+    min-height: 500px;
+    background-color: $lightBg;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 80px;
+    padding-right: 80px;
+    margin-bottom: 80px;
+    box-shadow: 0 16px 28px 0 rgba(0, 29, 124, 0.08), 0 6px 5px -3px rgba(0, 0, 0, 0.12);
+}
+
+.titleOwner {
+    @include flexBoxV;
+    text-align: left;
+}
+
+.videoInfo {
+    @include flexBoxH;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+p.videoTitle {
+    font-size: 24px;
+    margin: 0;
+}
+
+p.videoOwner {
+    font-weight: 600;
+    margin: 0;
+}
+
+.likesContainer {
+    display: flex;
+    align-items: center;
+}
+
+.descButton {
+    color: $green;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.videoPlayer {
+    width: 640px;
+    height: 480px;
+}
+
+.videoDescContainer {
+    width: 640px;
+}
+
+.dateString {
+    font-style: italic;    
+}
+
+
+@media (max-width: 768px) {
+
+    .cardContainer {
+        margin-top: 0;
+        width: 100vw;
+        padding: 25px 15px;
+        padding-top: 40px;
+        border-radius: 0;
+    }
+
+    .videoPlayer {
+        width: 100vw;
+        height: 75vw;
+    }
+
+    .videoDescContainer {
+        width: 100vw;
+    }
+
+}
+
+/* @media (max-width: 425px) {
+    max-width: 425px; 
+} */
