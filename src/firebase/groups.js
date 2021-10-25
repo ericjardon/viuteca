@@ -1,6 +1,7 @@
 import { db } from "../base"
 import {doc, setDoc, getDoc} from 'firebase/firestore'
 
+
 const controller = {}
 
 controller.createGroup = async (groupId, group) => {
