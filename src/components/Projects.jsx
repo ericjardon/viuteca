@@ -1,23 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from './Card';
 import './styles/Projects.scss';
-import photo from '../assets/projectExample.png';
-import photo2 from '../assets/SuricataSol.png';
+import styles from './styles/VideoDetail.module.scss';
+import Video from '../firebase/videos'
+import { Spinner} from "reactstrap";
 
 function Projects() {
-  const [projects, setProjects] = useState([
-    {
-      photo: photo,
-      description: "Descripción 1",
-    },
-    {
-      photo: photo2,
-      description: "Descripción 2",
+  const [loading, setLoading] = useState(true);
+  const [videos, setVideos] = useState({});
+  
+  useEffect(() => {
+    async function fetchData() {
+        const video = await Video.getAllVideos();
+        setVideos(video)
+        console.log(videos);
+        setLoading(false);
     }
-  ]);
+    fetchData();
+  }, []);
+  if (loading) return (
+    <div className={styles.container}>
+        <Spinner children="" style={{ width: '15rem', height: '15rem' }} />
+    </div>
+  )
   return (
     <div className="Projects">
-      {projects.map((project,index)=>(
+      {videos.map((project,index)=>(
         <Card project={project} index={index}/>
       ))} 
     </div>

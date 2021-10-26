@@ -1,6 +1,5 @@
 import { db } from "../base"
-import {doc, setDoc, getDoc} from 'firebase/firestore'
-
+import {doc, setDoc, collection, getDocs, getDoc} from 'firebase/firestore';
 
 const controller = {}
 
@@ -19,5 +18,13 @@ controller.getVideoByIdTest = async () => {
     }
 }
 
+controller.getAllVideos = async () => {
+  let groups = [];
+  const querySnapshot = await getDocs(collection(db, "video"));
+  querySnapshot.forEach((doc) => {
+    groups.push(doc.data())
+  });
+  return groups;
+}
 
 export default controller;
