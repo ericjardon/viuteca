@@ -69,6 +69,8 @@ p.videoOwner {
 
 .videoDescContainer {
     width: 640px;
+    background-color: $lightBg;
+    border: none;
 }
 
 .dateString {
@@ -97,6 +99,10 @@ p.videoOwner {
 
 }
 
-/* @media (max-width: 425px) {
-    max-width: 425px; 
-} */
+@media (max-width: 425px) {
+    .cardContainer {
+        min-height: 100vh;
+        margin-bottom: 0;
+    }
+
+}

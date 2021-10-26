@@ -30,10 +30,10 @@ export default function LikeButton(props) {
 
     return (
         <span className={styles.buttonContainer}>
-            <button className={styles.clapButton}>
+            <button className={styles.clapButton} onMouseUp={handleClicked} >
                 <img id="clapIcon" className={styles.clapPNG} src={source} 
                 alt="Like button"
-                onMouseUp={handleClicked} />
+                />
             </button>
             <span style={{width: '30px', color: countColor}}>{likesCount}</span>
         </span>
