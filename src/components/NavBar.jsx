@@ -16,7 +16,6 @@ export default function NavHeader(props) {
     const { isMd, isSm } = useMediaSize(); 
     const toggle = () => setOpen(!dropdownopen);
     const toggleSplit = () => setSplitButtonOpen(!splitButtonOpen);    
-    console.log("Is Md", isMd);
 
     return (
             <div>
