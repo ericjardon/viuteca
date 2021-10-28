@@ -19,11 +19,17 @@ controller.getVideoByIdTest = async () => {
 }
 
 controller.getAllVideos = async () => {
-  let groups = [];
+  let groups = []; 
+  
   const querySnapshot = await getDocs(collection(db, "video"));
   querySnapshot.forEach((doc) => {
-    groups.push(doc.data())
+    let group = {
+      id : doc.id,
+      data : doc.data()
+    }
+    groups.push(group)
   });
+  console.log(groups);
   return groups;
 }
 

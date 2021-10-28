@@ -12,9 +12,9 @@ function Projects() {
   useEffect(() => {
     async function fetchData() {
         const video = await Video.getAllVideos();
-        setVideos(video)
-        console.log(videos);
+        setVideos(video);
         setLoading(false);
+        console.log(videos);
     }
     fetchData();
   }, []);
