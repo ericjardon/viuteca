@@ -23,7 +23,8 @@ export default function VideoDetail(props) {
         // fetch the data at videos.videoId in firestore
         console.log("Video id", videoId);
         async function fetchData() {
-            const video = await Video.getVideoByIdTest();
+            //const video = await Video.getVideoByIdTest();
+            const video = await Video.getVideoById(videoId);
             const {group} = await Group.getGroupByEmail(video.owner);
             setVideoOwner(group.name);
             setVideo(video);

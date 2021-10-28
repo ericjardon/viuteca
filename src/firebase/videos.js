@@ -18,6 +18,19 @@ controller.getVideoByIdTest = async () => {
     }
 }
 
+controller.getVideoById = async (videoId) => {
+  const docRef = doc(db, "video", videoId);
+  const video = await getDoc(docRef);
+  
+  if (video.exists()) {
+    return (video.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+    return {}
+  }
+}
+
 controller.getAllVideos = async () => {
   let groups = []; 
   
