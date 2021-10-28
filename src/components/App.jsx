@@ -7,6 +7,7 @@ import Projects from './Projects';
 import Testing from './Testing';
 import Login from './Login'
 import Home from './Home'
+import VideoForm from './VideoForm'
 import VideoDetail from './VideoDetail';
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <Route exact path="/login" render={() => <Login />} />
         <Route exact path="/projects" render={() => <Projects />} />
         <Route exact path="/video/:id" render={(props) => <VideoDetail {...props} />} />
+        <Route exact path="/newVideo" render={() => <VideoForm/>}/>
       </Router>
     </div>
   );
