@@ -45,21 +45,21 @@ export default function NavHeader(props) {
                                 <DropdownMenu  style={{backgroundColor: 'black'}}>
                                     <DropdownItem>
                                         <NavLink style={{color:'white'}} className='nav-link' to='/'>
-                                            Home
+                                            HOME
                                         </NavLink>
                                     </DropdownItem>
                                     <DropdownItem divider />
 
                                     <DropdownItem>
                                         <NavLink style={{color:'white'}} className='nav-link' to='/register'>
-                                            Register
+                                            AÑADIR VIDEO
                                         </NavLink>
                                     </DropdownItem>
                                     <DropdownItem divider />
 
                                     <DropdownItem>
                                         <NavLink style={{color:'white'}} className='nav-link' to='/projects'>
-                                            Projects
+                                            CERRAR SESIÓN
                                         </NavLink>
                                     </DropdownItem>
                                 </DropdownMenu>
