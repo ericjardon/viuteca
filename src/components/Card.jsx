@@ -6,7 +6,8 @@ function Card(props) {
   const project = props.project;
   return (
     <div className="Card">
-        <img src={project.data.img} className="projectImage"/>
+      <div className="CardImage" style={{ backgroundImage: `url(project.data.img)` }} >
+      </div>
         <p className="paragraph">
             {project.data.description}
         </p>
