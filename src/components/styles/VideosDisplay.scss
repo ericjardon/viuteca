@@ -1,0 +1,24 @@
+.VideosDisplay{
+    display:flex;
+    margin:auto;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.CenteredContainer {
+    display: flex;
+    justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+    .VideosDisplay{
+        flex-direction: row;
+    }
+}
+@media (max-width: 425px) {
+    .VideosDisplay{
+        flex-direction: column;
+    }
+}

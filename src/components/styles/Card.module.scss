@@ -1,0 +1,98 @@
+@import './global', './shared.scss';
+
+.dummyContainer {
+    margin:15px;
+    height: 410px;
+    width:300px;
+    background-color: transparent;
+}
+
+.Card{
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    border-radius: 25px;
+    background-color: $lightBg;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;//
+    margin-top: 10px;
+    transition: all 0.2s ease-out;
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        margin-top: 0;
+    }
+}
+.btn{
+    background-color: $cream;
+}
+.CardImage{
+    width:100%;
+    height: 180px;
+    border-radius: 25px 25px 0 0;
+    margin-top: 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.titleAndParagraph {
+    padding: 10px;
+    height: calc(100% - 240px);
+}
+
+.paragraph{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    font-size: 16px;
+    width: 80%;
+    margin: 0 auto;
+    text-overflow: ellipsis;
+    text-align: justify;
+    flex: 2;
+}
+
+.buttonContainer {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button{
+    height: 15%;
+}
+
+.durationStamp {
+    position: absolute;
+    background-color: rgba(70, 70, 70, 0.7);
+    color: white;
+    max-width: fit-content;
+    padding: 2px 4px;
+    top: 152px;
+    right:0;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .paragraph {
+        width: 80%;
+    }
+}
+
+@media (max-width: 425px) {
+
+    .paragraph {
+        -webkit-line-clamp: 6;
+    }
+
+    .dummyContainer {
+        height: 450px;
+        width: 330px;
+    }
+    .Card{
+        width: 330px;
+        height: 450px;
+        //align-self: center;
+    }
+}
