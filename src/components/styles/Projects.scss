@@ -1,9 +1,0 @@
-.Projects{
-    display:flex;
-    flex-direction: row;
-}
-@media (max-width: 768px) {
-    .Projects{
-        flex-direction: column;
-    }
-}

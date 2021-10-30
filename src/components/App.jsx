@@ -3,7 +3,7 @@ import './styles/App.scss';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import NavHeader from './NavBar';
 import Register from './Register';
-import Projects from './Projects';
+import VideosDisplay from './VideosDisplay';
 import Testing from './Testing';
 import Login from './Login'
 import Home from './Home'
@@ -41,7 +41,7 @@ function App() {
         <Route exact path="/" render={() => <Home />} />
         <Route exact path="/testing" render={() => <Testing />} />
         <Route exact path="/login" render={() => <Login />} />
-        <Route exact path="/projects" render={() => <Projects />} />
+        <Route exact path="/videos" render={() => <VideosDisplay />} />
         <Route exact path="/video/:id" render={(props) => <VideoDetail {...props} />} />
         <Route exact path="/newVideo" render={() => <VideoForm/>}/>
       </Router>
