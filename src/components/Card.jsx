@@ -1,5 +1,5 @@
 import { Button } from 'reactstrap';
-import './styles/Card.scss';
+import styles from './styles/Card.module.scss';
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 function Card(props) {
@@ -8,10 +8,10 @@ function Card(props) {
     backgroundImage: 'url(' + project.data.img + ')'
   })
   return (
-    <div className="Card">
-      <div className="CardImage" style={divStyle()} >
+    <div className={styles.Card}>
+      <div className={styles.CardImage} style={divStyle()} >
       </div>
-        <p className="paragraph">
+        <p className={styles.paragraph}>
             {project.data.description}
         </p>
         <Link to={"/video/" + project.id} style={{backgroundColor: '#D9CAB3'}}>

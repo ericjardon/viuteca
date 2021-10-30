@@ -1,9 +1,9 @@
-.Projects{
+.VideosDisplay{
     display:flex;
     flex-direction: row;
 }
 @media (max-width: 768px) {
-    .Projects{
+    .VideosDisplay{
         flex-direction: column;
     }
 }
