@@ -8,17 +8,20 @@ function Card(props) {
     backgroundImage: 'url(' + project.data.img + ')'
   })
   return (
-    <div className={styles.Card}>
-      <div className={styles.CardImage} style={divStyle()} >
-      </div>
+    <div className={styles.dummyContainer}>
+      <div className={styles.Card}>
+        <div className={styles.CardImage} style={divStyle()} >
+        </div>
         <p className={styles.paragraph}>
-            {project.data.description}
+          {project.data.description}
         </p>
-        <Link to={"/video/" + project.id} style={{backgroundColor: '#D9CAB3'}}>
-            <Button style={{backgroundColor: '#D9CAB3'}}>Ver más</Button>
+        <Link to={"/video/" + project.id} style={{ backgroundColor: '#D9CAB3' }}>
+          <Button style={{ backgroundColor: '#D9CAB3' }}>Ver más</Button>
         </Link>
- 
+
+      </div>
     </div>
+
   );
 }
 

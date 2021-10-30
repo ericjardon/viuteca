@@ -41,7 +41,7 @@ function App() {
         <Route exact path="/" render={() => <Home />} />
         <Route exact path="/testing" render={() => <Testing />} />
         <Route exact path="/login" render={() => <Login />} />
-        <Route exact path="/projects" render={() => <VideosDisplay />} />
+        <Route exact path="/videos" render={() => <VideosDisplay />} />
         <Route exact path="/video/:id" render={(props) => <VideoDetail {...props} />} />
         <Route exact path="/newVideo" render={() => <VideoForm/>}/>
       </Router>

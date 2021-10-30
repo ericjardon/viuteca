@@ -1,11 +1,26 @@
 @import './global', './shared.scss';
+
+.dummyContainer {
+    margin:15px;
+    height: 410px;
+    width:300px;
+    border: 0.5px solid pink;
+    background-color: transparent;
+}
+
 .Card{
+    position: absolute;
     width: 300px;
     height: 400px;
-    margin:15px;
     border-radius: 25px;
     background-color: $lightBg;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;//
+    margin-top: 10px;
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;//rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        //background-color: aquamarine;
+        margin-top: 0;
+    }
 }
 .btn{
     background-color: $cream;
