@@ -4,7 +4,6 @@
     margin:15px;
     height: 410px;
     width:300px;
-    border: 0.5px solid pink;
     background-color: transparent;
 }
 
@@ -16,9 +15,9 @@
     background-color: $lightBg;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;//
     margin-top: 10px;
+    transition: all 0.2s ease-out;
     &:hover {
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;//rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-        //background-color: aquamarine;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         margin-top: 0;
     }
 }
@@ -27,26 +26,73 @@
 }
 .CardImage{
     width:100%;
-    height: 20%;
+    height: 180px;
     border-radius: 25px 25px 0 0;
     margin-top: 0px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
-.paragraph{
-    height: 65%;
-    width: 80%;
-    margin: 0 10% ;
+
+.titleAndParagraph {
+    padding: 10px;
+    height: calc(100% - 240px);
 }
+
+.paragraph{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    font-size: 16px;
+    width: 80%;
+    margin: 0 auto;
+    text-overflow: ellipsis;
+    text-align: justify;
+    flex: 2;
+}
+
+.buttonContainer {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .button{
     height: 15%;
 }
 
+.durationStamp {
+    position: absolute;
+    background-color: rgba(70, 70, 70, 0.7);
+    color: white;
+    max-width: fit-content;
+    padding: 2px 4px;
+    top: 152px;
+    right:0;
+    margin: 0;
+}
+
 @media (max-width: 768px) {
-    .Card{
+    .paragraph {
         width: 80%;
+    }
+}
+
+@media (max-width: 425px) {
+
+    .paragraph {
+        -webkit-line-clamp: 6;
+    }
+
+    .dummyContainer {
         height: 450px;
-        align-self: center;
+        width: 330px;
+    }
+    .Card{
+        width: 330px;
+        height: 450px;
+        //align-self: center;
     }
 }
