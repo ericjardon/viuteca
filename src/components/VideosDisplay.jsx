@@ -8,6 +8,12 @@ import { searchVideo } from '../firebase/search'
 import {useLocation} from 'react-router-dom'
 import { useQueryParams, StringParam, withDefault } from "use-query-params";
 
+const names = {
+  'owner': 'el Autor',
+  'title': 'el Título',
+  'date': 'la Fecha'
+}
+
 const VideosDisplay = (props) => {
 
   const [loading, setLoading] = useState(true);
@@ -53,7 +59,7 @@ const VideosDisplay = (props) => {
             <Card project={project} index={index} />
           ))
         ) : (
-          <h1>¡Ups! No se encontraron videos con esa búsqueda.</h1>
+          <h1>¡Ups! No se encontraron videos con {names[searchType]}: "{searchTerm}".</h1>
         )}
 
       </div>

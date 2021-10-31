@@ -23,10 +23,8 @@ const NavHeader = (props) => {
     const [searchTerm, setsearchTerm] = useState("")
     const [searchType, setsearchType] = useState("owner")
     const [placeholderSearch, setplaceholderSearch] = useState(placeholders["owner"])
-    const [redirectToVideos, setRedirectToVideos] = useState(false)
-    const { submitSearch } = props;
 
-    const {location, history} = props;
+    const { location, history } = props;
     console.log("You are now at ", location.pathname)
 
     const { isMd, isSm } = useMediaSize();
@@ -48,77 +46,75 @@ const NavHeader = (props) => {
         if (e.key === 'Enter') {
             const nextPath = '/videos?' + `searchType=${searchType}&searchTerm=${searchTerm}`
             console.log("Pressed enter!!");
-            submitSearch(searchTerm, searchType);
+            //submitSearch(searchTerm, searchType);
             history.push(nextPath)
         }
     }
 
-    if (redirectToVideos) {
-        console.log("Redirecting", searchTerm, searchType);
-        return (
-            <Redirect 
-                to={{
-                    pathname: "/videos",
-                    state: {searchTerm,
-                    searchType}
-                }}
-            />
-        )
+    const handleButtonClicked = (e) => {
+        const nextPath = '/videos?' + `searchType=${searchType}&searchTerm=${searchTerm}`
+        console.log("Clicked button!!");
+        //submitSearch(searchTerm, searchType);
+        history.push(nextPath)
     }
 
     const show = location.pathname !== '/login' && location.pathname !== '/register'
     if (show)
-    return (
-        <div>
-            <Navbar color="black" style={{ padding: 0 }}>
-                <NavbarBrand href='/'>
-                    <img className={isMd ? styles.iconLogo : styles.fullLogo} src={isMd ? iconLogo : fullLogo} alt='ViutecaLogo' />
-                </NavbarBrand>
-                <div style={{ width: "45%" }}>
-                    <InputGroup>
-                        <InputGroupAddon><InputGroupText style={{ backgroundColor: "transparent", border: "none" }}><img src={mGlass} style={{ width: "30px" }}></img></InputGroupText></InputGroupAddon>
-                        <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
-                        <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
-                            <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
-                            <DropdownMenu style={{ backgroundColor: 'black', border: 'None', fontSize: "100%" }}>
-                                <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
-                                <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
-                                <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
-                            </DropdownMenu>
-                        </InputGroupButtonDropdown>
-                    </InputGroup>
-                </div>
-                <Nav navbar style={{ width: "22%" }}>
-                    <NavItem>
-                        <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
-                            <DropdownToggle style={{ backgroundColor: 'black', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
-                            <DropdownMenu style={{ backgroundColor: 'black' }}>
-                                <DropdownItem>
-                                    <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
-                                        HOME
-                                    </NavLink>
-                                </DropdownItem>
-                                <DropdownItem divider />
+        return (
+            <div>
+                <Navbar color="black" style={{ padding: 0 }}>
+                    <NavbarBrand href='/'>
+                        <img className={isMd ? styles.iconLogo : styles.fullLogo} src={isMd ? iconLogo : fullLogo} alt='ViutecaLogo' />
+                    </NavbarBrand>
+                    <div style={{ width: "45%" }}>
+                        <InputGroup>
+                            <InputGroupAddon>
+                                <InputGroupText style={{ backgroundColor: "transparent", border: "none" }}>
+                                    <img src={mGlass} className={styles.searchButton} onClick={handleButtonClicked} />
+                                </InputGroupText>
+                            </InputGroupAddon>
+                            <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
+                            <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
+                                <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
+                                <DropdownMenu style={{ backgroundColor: 'black', border: 'None', fontSize: "100%" }}>
+                                    <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
+                                    <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
+                                    <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
+                                </DropdownMenu>
+                            </InputGroupButtonDropdown>
+                        </InputGroup>
+                    </div>
+                    <Nav navbar style={{ width: "22%" }}>
+                        <NavItem>
+                            <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
+                                <DropdownToggle style={{ backgroundColor: 'black', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
+                                <DropdownMenu style={{ backgroundColor: 'black' }}>
+                                    <DropdownItem>
+                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
+                                            HOME
+                                        </NavLink>
+                                    </DropdownItem>
+                                    <DropdownItem divider />
 
-                                <DropdownItem>
-                                    <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
-                                        AÑADIR VIDEO
-                                    </NavLink>
-                                </DropdownItem>
-                                <DropdownItem divider />
+                                    <DropdownItem>
+                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
+                                            AÑADIR VIDEO
+                                        </NavLink>
+                                    </DropdownItem>
+                                    <DropdownItem divider />
 
-                                <DropdownItem>
-                                    <NavLink style={{ color: 'white' }} className='nav-link' to='/projects'>
-                                        CERRAR SESIÓN
-                                    </NavLink>
-                                </DropdownItem>
-                            </DropdownMenu>
-                        </ButtonDropdown>
-                    </NavItem>
-                </Nav>
-            </Navbar>
-        </div>
-    )
+                                    <DropdownItem>
+                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/projects'>
+                                            CERRAR SESIÓN
+                                        </NavLink>
+                                    </DropdownItem>
+                                </DropdownMenu>
+                            </ButtonDropdown>
+                        </NavItem>
+                    </Nav>
+                </Navbar>
+            </div>
+        )
 
     return (null)
 }
