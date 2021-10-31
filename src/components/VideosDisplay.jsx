@@ -4,20 +4,37 @@ import './styles/VideosDisplay.scss';
 import styles from './styles/VideoDetail.module.scss';
 import Video from '../firebase/videos'
 import { Spinner } from "reactstrap";
+import {searchVideo} from '../firebase/search'
 
-function VideosDisplay() {
+function VideosDisplay(props) {
+
+  // Props location.state is undefined when first loaded
+  //const {searchTerm, searchType} = props.location.state ? props.location.state : {searchTerm:null, searchType:null};
+
   const [loading, setLoading] = useState(true);
   const [videos, setVideos] = useState({});
+  const {search} = props;
 
   useEffect(() => {
     async function fetchData() {
-      const video = await Video.getAllVideos();
-      setVideos(video);
-      setLoading(false);
-      console.log(videos);
+      if (search) {
+        const [searchTerm, searchType] = search;
+        console.log("searchterm", searchTerm, "searchType", searchType)
+        console.log("Fetching only videos:", searchTerm);
+        const videos = await searchVideo(searchType, searchTerm);
+        setVideos(videos);
+        setLoading(false);
+
+      } else {
+        console.log("Fetching all videos...");
+        const videos = await Video.getAllVideos();
+        setVideos(videos);
+        setLoading(false);
+      }
     }
     fetchData();
   }, []);
+
   if (loading) return (
     <div className={styles.container}>
       <Spinner children="" style={{ width: '15rem', height: '15rem' }} />
