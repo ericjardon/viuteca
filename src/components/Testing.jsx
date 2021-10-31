@@ -5,11 +5,14 @@ import authManager from '../firebase/authManager'
 import useLogin from '../hooks/useLogin'
 import { doc, addDoc, collection, Timestamp } from 'firebase/firestore'
 import { auth, db } from '../base'
+import { searchVideo } from '../firebase/search'
 
 
 export default function Testing() {
 
     const loggedIn = useLogin();
+
+    const [searchResults, setSearchResults] = useState([]);
 
     const [videoForm, setVideoForm] = useState({
         title: '',
@@ -78,6 +81,30 @@ export default function Testing() {
         }
     }
 
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const searchByTitle = async (e) => {
+        console.log("search title")
+        if (searchTerm.trim() === "") {
+            return;
+        }
+        const results = await searchVideo("title", searchTerm);
+        console.log("results received", results)
+        setSearchResults(results)
+    }
+    const searchByOwner = async (e) => {
+        console.log("search owner")
+        if (searchTerm.trim() === "") {
+            return;
+        }
+        const results = await searchVideo("owner", searchTerm);
+        console.log("results received", results)
+
+        setSearchResults(results)
+    }
+
+    console.log(searchResults);
+    console.log(searchTerm);
     return (
         <div style={{ display: 'block' }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px', width: '100vw', backgroundColor: 'green' }}>
@@ -97,6 +124,20 @@ export default function Testing() {
                 Video URL
                 <input type="text" name="url" />
                 <button onClick={submitVideo}>Submit Video</button>
+            </div>
+
+            <div>
+                
+                <input type="text" name="searchByOwner" onChange={(e) => setSearchTerm(e.target.value)}/>
+                <button onClick={searchByOwner}>Videos por Autor</button>
+                
+                <input type="text" name="searchByTitle" onChange={(e) => setSearchTerm(e.target.value)}/>
+                <button onClick={searchByTitle}>Videos por Título</button>
+            </div>
+            <div>
+            {searchResults.map((o, i) => (
+                <p>Video {i}: {o.title} {o.owner} likes: {o.likes}</p>
+            ))}
             </div>
         </div>
     )

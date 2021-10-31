@@ -4,19 +4,6 @@ import {doc, setDoc, collection, getDocs, getDoc} from 'firebase/firestore';
 const controller = {}
 
 
-controller.getVideoByIdTest = async () => {
-    let videoId = "LKKJI8FRWhSvrb4UBsoD";
-    const docRef = doc(db, "video", videoId);
-    const video = await getDoc(docRef);
-    
-    if (video.exists()) {
-      return (video.data());
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-      return {}
-    }
-}
 
 controller.getVideoById = async (videoId) => {
   const docRef = doc(db, "video", videoId);
@@ -32,18 +19,18 @@ controller.getVideoById = async (videoId) => {
 }
 
 controller.getAllVideos = async () => {
-  let groups = []; 
+  let videos = []; 
   
   const querySnapshot = await getDocs(collection(db, "video"));
   querySnapshot.forEach((doc) => {
-    let group = {
+    let video = {
       id : doc.id,
       data : doc.data()
     }
-    groups.push(group)
+    videos.push(video)
   });
-  console.log(groups);
-  return groups;
+  console.log(videos);
+  return videos;
 }
 
 export default controller;

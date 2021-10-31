@@ -23,6 +23,7 @@ controller.createGroup = async (groupId, group) => {
 
     // Save to database
     try {
+        group.name_lower = group.name.toLowerCase();
         // setDoc does not return anything
         await setDoc(doc(db, "groups", groupId), group)
         result.ok = true
@@ -80,7 +81,6 @@ controller.getGroupByEmail = async (email) => {
         }
     }
 }
-
 
 
 controller.updateGroup = async (groupId, newData) => {
