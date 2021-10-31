@@ -11,11 +11,18 @@ import fullLogo from '../assets/viutecaLogoComplete.png';
 import iconLogo from '../assets/viutecaLogo.png';
 import mGlass from '../assets/mGlass.png';
 
+const placeholders = {
+    'owner': 'Busca por autor',
+    'title': 'Busca por título',
+    'date': 'Busca por fecha: 2020-11-03'
+}
+
 const NavHeader = (props) => {
     const [dropdownopen, setOpen] = useState(false);
     const [splitButtonOpen, setSplitButtonOpen] = useState(false);
     const [searchTerm, setsearchTerm] = useState("")
     const [searchType, setsearchType] = useState("owner")
+    const [placeholderSearch, setplaceholderSearch] = useState(placeholders["owner"])
     const [redirectToVideos, setRedirectToVideos] = useState(false)
     const { submitSearch } = props;
 
@@ -28,6 +35,13 @@ const NavHeader = (props) => {
 
     const handleOnChange = (e) => {
         setsearchTerm(e.target.value);
+    }
+
+    const handleDropdown = (e) => {
+        let type = e.target.value;
+        console.log("Search type", type);
+        setsearchType(type);
+        setplaceholderSearch(placeholders[type]);
     }
 
     const handleKeyPressed = (e) => {
@@ -63,13 +77,13 @@ const NavHeader = (props) => {
                 <div style={{ width: "45%" }}>
                     <InputGroup>
                         <InputGroupAddon><InputGroupText style={{ backgroundColor: "transparent", border: "none" }}><img src={mGlass} style={{ width: "30px" }}></img></InputGroupText></InputGroupAddon>
-                        <Input placeholder="Búsqueda por título" onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
+                        <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
                         <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
                             <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
                             <DropdownMenu style={{ backgroundColor: 'black', border: 'None', fontSize: "100%" }}>
-                                <DropdownItem style={{ color: 'white' }}>Titulo</DropdownItem>
-                                <DropdownItem style={{ color: 'white' }}>Fecha</DropdownItem>
-                                <DropdownItem style={{ color: 'white' }}>Asociación</DropdownItem>
+                                <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
+                                <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
+                                <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
                             </DropdownMenu>
                         </InputGroupButtonDropdown>
                     </InputGroup>
