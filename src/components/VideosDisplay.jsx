@@ -6,34 +6,26 @@ import Video from '../firebase/videos'
 import { Spinner } from "reactstrap";
 import { searchVideo } from '../firebase/search'
 import {useLocation} from 'react-router-dom'
-
-const useQuery = () => {
-  console.log("Location search string", useLocation().search);
-  return new URLSearchParams(useLocation().search);
-}
+import { useQueryParams, StringParam, withDefault } from "use-query-params";
 
 const VideosDisplay = (props) => {
 
-  // Props location.state is undefined when first loaded
-  //const {searchTerm, searchType} = props.location.state ? props.location.state : {searchTerm:null, searchType:null};
-
   const [loading, setLoading] = useState(true);
   const [videos, setVideos] = useState({});
-  //const query = useQuery();  // extract and parse the query params in URL
-  const query = useQuery();
+  const [query, setQuery] = useQueryParams({
+      searchTerm: withDefault(StringParam, ""),
+      searchType: withDefault(StringParam, ""),
+  })
+
+  const {searchTerm, searchType} = query;
 
   async function fetchData() {
-    console.log("Query object", query)
-    if (false) {
-      let searchTerm = query.get('searchTerm') || "";
-      let searchType = query.get('searchType') || "owner";
-      console.log("params", query.get('searchTerm'), query.get('searchType'))
-      console.log("searchterm", searchTerm, "searchType", searchType)
-      console.log("Fetching only videos:", searchTerm);
+    console.log("Query: ", query)
+    if (searchTerm !== "" && searchType !== "") {
+      console.log("Fetching videos from search:", searchTerm);
       const videos = await searchVideo(searchType, searchTerm);
       setVideos(videos);
       setLoading(false); 
-
     } else {
       console.log("Fetching all videos...");
       const videos = await Video.getAllVideos();
@@ -44,7 +36,7 @@ const VideosDisplay = (props) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [query]);
 
   if (loading) return (
     <div className={styles.container}>
@@ -61,7 +53,7 @@ const VideosDisplay = (props) => {
             <Card project={project} index={index} />
           ))
         ) : (
-          <h1>¡Ups! No encontramos videos.</h1>
+          <h1>¡Ups! No se encontraron videos con esa búsqueda.</h1>
         )}
 
       </div>
