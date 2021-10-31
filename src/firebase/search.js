@@ -27,7 +27,7 @@ const searchVideosByTitle = async (title) => {
 
 const searchVideosByOwner = async (ownerName) => {
 
-    if (ownerName == null || ownerName == undefined) {
+    if (ownerName === null || ownerName === undefined) {
         return []
     }
 

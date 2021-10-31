@@ -5,13 +5,13 @@ import {
     DropdownMenu, DropdownItem, Input, InputGroup, InputGroupAddon, InputGroupText,
     InputGroupButtonDropdown
 } from 'reactstrap';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink, Redirect, withRouter } from 'react-router-dom';
 import { useMediaSize } from "use-media-size";
 import fullLogo from '../assets/viutecaLogoComplete.png';
 import iconLogo from '../assets/viutecaLogo.png';
 import mGlass from '../assets/mGlass.png';
 
-export default function NavHeader(props) {
+const NavHeader = (props) => {
     const [dropdownopen, setOpen] = useState(false);
     const [splitButtonOpen, setSplitButtonOpen] = useState(false);
     const [searchTerm, setsearchTerm] = useState("")
@@ -19,27 +19,30 @@ export default function NavHeader(props) {
     const [redirectToVideos, setRedirectToVideos] = useState(false)
     const { submitSearch } = props;
 
+    const {location, history} = props;
+    console.log("You are now at ", location.pathname)
+
     const { isMd, isSm } = useMediaSize();
     const toggle = () => setOpen(!dropdownopen);
     const toggleSplit = () => setSplitButtonOpen(!splitButtonOpen);
 
     const handleOnChange = (e) => {
-        console.log("Input", e.target.value);
         setsearchTerm(e.target.value);
     }
 
     const handleKeyPressed = (e) => {
         if (e.key === 'Enter') {
+            const nextPath = '/videos?' + `searchType=${searchType}&searchTerm=${searchTerm}`
             console.log("Pressed enter!!");
             submitSearch(searchTerm, searchType);
-            setRedirectToVideos(true);
+            history.push(nextPath)
         }
     }
 
     if (redirectToVideos) {
+        console.log("Redirecting", searchTerm, searchType);
         return (
             <Redirect 
-                from="/"
                 to={{
                     pathname: "/videos",
                     state: {searchTerm,
@@ -48,6 +51,9 @@ export default function NavHeader(props) {
             />
         )
     }
+
+    const show = location.pathname !== '/login' && location.pathname !== '/register'
+    if (show)
     return (
         <div>
             <Navbar color="black" style={{ padding: 0 }}>
@@ -99,4 +105,9 @@ export default function NavHeader(props) {
             </Navbar>
         </div>
     )
+
+    return (null)
 }
+
+
+export default withRouter(NavHeader)

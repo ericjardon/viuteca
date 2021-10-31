@@ -27,32 +27,18 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Link
-          to="/register"
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button>
-            Bootstrap component
-          </Button>
-        </Link>
-      </header>
-        WE CAN MAYBE USE THE SPINNING LOGO FOR OUR OWN?
-      */}
-        <Route path="/" render={({ location }) =>
-          showHeader(location.pathname) ? <NavHeader submitSearch={submitSearch} /> : <></>} />
+        {/* NAV BAR */}
+        {/* <Route path="/" render={({ location }) =>
+          showHeader(location.pathname) ? <NavHeader submitSearch={submitSearch} /> : <></>} /> */}
+        <NavHeader submitSearch={submitSearch} /> 
         <Switch>
           <Route exact path="/" render={() => <Home />} />
-          <Route path="/register" render={() => <Register />} />
-          <Route path="/testing" render={() => <Testing />} />
-          <Route path="/login" render={() => <Login />} />
+          <Route exact path="/register" render={() => <Register />} />
+          <Route exact path="/testing" render={() => <Testing />} />
+          <Route exact path="/login" render={() => <Login />} />
           <Route path="/videos" render={(props) => <VideosDisplay search={currentSearch} {...props}/> } />
-          <Route path="/video/:id" render={(props) => <VideoDetail {...props} />} />
-          <Route path="/newVideo" render={() => <VideoForm />} />
+          <Route exact path="/video/:id" render={(props) => <VideoDetail {...props} />} />
+          <Route exact path="/newVideo" render={() => <VideoForm />} />
         </Switch>
       </Router>
     </div>
@@ -60,7 +46,6 @@ function App() {
 }
 
 const showHeader = (path) => {
-  console.log("Show header?", path !== '/login' && path !== '/register')
   return path !== '/login' && path !== '/register';
 }
 
