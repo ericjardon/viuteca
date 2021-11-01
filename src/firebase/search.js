@@ -10,8 +10,8 @@ const groups = collection(db, "groups");
 
 /* SEARCHING FUNCTIONS */
 const searchVideosByTitle = async (title) => {
-
-    const q = query(videos, where("title", "==", title));
+    title = title.toLowerCase()
+    const q = query(videos, where("title_lower", "==", title));
     const querySnapshot = await getDocs(q);
 
     let results = [];
