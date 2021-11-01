@@ -15,3 +15,24 @@
 }
 
 /*Media query 425px should change header*/
+
+
+@media (max-width: 425px) {
+    .navBar{
+        display:none;
+    }
+    .collapseStyles{
+        display: inline;
+    }
+}
+
+
+
+@media (min-width: 425px) {
+    .collapseStyles{
+        display:none
+    }
+    .navBar{
+        display:inline;
+    }
+}
