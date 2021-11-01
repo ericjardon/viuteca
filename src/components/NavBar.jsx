@@ -10,6 +10,8 @@ import { useMediaSize } from "use-media-size";
 import fullLogo from '../assets/viutecaLogoComplete.png';
 import iconLogo from '../assets/viutecaLogo.png';
 import mGlass from '../assets/mGlass.png';
+import useLogin from '../hooks/useLogin';
+import authManager from '../firebase/authManager';
 
 const placeholders = {
     'owner': 'Busca por autor',
@@ -18,6 +20,9 @@ const placeholders = {
 }
 
 const NavHeader = (props) => {
+
+    const loggedIn = useLogin();
+
     const [dropdownopen, setOpen] = useState(false);
     const [splitButtonOpen, setSplitButtonOpen] = useState(false);
     const [searchTerm, setsearchTerm] = useState("")
@@ -46,7 +51,6 @@ const NavHeader = (props) => {
         if (e.key === 'Enter') {
             const nextPath = '/videos?' + `searchType=${searchType}&searchTerm=${searchTerm}`
             console.log("Pressed enter!!");
-            //submitSearch(searchTerm, searchType);
             history.push(nextPath)
         }
     }
@@ -54,8 +58,12 @@ const NavHeader = (props) => {
     const handleButtonClicked = (e) => {
         const nextPath = '/videos?' + `searchType=${searchType}&searchTerm=${searchTerm}`
         console.log("Clicked button!!");
-        //submitSearch(searchTerm, searchType);
         history.push(nextPath)
+    }
+
+    const handleLogout = async (e) => {
+        const res = await authManager.logOut();
+        console.log("Logged out: ", res);
     }
 
     const show = location.pathname !== '/login' && location.pathname !== '/register'
@@ -95,19 +103,37 @@ const NavHeader = (props) => {
                                         </NavLink>
                                     </DropdownItem>
                                     <DropdownItem divider />
-
                                     <DropdownItem>
-                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
-                                            AÑADIR VIDEO
+                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/videos'>
+                                            VIDEOS
                                         </NavLink>
                                     </DropdownItem>
                                     <DropdownItem divider />
 
-                                    <DropdownItem>
-                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/projects'>
-                                            CERRAR SESIÓN
+                                    {!loggedIn &&
+                                        <DropdownItem>
+                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/login'>
+                                            LOGIN GRUPOS
                                         </NavLink>
                                     </DropdownItem>
+                                    }
+
+                                    {loggedIn && 
+                                        <>
+                                            <DropdownItem>
+                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
+                                                    AÑADIR VIDEO
+                                                </NavLink>
+                                            </DropdownItem>
+                                            <DropdownItem divider />
+
+                                            <DropdownItem>
+                                                <NavLink onClick={handleLogout} style={{ color: 'white' }} className='nav-link' to='/login'>
+                                                    CERRAR SESIÓN
+                                                </NavLink>
+                                            </DropdownItem>
+                                        </>
+                                    }
                                 </DropdownMenu>
                             </ButtonDropdown>
                         </NavItem>

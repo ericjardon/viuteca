@@ -70,7 +70,7 @@ export default function Login(props) {
 
     return (
         <>
-        {(loggedIn && <Redirect to="/" />)}
+        {(loggedIn && <Redirect to="/" />)} {/* show pulsing loading button until loggedIn returns */}
         <div className={"Main"}>
             <div className={"leftSide"}>
 
