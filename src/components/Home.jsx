@@ -18,8 +18,8 @@ export default function Home() {
                 <div className={styles.textContainer1}>
                     <p className={styles.HeadLine}>¡Bienvenidx a la Viuteca!</p>
 
-                    <p className={styles.MainText}>Viuteca es un proyecto desarrollado por estudiantes del Tec, que
-                        busca poner a tu alcance las grabaciones de los eventos de grupos estudiantiles
+                    <p className={styles.MainText}>Viuteca es un proyecto desarrollado por estudiantes del Tec,
+                        que busca poner a tu alcance las grabaciones de los eventos de grupos estudiantiles
                         para que no te pierdas de nada. <br /> Encuentra talleres, conferencias, presentaciones, congresos, sesiones informativas y más!
                     </p>
                     <Link to="/videos">
@@ -67,7 +67,7 @@ export default function Home() {
                     <img className={styles.ill1} src={illustration3} alt="" />
                 </div>
             </div>
-            <div className={styles.attribution}><a href="https://storyset.com/web">Web illustrations by Storyset</a></div>
+            <div className={styles.attribution}><a href="https://storyset.com/web" target="_blank">Web illustrations by Storyset</a></div>
         </div>
 
     )
