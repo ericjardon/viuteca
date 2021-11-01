@@ -51,7 +51,6 @@ const NavHeader = (props) => {
         if (e.key === 'Enter') {
             const nextPath = '/videos?' + `searchType=${searchType}&searchTerm=${searchTerm}`
             console.log("Pressed enter!!");
-            //submitSearch(searchTerm, searchType);
             history.push(nextPath)
         }
     }
@@ -59,7 +58,6 @@ const NavHeader = (props) => {
     const handleButtonClicked = (e) => {
         const nextPath = '/videos?' + `searchType=${searchType}&searchTerm=${searchTerm}`
         console.log("Clicked button!!");
-        //submitSearch(searchTerm, searchType);
         history.push(nextPath)
     }
 

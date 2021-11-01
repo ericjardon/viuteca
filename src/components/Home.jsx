@@ -40,11 +40,10 @@ export default function Home() {
                     <p className={styles.HeadLine2}>Dale play a tus grupos estudiantiles</p>
 
                     <p className={styles.MainText2}>
-                        La nueva realidad digital y el distanciamiento social han impulsado la creación de contenido
-                        multimedia por parte de los grupos estudiantiles más que nunca. <br/> <br/>
-                        ¿La principal ventaja? Podemos revisitar este contenido cuando queramos. <br/> 
+                        El distanciamiento social ha impulsado más que nunca la creación de grabaciones por parte de los grupos estudiantiles.<br/> <br/>
+                        La gran ventaja del contenido grabado es poder difundirlo y revisitarlo cuantas veces queramos. <br/> 
                         ¿El reto? Encontrarlo todo en un solo lugar, de forma
-                        ordenada y fácil de explorar. <br/> ¿La solución? ¡Viuteca!
+                        ordenada y fácil de explorar. ¿La solución? ¡Viuteca!
                     </p>
                 </div>
 
