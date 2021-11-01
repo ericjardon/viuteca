@@ -18,9 +18,9 @@ export default function Home() {
                 <div className={styles.textContainer1}>
                     <p className={styles.HeadLine}>¡Bienvenidx a Viuteca!</p>
 
-                    <p className={styles.MainText}>Viuteca es un proyecto desarrollado por estudiantes del Tec,
+                    <p className={styles.MainText}>Viuteca es un proyecto desarrollado por estudiantes del Tec
                         que busca poner a tu alcance las grabaciones de los eventos de grupos estudiantiles
-                        para que no te pierdas de nada. <br /> Encuentra talleres, conferencias, presentaciones y más!
+                        para que no te pierdas de nada. <br /> Encuentra talleres, conferencias, presentaciones ¡y más!
                     </p>
                     <Link to="/videos">
                         <Button className={styles.StartButton} color="primary">Ir a Viuteca <BsArrowRight /></Button>
@@ -40,9 +40,8 @@ export default function Home() {
                     <p className={styles.HeadLine2}>Dale play a tus grupos estudiantiles</p>
 
                     <p className={styles.MainText2}>
-                        El distanciamiento social ha impulsado más que nunca la creación de grabaciones por parte de los grupos estudiantiles.<br/> <br/>
-                        La gran ventaja del contenido grabado es poder difundirlo y revisitarlo cuantas veces queramos. <br/> 
-                        ¿El reto? Encontrarlo todo en un solo lugar, de forma
+                        La gran ventaja del contenido grabado es poder compartirlo y revisitarlo cuantas veces queramos.
+                        <br/>¿El reto? Encontrarlo todo en un solo lugar, de forma
                         ordenada y fácil de explorar. ¿La solución? ¡Viuteca!
                     </p>
                 </div>
@@ -54,9 +53,9 @@ export default function Home() {
 
                     <p className={styles.MainText}>
                         Si formas parte de un grupo estudantil, ¡crea
-                        tu cuenta para subir tus eventos! <br/> Tu grupo o sociedad tendrá más difusión y podrás
-                        tener todas tus grabaciones en un solo lugar. <br />
-                        En Viuteca, tus videos estarán a la vista de todos, donde pueden ser buscados, aplaudidos y compartidos.
+                        tu cuenta para subir tus eventos, obtener más difusión y
+                        tener todas tus grabaciones en un solo lugar! <br /> <br/>
+                        Lo único que necesitas para subir un video es su URL de archivo, Viuteca se encarga del resto ;-)
                     </p>
                     <Link to="/videos">
                         <Button className={styles.RegisterButton}>Regístrate <BiCheck/></Button>
