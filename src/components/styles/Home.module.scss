@@ -24,9 +24,13 @@
     flex-direction: column;
 }
 
-.imageContainer1 {
+.imageContainer1, .imageContainer2, .imageContainer3 {
     display: block;
     width: 50vw;
+}
+
+.ill1, .ill3 {
+    width: 100%;
 }
 
 .HeadLine {
@@ -70,11 +74,6 @@
     margin-top: 20px;
 }
 
-.ill1 {
-    width: 700px;
-}
-
-
 .HeadLine2 {
     text-align: left;
     color: $green; //$primary;
@@ -114,4 +113,75 @@
         color: grey;
         margin-right: 10px;
     }
+}
+
+@media (max-width: 425px) {
+
+    .firstSection, .thirdSection {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .secondSection {
+        flex-direction: column-reverse;
+    }
+
+    .textContainer1 {
+        width: auto;
+    }
+
+    .HeadLine {
+        width: auto;
+        margin: 24px 0;
+        text-align: center;
+        color: white; //$primary;
+        font-size: 40px;
+        font-weight: bold;
+        text-shadow: 3px 3px black;//$primaryText;  
+    }
+    .MainText, .MainText2, .MainText3 {
+        text-align: center;
+        font-size: 16px;
+        margin: 0 20px 30px;
+    }
+    .imageContainer1, .imageContainer2, .imageContainer3 {
+        width: auto;
+    }
+
+    .imageContainer3 {
+        height: 400px; 
+    }
+
+    .StartButton {
+        height: 3.5em !important;
+        width: 9em !important;
+        font-size: 18px !important;
+        font-weight: bold !important;
+    }
+
+    .HeadLine2 {
+        text-align: center;
+        font-size: 32px;
+        margin: 24px 0;
+        width: auto;
+        text-shadow: 2px 2px $dark;
+
+    }
+
+    .HeadLine3 {
+        text-align: center;
+        font-size: 32px;
+        margin: 24px 0;
+        width: auto;
+        text-shadow: 2px 2px white;
+    }
+    
+    .RegisterButton {
+        height: 3.5em !important;
+        width: 9em !important;
+        font-size: 18px !important;
+        margin-top: 0;
+    }
+
+
 }

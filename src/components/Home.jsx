@@ -16,11 +16,11 @@ export default function Home() {
         <div className={styles.HomeContainer}>
             <div className={styles.firstSection}>
                 <div className={styles.textContainer1}>
-                    <p className={styles.HeadLine}>¡Bienvenidx a la Viuteca!</p>
+                    <p className={styles.HeadLine}>¡Bienvenidx a Viuteca!</p>
 
                     <p className={styles.MainText}>Viuteca es un proyecto desarrollado por estudiantes del Tec,
                         que busca poner a tu alcance las grabaciones de los eventos de grupos estudiantiles
-                        para que no te pierdas de nada. <br /> Encuentra talleres, conferencias, presentaciones, congresos, sesiones informativas y más!
+                        para que no te pierdas de nada. <br /> Encuentra talleres, conferencias, presentaciones y más!
                     </p>
                     <Link to="/videos">
                         <Button className={styles.StartButton} color="primary">Ir a Viuteca <BsArrowRight /></Button>
@@ -32,7 +32,7 @@ export default function Home() {
 
             </div>
             <div className={styles.secondSection}>
-                <div className={styles.imageContainer1}>
+                <div className={styles.imageContainer2}>
                     <img className={styles.ill1} src={illustration2} alt="" />
                     {/* <a href="https://storyset.com/online">Online illustrations by Storyset</a> */}
                 </div>
@@ -62,8 +62,8 @@ export default function Home() {
                         <Button className={styles.RegisterButton}>Regístrate <BiCheck/></Button>
                     </Link>
                 </div>
-                <div className={styles.imageContainer1}>
-                    <img className={styles.ill1} src={illustration3} alt="" />
+                <div className={styles.imageContainer3}>
+                    <img className={styles.ill3} src={illustration3} alt="" />
                 </div>
             </div>
             <div className={styles.attribution}><a href="https://storyset.com/web" target="_blank">Web illustrations by Storyset</a></div>
