@@ -1,9 +1,117 @@
 @import './global', './shared.scss';
 .HomeContainer{
     text-align: center;
-    margin: 55px;
+}
+
+.firstSection {
+    @include flexBoxH;
+}
+
+.secondSection {
+    @include flexBoxH;
+    background-color: $lightBg;
+}
+.thirdSection {
+    @include flexBoxH;
+    background-color: $dark;
+}
+
+.textContainer1 {
+    display: block;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.imageContainer1 {
+    display: block;
+    width: 50vw;
+}
+
+.HeadLine {
+    text-align: left;
+    color: white; //$primary;
+    font-size: 75px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 60px;
+    width: 560px;
+    font-weight: bold;
+    text-shadow: 3px 3px black;//$primaryText;
 }
 
 .MainText{
-    font-size: 30px;
+    font-size: 22px;
+    text-align: left;
+    color: white;
+    margin-left: 60px;
+    margin-bottom: 32px;
+}
+
+.StartButton {
+    border-radius: 10px !important;
+    text-decoration: none !important;
+    text-align: center;
+    height: 70px !important;
+    width: 190px !important;
+    font-size: 22px !important;
+    font-weight: bold !important;
+}
+
+.RegisterButton {
+    border-radius: 10px !important;
+    text-decoration: none !important;
+    text-align: center;
+    height: 70px !important;
+    width: 190px !important;
+    font-size: 22px !important;
+    font-weight: bold !important;
+    margin-top: 20px;
+}
+
+.ill1 {
+    width: 700px;
+}
+
+
+.HeadLine2 {
+    text-align: left;
+    color: $green; //$primary;
+    font-size: 52px;
+    margin-bottom: 45px;
+    margin-left: 0;
+    width: 560px;
+    font-weight: bold;
+    text-shadow: 3px 3px $dark;//$primaryText;
+}
+
+.MainText2 {
+    font-size: 22px;
+    text-align: left;
+    color: $dark;
+    margin-right: 70px;
+    margin-bottom: 32px;
+}
+
+.HeadLine3 {
+    text-align: left;
+    color: $primary; //$primary;
+    font-size: 52px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+    margin-left: 60px;
+    width: 560px;
+    font-weight: bold;
+    text-shadow: 3px 3px white;//$primaryText;
+}
+
+.attribution {
+    background-color: $dark;
+    text-align: right;
+    a {
+        text-decoration: underline;
+        color: grey;
+        margin-right: 10px;
+    }
 }
