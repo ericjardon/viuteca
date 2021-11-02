@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## What is it?
 
-Viuteca is developed by three students at the Tec de Monterrey as a project to gather, organize and make available the Student Groups' and Societies' virtual event recordings, so that other students, professors and people in general don't miss out on anything. You can find recorded workshops, webinars, sessions and much more, presented by the diverse student groups from the university.
+Viuteca is developed by 3 students at Tec de Monterrey as a project to gather, organize and make available the Student Groups' and Societies' virtual event recordings, so that other students, professors and people in general don't miss out on anything. You can find recorded workshops, webinars, sessions and much more, presented by the diverse student groups from the university.
 
 ### Why Viuteca?
 Social distancing and the increasingly digital world have greatly increased the number of online events and activities' recordings produced in all of Tec de Monterrey's campi. 
