@@ -4,14 +4,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## What is it?
 
-Viuteca is developed by 3 students at Tec de Monterrey as a project to gather, organize and make available the Student Groups' and Societies' virtual event recordings so that other students, professors and people in general don't miss out on anything. You can find recorded workshops, webinars, sessions and much more, presented by the diverse student groups from the university.
+Viuteca is developed by 3 students at Tec de Monterrey to gather, organize and make available the student Groups' and Societies' virtual event recordings so that the general audience doesn't miss out on anything. You can find recorded workshops, webinars, sessions and much more, all presented by the diverse student groups from the university.
 
 ### Why Viuteca?
-Social distancing and the increasingly digital world have greatly increased the number of online events and activities' recordings produced in all of Tec de Monterrey's campi. 
-The biggest benefit is that video content can be shared and revisited as many times as we like.
+Social distancing in an increasingly digital world has greatly increased the number of online events and activities' recordings by student groups. 
 
-The challenge is to be able to find all of these recordings in a single, structured and easy to browse location. 
-Student Groups' community management teams often use many different platforms and in general do not have a standardized way of publishing/sharing their videos. This can make their video content hard to find, both for the internal staff and for their public, resulting in less visibility and the loss of valuable content.
+The main benefit is that video content can be shared and revisited as many times as we like.
+
+The challenge, however, is to be able to find all of these recordings in a single, structured and easy-to-browse location. 
+Student Groups' community management teams often use many different platforms and in general do not have a standardized way of publishing/sharing their videos. This can make their video content hard to find and manage, both for the internal staff and for their public, resulting in less visibility and the loss of valuable content.
 
 The solution is to have a single platform that can aggregate all of these videos, regardless of their platform of origin, with a friendly UI to find exactly what you're looking for.
 
