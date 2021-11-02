@@ -33,6 +33,10 @@
     background-size: cover;
     background-position: center;
 }
+a.CardText, h4.CardText{
+    text-decoration: none !important;
+    color: black;
+}
 
 .titleAndParagraph {
     padding: 10px;
