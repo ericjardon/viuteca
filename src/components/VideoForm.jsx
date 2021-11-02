@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { Container, Label, Input,  Form,  Button } from 'reactstrap';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import React, { useState } from 'react'
+import { Label, Input,  Form,  Button, Alert } from 'reactstrap';
+import { getAuth } from "firebase/auth";
 import Video from '../firebase/videos'
-import styles from './styles/NewVideo.module.scss'
+import styles from './styles/NewVideo.module.scss';
+import { useHistory } from 'react-router-dom';
 /* Component for the main screen with listed videos */
 export default function VideoForm() {
     const [video, setVideo] = useState({
@@ -16,6 +17,13 @@ export default function VideoForm() {
         likes: 0,
         dateAdded: ''
     });
+    let history = useHistory();
+    const [showAlert, setShowAlert] = useState(false);
+    const [alert, setAlert] = useState(null);
+
+    const redirect = () => {
+        history.push('/videos')
+    }
     const [uploadVideo, setUploadVideo] = useState(false);
     const handleOnClick = (e) => {
         setUploadVideo(true);
@@ -25,12 +33,13 @@ export default function VideoForm() {
             ...prev,
             [e.target.name]: e.target.value
         }))
+        setShowAlert(false);
     }
 
     const tryCreate = async () => {
         //CHECK USER
         const auth = getAuth();
-        const user = auth.currentUser;
+        const user = auth.currentUser.email;
         if (user) {
             //CHECK DATE
             var currentdate = new Date(); 
@@ -49,19 +58,23 @@ export default function VideoForm() {
                 dateAdded: actualDate,
                 durationMins: Number(video.durationMins),
                 durationSecs: Number(video.durationSecs),
-                owner: user.email
+                owner: user
             }))
-            //SEND TO FIREBASE
-            const dbRes = await Video.createVideo(video)
-            if (dbRes.error == undefined) {
-                console.log("Todo ok!")
-
-            } else {
-                console.log("Firestore error:", dbRes.error);
-            }
         } else {
             console.log("Problemas con el auth")
             return false;
+        }
+        if(video.title === '' || video.description === '' || video.img === '' || video.url ===''){
+            setAlert(<Alert color="warning">Debes llenar todos los campos</Alert>)
+            setShowAlert(true);
+            return
+        }
+        //SEND TO FIREBASE
+        const dbRes = await Video.createVideo(video)
+        if (dbRes.error == undefined) {
+            redirect()
+        } else {
+            console.log("Firestore error:", dbRes.error);
         }
 
     }
@@ -76,9 +89,9 @@ export default function VideoForm() {
                         </div>
                         <div className={styles.rowClass}>
                             <Label className={styles.labelClass}>Minutos duración</Label>
-                            <Input type="number" className={styles.smallInput} defaultValue="15" onChange={handleOnChange} name="durationMins"></Input>
+                            <div className={styles.smallInput}><Input type="number"  defaultValue="15" onChange={handleOnChange} name="durationMins"></Input></div>
                             <Label  className={styles.labelClass}>Segundos Duración</Label>
-                            <Input type="number" className={styles.smallInput} defaultValue="15" onChange={handleOnChange} name="durationSecs"></Input>
+                            <div className={styles.smallInput}><Input type="number" defaultValue="15" onChange={handleOnChange} name="durationSecs"></Input></div>
                         </div>
                         <div >
                             <Label className={styles.titleClass}>Descripción</Label>
@@ -116,6 +129,7 @@ export default function VideoForm() {
                             </div>
                         </div>
                     </Form>
+                    {(showAlert && alert)}
                 </div>
             </div>
     )
