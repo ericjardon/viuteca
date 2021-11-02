@@ -13,6 +13,7 @@ export default function VideoDetail(props) {
     const [likes, setLikes] = useState();
     const [toggleDescription, setToggleDescription] = useState(false);
     const [dateString, setDateString] = useState("");
+    const [errorNotFound, seterrorNotFound] = useState(false);
 
     const toggle = () => {
         setToggleDescription(toggleDescription => !toggleDescription);
@@ -25,7 +26,13 @@ export default function VideoDetail(props) {
         async function fetchData() {
             //const video = await Video.getVideoByIdTest();
             const video = await Video.getVideoById(videoId);
-            const {group} = await Group.getGroupByEmail(video.owner);
+            if (video.error) {
+                // does not exist
+                setLoading(false)
+                seterrorNotFound(video.error);
+                return
+            }
+            const group = await Group.getGroupById(video.owner);
             setVideoOwner(group.name);
             setVideo(video);
             setLikes(video.likes);
@@ -49,6 +56,12 @@ export default function VideoDetail(props) {
     if (loading) return (
         <div className={styles.container}>
             <Spinner children="" style={{ width: '15rem', height: '15rem' }} />
+        </div>
+    )
+
+    if (errorNotFound !== null) return (
+        <div className={styles.container}>
+            {errorNotFound}
         </div>
     )
 

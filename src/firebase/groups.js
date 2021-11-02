@@ -65,19 +65,15 @@ controller.getAllGroups = () => {
         })
 }
 
-controller.getGroupByEmail = async (email) => {
-    const docRef = doc(db, "groups", email);
+controller.getGroupById = async (emailId) => {
+    const docRef = doc(db, "groups", emailId);
     const group = await getDoc(docRef);
 
     if (group.exists()) {
-        return {
-            group: group.data(),
-            error: null
-        };
+        return (group.data());
     } else {
         return {
-            group: null,
-            error: "El documento especificado no existe",
+            error: "El grupo especificado no existe",
         }
     }
 }
@@ -85,10 +81,7 @@ controller.getGroupByEmail = async (email) => {
 
 controller.updateGroup = async (groupId, newData) => {
     // use Set to use previous id
-    const result = {
-        ok: null,
-        error: null,
-    }
+    const result = {}
 
     // .set does not return anything
     try {
@@ -96,7 +89,6 @@ controller.updateGroup = async (groupId, newData) => {
             .set(newData)
         result.ok = true;
         return result;
-
     } catch (error) {
         result.error = error;
         return result;

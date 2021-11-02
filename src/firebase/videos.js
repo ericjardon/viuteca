@@ -14,7 +14,9 @@ controller.getVideoById = async (videoId) => {
   } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");
-    return {}
+    return {
+      error: "No existe el video especificado."
+    }
   }
 }
 

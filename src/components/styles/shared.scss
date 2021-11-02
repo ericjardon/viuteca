@@ -1,4 +1,4 @@
-@import './global';
+@import "./global";
 
 @mixin flexBoxV {
     display: flex;
@@ -18,4 +18,12 @@
     text-decoration: underline;
     color: $dark;
     font-weight: bold;
+}
+
+@mixin centeredContainer {
+    @include flexBoxH;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 138px);
 }

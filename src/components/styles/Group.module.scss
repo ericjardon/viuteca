@@ -1,0 +1,5 @@
+@import './global', './shared.scss';
+
+.container {
+    @include centeredContainer
+}
