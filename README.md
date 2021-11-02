@@ -9,12 +9,14 @@ Viuteca is a project developed by three students at the Tec de Monterrey to gath
 ### Why Viuteca?
 Social distancing and the increasingly digital world have greatly increased the number of online events and activities' recordings produced in all of Tec de Monterrey's campi. 
 The biggest benefit is that video content can be shared and revisited as many times as we like.
-The challenge? to be able to find all of these recordings in a single, structured and easy to browse location. 
+
+The challenge is to be able to find all of these recordings in a single, structured and easy to browse location. 
 Student Groups' community management teams often use many different platforms and in general do not have a standardized way of publishing/sharing their videos. This can make their video content hard to find, both for the internal staff and for their public, resulting in less visibility and the loss of valuable content.
-The solution? A single platform that can aggregate all of these videos, regardless of their platform of origin, with a friendly UI to find exactly what you're looking for.
+
+The solution is to have a single platform that can aggregate all of these videos, regardless of their platform of origin, with a friendly UI to find exactly what you're looking for.
 
 ### If you are a visitor to the site
-- You will find the latest activities and events uploaded by the students from Tec de Monterrey in the main page and view them in an embedded video player or opening them in their original host platform.
+- You can find the latest activities and events uploaded by the students from Tec de Monterrey in the main page and view them in an embedded video player or opening them in their original host platform.
 - You can search for specific recordings by title or by name of the student society or group.
 - If you like what you see, you give an applause!
 - You can freely share the videos with other students, family and friends.
@@ -24,8 +26,7 @@ The solution? A single platform that can aggregate all of these videos, regardle
 - All you need to upload a video is the URI pointing to the video file (e.g. Drive, Vimeo, Youtube, etc.) The video URL must have public visibility on the web.
 - You can get a notion of how popular your videos are thanks to the applause count!
 - You can also provide a description, duration in minutes and seconds, and a thumbnail to your videos.
-- All of your recorded events will be found in a single place!
-
+- All of your recorded events in a single place!
 
 
 ## Deployment
