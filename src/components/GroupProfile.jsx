@@ -3,6 +3,7 @@ import md5 from 'md5'
 import styles from './styles/GroupProfile.module.scss'
 import {Spinner} from 'reactstrap'
 import Group from '../firebase/groups'
+import Tag from './Tag'
 
 const GroupProfile = (props) => {
     /* Implements the profile page for any given group.
@@ -13,6 +14,7 @@ const GroupProfile = (props) => {
 
     const [profileData, setprofileData] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [tags, setTags] = useState(["Women in Stem", "Tecnologías Computacionales", "Ingeniería"])
 
     const [errorNotFound, seterrorNotFound] = useState(null);
     const [profilePicURL, setProfilePicURL] = useState("");
@@ -25,7 +27,6 @@ const GroupProfile = (props) => {
         async function fetchData() {
             const group = await Group.getGroupById(groupId);
             if (group.error) {
-                // does not exist
                 setLoading(false)
                 seterrorNotFound(group.error);
                 return
@@ -46,13 +47,13 @@ const GroupProfile = (props) => {
     }
 
     if (loading) return (
-        <div className={styles.container}>
+        <div className={styles.containerLoading}>
             <Spinner children="" style={{ width: '15rem', height: '15rem' }} />
         </div>
     )
 
     if (errorNotFound !== null) return (
-        <div className={styles.container}>
+        <div className={styles.containerLoading}>
             {errorNotFound}
         </div>
     )
@@ -66,6 +67,9 @@ const GroupProfile = (props) => {
                 <div className={styles.nameAndDesc}>
                     <p className={styles.profileName}>Ada Women</p>
                     <p className={styles.profileDesc}>Descripción ejemplo acerca de ada women y sus videos</p>
+                    <div className={styles.categories}>
+                        {tags.map(t => <Tag>{t}</Tag>)}
+                    </div>
                 </div>
             </div>
             <div className={styles.postedVideos}>

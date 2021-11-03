@@ -1,13 +1,19 @@
 @import './global', './shared.scss';
 
 .container {
-    @include centeredContainer
+    @include centeredContainer;
+    justify-content:flex-start;
+}
+
+.containerLoading {
+    @include centeredContainer;
 }
 
 .profileCard {
     display: inline-flex;
     align-items: center;
-    margin-top: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     background-color: $lightBg;
     width: 50vw;
     border-radius: 10px;
@@ -34,10 +40,13 @@
     height: 158px;
     width: 158px;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .nameAndDesc {
     text-align: left;
+    padding-left: 40px;
 }
 
 .profileName {
@@ -47,4 +56,9 @@
 
 .profileDesc {
     font-size: 18px;
+}
+
+.categories {
+    font-size: 16px;
+    color: $cream;
 }
