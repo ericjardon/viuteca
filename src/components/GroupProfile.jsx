@@ -4,6 +4,7 @@ import styles from './styles/GroupProfile.module.scss'
 import {Spinner} from 'reactstrap'
 import Group from '../firebase/groups'
 import Tag from './Tag'
+import ProfileVideos from './ProfileVideos'
 
 const GroupProfile = (props) => {
     /* Implements the profile page for any given group.
@@ -31,6 +32,7 @@ const GroupProfile = (props) => {
                 seterrorNotFound(group.error);
                 return
             }
+            group.id = groupId;
             setprofileData(group);
             setLoading(false);
             console.log("Profile Data:\n", group)
@@ -73,7 +75,7 @@ const GroupProfile = (props) => {
                 </div>
             </div>
             <div className={styles.postedVideos}>
-                No videos yet
+                <ProfileVideos ownerEmail={profileData.id} ownerName={profileData.name}/>
             </div>
         </div>
     )

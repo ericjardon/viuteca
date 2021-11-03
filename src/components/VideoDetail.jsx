@@ -28,6 +28,7 @@ export default function VideoDetail(props) {
             const video = await Video.getVideoById(videoId);
             if (video.error) {
                 // does not exist
+                console.log("Video does not exist");
                 setLoading(false)
                 seterrorNotFound(video.error);
                 return
@@ -58,13 +59,13 @@ export default function VideoDetail(props) {
             <Spinner children="" style={{ width: '15rem', height: '15rem' }} />
         </div>
     )
-
+    console.log("Error not found?", errorNotFound);
     if (errorNotFound !== null) return (
         <div className={styles.container}>
             {errorNotFound}
         </div>
     )
-
+    
     return (
         <div className={styles.container}>
             <div className={styles.cardContainer}>
