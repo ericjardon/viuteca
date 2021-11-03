@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import md5 from 'md5'
-import styles from './styles/Group.module.scss'
+import styles from './styles/GroupProfile.module.scss'
 import {Spinner} from 'reactstrap'
 import Group from '../firebase/groups'
 
@@ -14,10 +14,12 @@ const GroupProfile = (props) => {
     const [profileData, setprofileData] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const [errorNotFound, seterrorNotFound] = useState(null)
+    const [errorNotFound, seterrorNotFound] = useState(null);
+    const [profilePicURL, setProfilePicURL] = useState("");
 
     // FETCH THE GROUP PROFILE DATA FROM URL
     useEffect(() => {
+        setProfilePicURL(getGravatarURL("ericjardon@hotmail.com"));
         const groupId = props.match.params.id;
         console.log("Group id", groupId);
         async function fetchData() {
@@ -36,6 +38,13 @@ const GroupProfile = (props) => {
         fetchData();
     }, []);
 
+    const profileImage = () => {
+        
+        return {
+            backgroundImage: `url(${profilePicURL})`,
+        }
+    }
+
     if (loading) return (
         <div className={styles.container}>
             <Spinner children="" style={{ width: '15rem', height: '15rem' }} />
@@ -50,7 +59,18 @@ const GroupProfile = (props) => {
 
     return (
         <div className={styles.container}>
-            Hello Group
+            <div className={styles.profileCard}>
+                <div className={styles.profilePicDummy}>
+                <div className={styles.profilePic} style={profileImage()}></div>
+                </div>
+                <div className={styles.nameAndDesc}>
+                    <p className={styles.profileName}>Ada Women</p>
+                    <p className={styles.profileDesc}>Descripción ejemplo acerca de ada women y sus videos</p>
+                </div>
+            </div>
+            <div className={styles.postedVideos}>
+                No videos yet
+            </div>
         </div>
     )
 }

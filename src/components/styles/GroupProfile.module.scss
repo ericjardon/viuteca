@@ -1,0 +1,50 @@
+@import './global', './shared.scss';
+
+.container {
+    @include centeredContainer
+}
+
+.profileCard {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 25px;
+    background-color: $lightBg;
+    width: 50vw;
+    border-radius: 10px;
+    min-height: 250px;
+    padding: 40px;
+}
+
+.postedVideos {
+    padding: 50px;
+    width: calc(100vw - 140px);
+    height: 400px;
+    border: 1px solid white;
+}
+
+.profilePic {
+    border-radius: 50%;
+    width: 128px;
+    height: 128px;
+    margin: auto;
+
+}
+
+.profilePicDummy {
+    height: 158px;
+    width: 158px;
+    position: relative;
+}
+
+.nameAndDesc {
+    text-align: left;
+}
+
+.profileName {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.profileDesc {
+    font-size: 18px;
+}

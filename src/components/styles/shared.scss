@@ -21,7 +21,7 @@
 }
 
 @mixin centeredContainer {
-    @include flexBoxH;
+    @include flexBoxV;
     justify-content: center;
     align-items: center;
     width: 100%;
