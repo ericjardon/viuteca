@@ -19,7 +19,7 @@
 
 @media (max-width: 425px) {
     .navBar{
-        display:none;
+        display:hidden;
     }
     .collapseStyles{
         display: inline;
@@ -30,7 +30,7 @@
 
 @media (min-width: 425px) {
     .collapseStyles{
-        display:none
+        display:hidden;
     }
     .navBar{
         display:inline;

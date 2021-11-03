@@ -67,102 +67,107 @@ const NavHeader = (props) => {
 
     const show = location.pathname !== '/login' && location.pathname !== '/register'
     if (show)
-        return (
-            <div>
-                <div className={styles.navBar}>
-                    <Navbar color="black" style={{ padding: 0 }}>
-                        <NavbarBrand href='/'>
-                            <img className={isMd ? styles.iconLogo : styles.fullLogo} src={isMd ? iconLogo : fullLogo} alt='ViutecaLogo' />
-                        </NavbarBrand>
-                        <div style={{ width: "45%" }}>
-                            <InputGroup>
-                                <InputGroupAddon>
-                                    <InputGroupText style={{ backgroundColor: "transparent", border: "none" }}>
-                                        <img src={mGlass} className={styles.searchButton} onClick={handleButtonClicked} />
-                                    </InputGroupText>
-                                </InputGroupAddon>
-                                <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
-                                <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
-                                    <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
-                                    <DropdownMenu style={{ backgroundColor: 'black', border: 'None', fontSize: "100%" }}>
-                                        <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
-                                        <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
-                                        <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
-                                    </DropdownMenu>
-                                </InputGroupButtonDropdown>
-                            </InputGroup>
-                        </div>
-                        <Nav navbar style={{ width: "22%" }}>
-                            <NavItem>
-                                <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
-                                    <DropdownToggle style={{ backgroundColor: 'black', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
-                                    <DropdownMenu style={{ backgroundColor: 'black' }}>
-                                        <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
-                                                HOME
-                                            </NavLink>
-                                        </DropdownItem>
-                                        <DropdownItem divider />
+        if (!isSm)
+            return (
+                <div>
+                    <div className={styles.navBar}>
+                        <Navbar color="black" style={{ padding: 0 }}>
+                            <NavbarBrand href='/'>
+                                <img className={isMd ? styles.iconLogo : styles.fullLogo} src={isMd ? iconLogo : fullLogo} alt='ViutecaLogo' />
+                            </NavbarBrand>
+                            <div style={{ width: "45%" }}>
+                                <InputGroup>
+                                    <InputGroupAddon>
+                                        <InputGroupText style={{ backgroundColor: "transparent", border: "none" }}>
+                                            <img src={mGlass} className={styles.searchButton} onClick={handleButtonClicked} />
+                                        </InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
+                                    <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
+                                        <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
+                                        <DropdownMenu style={{ backgroundColor: 'black', border: 'None', fontSize: "100%" }}>
+                                            <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
+                                            <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
+                                            <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
+                                        </DropdownMenu>
+                                    </InputGroupButtonDropdown>
+                                </InputGroup>
+                            </div>
+                            <Nav navbar style={{ width: "22%" }}>
+                                <NavItem>
+                                    <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
+                                        <DropdownToggle style={{ backgroundColor: 'black', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
+                                        <DropdownMenu style={{ backgroundColor: 'black' }}>
+                                            <DropdownItem>
+                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
+                                                    HOME
+                                                </NavLink>
+                                            </DropdownItem>
+                                            <DropdownItem divider />
 
-                                        <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
-                                                AÑADIR VIDEO
-                                            </NavLink>
-                                        </DropdownItem>
-                                        <DropdownItem divider />
+                                            <DropdownItem>
+                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
+                                                    AÑADIR VIDEO
+                                                </NavLink>
+                                            </DropdownItem>
+                                            <DropdownItem divider />
 
-                                        <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/projects'>
-                                                CERRAR SESIÓN
-                                            </NavLink>
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                </ButtonDropdown>
-                            </NavItem>
-                        </Nav>
-                    </Navbar>
+                                            <DropdownItem>
+                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/projects'>
+                                                    CERRAR SESIÓN
+                                                </NavLink>
+                                            </DropdownItem>
+                                        </DropdownMenu>
+                                    </ButtonDropdown>
+                                </NavItem>
+                            </Nav>
+                        </Navbar>
+                    </div>
+                    
                 </div>
+            )
+        else 
+            return(
                 <div className={styles.collapseStyles}>
-                    <Navbar color="black">
-                        <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
-                                    <DropdownToggle style={{ backgroundColor: 'black', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
-                                    <DropdownMenu style={{ backgroundColor: 'black', width:'350px' }}>
-                                        <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
-                                                HOME
-                                            </NavLink>
-                                        </DropdownItem>
-                                        <DropdownItem divider />
+                <Navbar color="black">
+                    <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
+                                <DropdownToggle style={{ backgroundColor: 'black', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
+                                <DropdownMenu style={{ backgroundColor: 'black', width:'350px' }}>
+                                    <DropdownItem>
+                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
+                                            HOME
+                                        </NavLink>
+                                    </DropdownItem>
+                                    <DropdownItem divider />
 
-                                        <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
-                                                AÑADIR VIDEO
-                                            </NavLink>
-                                        </DropdownItem>
-                                        <DropdownItem divider />
+                                    <DropdownItem>
+                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
+                                            AÑADIR VIDEO
+                                        </NavLink>
+                                    </DropdownItem>
+                                    <DropdownItem divider />
 
-                                        <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/projects'>
-                                                CERRAR SESIÓN
-                                            </NavLink>
-                                        </DropdownItem>
-                                    </DropdownMenu>
-                                    <InputGroup>
-                                        <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
-                                        <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
-                                            <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
-                                            <DropdownMenu style={{ backgroundColor: 'black', border: 'None', fontSize: "100%" }}>
-                                                <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
-                                                <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
-                                                <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
-                                            </DropdownMenu>
-                                        </InputGroupButtonDropdown>
-                                    </InputGroup>
-                                </ButtonDropdown>
-                    </Navbar>
-                </div>
+                                    <DropdownItem>
+                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/projects'>
+                                            CERRAR SESIÓN
+                                        </NavLink>
+                                    </DropdownItem>
+                                </DropdownMenu>
+                                <InputGroup>
+                                    <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
+                                    <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
+                                        <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
+                                        <DropdownMenu style={{ backgroundColor: 'black', border: 'None', fontSize: "100%" }}>
+                                            <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
+                                            <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
+                                            <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
+                                        </DropdownMenu>
+                                    </InputGroupButtonDropdown>
+                                </InputGroup>
+                            </ButtonDropdown>
+                </Navbar>
             </div>
-        )
+            )
 
     return (null)
 }
