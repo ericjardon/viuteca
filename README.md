@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Viuteca
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## What is it?
 
-In the project directory, you can run:
+Viuteca is developed by 3 students at Tec de Monterrey to gather, organize and make available the student Groups' and Societies' virtual event recordings so that the general audience doesn't miss out on anything. You can find recorded workshops, webinars, sessions and much more, all presented by the diverse student groups from the university.
 
-### `npm start`
+### Why Viuteca?
+Social distancing in an increasingly digital world has greatly increased the number of online events and activities' recordings by student groups. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The main benefit is that video content can be shared and revisited as many times as we like.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The challenge, however, is to be able to find all of these recordings in a single, structured and easy-to-browse location. 
+Student Groups' community management teams often use many different platforms and in general do not have a standardized way of publishing/sharing their videos. This can make their video content hard to find and manage, both for the internal staff and for their public, resulting in less visibility and the loss of valuable content.
 
-### `npm test`
+The solution is to have a single platform that can aggregate all of these videos, regardless of their platform of origin, with a friendly UI to find exactly what you're looking for.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## If you are a visitor to the site
+- You can find the latest activities and events uploaded by the students from Tec de Monterrey in the main page and view them in an embedded video player or opening them in their original host platform.
+- You can search for specific recordings by title or by name of the student society or group.
+- If you like what you see, you give an applause!
+- You can freely share the videos with other students, family and friends.
 
-### `npm run build`
+## If you are part of a Student Group or Association
+- You can register for an account so that you can share your videos on the site
+- All you need to upload a video is the URI pointing to the video file (e.g. Drive, Vimeo, Youtube, etc.) The video URL must have public visibility on the web.
+- You can get a notion of how popular your videos are thanks to the applause count!
+- You can also provide a description, duration in minutes and seconds, and a thumbnail to your videos.
+- All of your recorded events in a single place!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
+## Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
