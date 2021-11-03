@@ -71,7 +71,7 @@ export default function VideoForm() {
         }
         //SEND TO FIREBASE
         const dbRes = await Video.createVideo(video)
-        if (dbRes.error == undefined) {
+        if (dbRes.error === undefined) {
             redirect()
         } else {
             console.log("Firestore error:", dbRes.error);
