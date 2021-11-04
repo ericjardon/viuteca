@@ -1,0 +1,62 @@
+@import "./global", "./shared.scss";
+
+.container {
+    @include centeredContainer;
+    justify-content: flex-start;
+}
+
+.containerLoading {
+    @include centeredContainer;
+}
+
+.profileCard {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: $lightBg;
+    width: 50vw;
+    border-radius: 10px;
+    min-height: 250px;
+    padding: 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.postedVideos {
+    width: calc(100vw - 140px);
+    padding-bottom: 40px;
+}
+
+.profilePic {
+    border-radius: 50%;
+    width: 128px;
+    height: 128px;
+    margin: auto;
+}
+
+.profilePicDummy {
+    height: 158px;
+    width: 158px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.nameAndDesc {
+    text-align: left;
+    padding-left: 40px;
+}
+
+.profileName {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.profileDesc {
+    font-size: 18px;
+}
+
+.categories {
+    font-size: 16px;
+    color: $cream;
+}
