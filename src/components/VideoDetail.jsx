@@ -4,6 +4,7 @@ import styles from './styles/VideoDetail.module.scss'
 import Video from '../firebase/videos'
 import Group from '../firebase/groups'
 import LikeButton from './LikeButton'
+import {Link} from 'react-router-dom'
 
 export default function VideoDetail(props) {
 
@@ -76,7 +77,9 @@ export default function VideoDetail(props) {
                 <div className={styles.videoInfo}>
                     <div className={styles.titleOwner}>
                         <p className={styles.videoTitle}>{video.title}</p>
+                        <Link to={'/p/' + video.owner} className={styles.linkToOwner}>
                         <p className={styles.videoOwner}>{videoOwner}</p>
+                        </Link>
                     </div>
                     <div className={styles.likesContainer}>
                         <LikeButton likesCount={likes} updateLikesCount={updateLikesCount} />

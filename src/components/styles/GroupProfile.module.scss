@@ -1,8 +1,8 @@
-@import './global', './shared.scss';
+@import "./global", "./shared.scss";
 
 .container {
     @include centeredContainer;
-    justify-content:flex-start;
+    justify-content: flex-start;
 }
 
 .containerLoading {
@@ -24,7 +24,7 @@
 
 .postedVideos {
     width: calc(100vw - 140px);
-    border: 1px solid white;
+    padding-bottom: 40px;
 }
 
 .profilePic {
@@ -32,7 +32,6 @@
     width: 128px;
     height: 128px;
     margin: auto;
-
 }
 
 .profilePicDummy {
