@@ -13,7 +13,7 @@ export default function VideoDetail(props) {
     const [likes, setLikes] = useState();
     const [toggleDescription, setToggleDescription] = useState(false);
     const [dateString, setDateString] = useState("");
-    const [errorNotFound, seterrorNotFound] = useState(false);
+    const [errorNotFound, seterrorNotFound] = useState(null);
 
     const toggle = () => {
         setToggleDescription(toggleDescription => !toggleDescription);
@@ -59,6 +59,7 @@ export default function VideoDetail(props) {
             <Spinner children="" style={{ width: '15rem', height: '15rem' }} />
         </div>
     )
+    
     console.log("Error not found?", errorNotFound);
     if (errorNotFound !== null) return (
         <div className={styles.container}>
