@@ -1,76 +1,71 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect  } from 'react'
 import { Label, Input,  Form,  Button, Alert } from 'reactstrap';
 import { getAuth } from "firebase/auth";
 import Video from '../firebase/videos'
 import styles from './styles/NewVideo.module.scss';
 import { useHistory } from 'react-router-dom';
+import {  Timestamp } from 'firebase/firestore'
+import { auth} from '../base'
 /* Component for the main screen with listed videos */
 export default function VideoForm() {
     const [video, setVideo] = useState({
         title : '',
-        durationMins: '',
+        durationMins: 15,
         durationSecs: 15,
-        description : 15,
-        owner: '',
+        description : '',
         img: '',
-        url: '',
-        likes: 0,
-        dateAdded: ''
+        url: ''
     });
     let history = useHistory();
     const [showAlert, setShowAlert] = useState(false);
     const [alert, setAlert] = useState(null);
-
     const redirect = () => {
         history.push('/videos')
     }
+
     const [uploadVideo, setUploadVideo] = useState(false);
     const handleOnClick = (e) => {
         setUploadVideo(true);
     }
     const handleOnChange = (e) => {
-        setVideo(prev => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }))
+        if(e.target.name === 'durationMins' || e.target.name === 'durationSecs'){
+            setVideo(prev => ({
+                ...prev,
+                [e.target.name]: Number(e.target.value)
+            }))
+        }else{
+            setVideo(prev => ({
+                ...prev,
+                [e.target.name]: e.target.value
+            }))
+        }
+        console.log(video)
         setShowAlert(false);
     }
 
     const tryCreate = async () => {
         //CHECK USER
-        const auth = getAuth();
-        const user = auth.currentUser.email;
-        if (user) {
-            //CHECK DATE
-            var currentdate = new Date(); 
-            const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"
-            ];
-            var actualDate = await Date(currentdate.getDate() + " de "
-            + monthNames[currentdate.getMonth()]  + " de " 
-            + currentdate.getFullYear() + ", "  
-            + currentdate.getHours() + ":"  
-            + currentdate.getMinutes() + ":" 
-            + currentdate.getSeconds() + " UTC-5")
+        let videoFinal = {
+            ...video,
+            owner: auth.currentUser.email,
+            likes: 0,
+            dateAdded: Timestamp.fromDate(new Date()),
+        } 
 
-            await setVideo(prev => ({
-                ...prev,
-                dateAdded: actualDate,
-                durationMins: Number(video.durationMins),
-                durationSecs: Number(video.durationSecs),
-                owner: user
-            }))
-        } else {
-            console.log("Problemas con el auth")
-            return false;
-        }
-        if(video.title === '' || video.description === '' || video.img === '' || video.url ===''){
+            
+        if(videoFinal.title === '' || videoFinal.description === '' || videoFinal.img === '' || videoFinal.url ===''){
             setAlert(<Alert color="warning">Debes llenar todos los campos</Alert>)
             setShowAlert(true);
             return
         }
+        if(videoFinal.owner === '' || videoFinal.dateAdded === ''){
+            setAlert(<Alert color="warning">Algo salió mal, intenta de nuevo</Alert>)
+            setShowAlert(true);
+            console.log(video)
+            return
+        }
         //SEND TO FIREBASE
-        const dbRes = await Video.createVideo(video)
+        const dbRes = await Video.createVideo(videoFinal)
         if (dbRes.error === undefined) {
             redirect()
         } else {
