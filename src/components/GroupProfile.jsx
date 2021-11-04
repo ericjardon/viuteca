@@ -22,7 +22,6 @@ const GroupProfile = (props) => {
 
     // FETCH THE GROUP PROFILE DATA FROM URL
     useEffect(() => {
-        setProfilePicURL(getGravatarURL("ericjardon@hotmail.com"));
         const groupId = props.match.params.id;
         console.log("Group id", groupId);
         async function fetchData() {
@@ -36,6 +35,7 @@ const GroupProfile = (props) => {
             setprofileData(group);
             setLoading(false);
             console.log("Profile Data:\n", group)
+            setProfilePicURL(getGravatarURL(groupId));
         }
 
         fetchData();
