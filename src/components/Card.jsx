@@ -23,8 +23,8 @@ function Card(props) {
 
   return (
     <div className={styles.dummyContainer}>
+      <Link to={"/video/" + project.id} className={styles.CardText}>
       <div className={styles.Card}>
-
         <div className={styles.CardImage} style={backgroundImage()} >
           <p className={styles.durationStamp}>
             {videoLength}
@@ -32,7 +32,7 @@ function Card(props) {
         </div>
 
         <div className={styles.titleAndParagraph}>
-          <h4>{data.title}</h4>
+          <h4 className={styles.videoTitle}>{data.title}</h4>
           <p className={styles.paragraph}>
             {data.description}
           </p>
@@ -44,6 +44,7 @@ function Card(props) {
           </Link>
         </div>
       </div>
+      </Link>
     </div>
 
   );

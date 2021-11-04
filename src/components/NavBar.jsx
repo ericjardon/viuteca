@@ -14,7 +14,7 @@ import useLogin from '../hooks/useLogin';
 import authManager from '../firebase/authManager';
 
 const placeholders = {
-    'owner': 'Busca por autor',
+    'owner': 'Busca por grupo',
     'title': 'Busca por título',
     'date': 'Busca por fecha: 2020-11-03'
 }
@@ -70,7 +70,7 @@ const NavHeader = (props) => {
     if (show)
         return (
             <div>
-                <Navbar color="black" style={{ padding: 0 }}>
+                <Navbar style={{ padding: 0, backgroundColor: '#212121' }}>
                     <NavbarBrand href='/'>
                         <img className={isMd ? styles.iconLogo : styles.fullLogo} src={isMd ? iconLogo : fullLogo} alt='ViutecaLogo' />
                     </NavbarBrand>
@@ -84,7 +84,7 @@ const NavHeader = (props) => {
                             <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
                             <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
                                 <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
-                                <DropdownMenu style={{ backgroundColor: 'black', border: 'None', fontSize: "100%" }}>
+                                <DropdownMenu style={{ backgroundColor: '#212121', border: 'None', fontSize: "100%" }}>
                                     <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
                                     <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
                                     <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
@@ -95,8 +95,8 @@ const NavHeader = (props) => {
                     <Nav navbar style={{ width: "22%" }}>
                         <NavItem>
                             <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
-                                <DropdownToggle style={{ backgroundColor: 'black', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
-                                <DropdownMenu style={{ backgroundColor: 'black' }}>
+                                <DropdownToggle style={{ backgroundColor: '#212121', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
+                                <DropdownMenu style={{ backgroundColor: '#212121' }}>
                                     <DropdownItem>
                                         <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
                                             HOME

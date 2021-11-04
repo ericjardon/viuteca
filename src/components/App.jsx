@@ -8,6 +8,7 @@ import Login from './Login'
 import Home from './Home'
 import VideoForm from './VideoForm'
 import VideoDetail from './VideoDetail';
+import Group from './GroupProfile';
 import { useState } from 'react'
 import { QueryParamProvider } from 'use-query-params'
 
@@ -27,6 +28,7 @@ function App() {
             <Route exact path="/login" render={() => <Login />} />
             <Route path="/videos" render={(props) => <VideosDisplay {...props} />} />
             <Route exact path="/video/:id" render={(props) => <VideoDetail {...props} />} />
+            <Route exact path="/p/:id" render={(props) => <Group {...props}/>} />
             <Route exact path="/new-video" render={() => <VideoForm />} />
           </Switch>
         </QueryParamProvider>
@@ -35,8 +37,5 @@ function App() {
   );
 }
 
-const showHeader = (path) => {
-  return path !== '/login' && path !== '/register';
-}
 
 export default App;
