@@ -34,13 +34,13 @@ const VideosDisplay = (props) => {
       const videos = await searchVideo(searchType, searchTerm);
       setVideos(videos);
       setLoading(false);
-      if (videos.length == 0) {
+      if (videos.length === 0) {
 
       }
-      if (searchType == 'owner') {
+      if (searchType === 'owner') {
         setresultsLabel(`Videos publicados por: ${searchTerm}`)
       }
-      if (searchType == 'title') {
+      if (searchType === 'title') {
         setresultsLabel(`Videos con el título: ${searchTerm}`)
       }
 
@@ -70,7 +70,7 @@ const VideosDisplay = (props) => {
       <div className="VideosDisplay">
         {videos.length ? (
           videos.map((project, index) => (
-            <Card project={project} index={index} />
+            <Card key={index} project={project} index={index} />
           ))
         ) : (
           <h1>No se encontraron videos con {names[searchType]}: "{searchTerm}" 😭</h1>

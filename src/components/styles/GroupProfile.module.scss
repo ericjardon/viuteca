@@ -60,3 +60,11 @@
     font-size: 16px;
     color: $cream;
 }
+
+
+@media (max-width: 768px) {
+    .profileCard {
+        flex-direction: column;
+        width: calc(100% - 50px);
+    }    
+}

@@ -37,7 +37,7 @@ const VideosDisplay = (props) => {
 
                 {videos.length ? (
                     videos.map((project, index) => (
-                        <Card project={project} index={index} />
+                        <Card key={index} project={project} index={index} />
                     ))
                 ) : (
                     <h1>{ownerName} todavía no tiene videos publicados en Viuteca.</h1>
