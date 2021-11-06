@@ -40,7 +40,7 @@ function Card(props) {
 
         <div className={styles.buttonContainer}>
           <Link to={"/video/" + project.id} style={{ backgroundColor: '#D9CAB3' }}>
-            <Button style={{ backgroundColor: '#D9CAB3' }}>Ver más</Button>
+            <Button color="primary">Ver más</Button>
           </Link>
         </div>
       </div>

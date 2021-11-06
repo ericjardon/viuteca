@@ -47,6 +47,7 @@ export default function VideoForm() {
         //CHECK USER
         let videoFinal = {
             ...video,
+            video_lower: video.title.toLowerCase(),
             owner: auth.currentUser.email,
             likes: 0,
             dateAdded: Timestamp.fromDate(new Date()),
