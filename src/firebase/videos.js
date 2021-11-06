@@ -7,7 +7,8 @@ import {
   getDocs,
   getDoc,
   addDoc,
-  deleteDoc
+  deleteDoc,
+  updateDoc
 } from 'firebase/firestore';
 
 const controller = {}
@@ -68,6 +69,21 @@ controller.getVideosFromOwner = async (emailId) => {
   }
 }
 
+controller.updateLikesCount = async (videoId, newLikes) => {
+  const docRef = doc(db, "video", videoId);
+  try {
+    await updateDoc(docRef, {
+      likes: newLikes
+    })
+    console.log("Updated likes", newLikes);
+    return null
+  } catch (err) {
+    return {
+      error: err
+    }
+  }
+}
+
 controller.createVideo = async (video) => {
   // use .add to auto generate an Id
   const result = {
@@ -95,7 +111,7 @@ controller.deleteVideo = async (videoId) => {
   try {
     console.log("Sí entró!!!!")
     await deleteDoc(docRef);
-    return null // ZTVH0BN6Ml2ltb3JG41Y
+    return null
   } catch (err) {
     console.error("Error", err);
     return {

@@ -19,6 +19,7 @@ export default function VideoDetail(props) {
     const [errorNotFound, seterrorNotFound] = useState(null);
     const [isOwner, setisOwner] = useState(false);
     const [redirect, setRedirect] = useState(false);
+    const [clapFirstTime, setClapFirstTime] = useState(true)
 
     const toggle = () => {
         setToggleDescription(toggleDescription => !toggleDescription);
@@ -74,6 +75,12 @@ export default function VideoDetail(props) {
 
     const updateLikesCount = (val) => {
         setLikes(likes => likes + val);
+        if (clapFirstTime) {
+            // increment likes in firestore
+            const videoId = props.match.params.id;
+            Video.updateLikesCount(videoId, video.likes + 1)
+            setClapFirstTime(false);
+        }
     }
 
     if (loading) return (
