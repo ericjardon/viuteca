@@ -11,6 +11,7 @@ const GroupProfile = (props) => {
         - Uses Gravatar avatar image, size 128px, as profile picture.
         - Like emaus, every text area etc is editable.
         - We add a save button that sends the request to firebase, and fecthes data again.
+        - FIXME: implement tags and edit profile
     */
 
     const [profileData, setprofileData] = useState(null);
@@ -67,8 +68,14 @@ const GroupProfile = (props) => {
                 <div className={styles.profilePic} style={profileImage()}></div>
                 </div>
                 <div className={styles.nameAndDesc}>
-                    <p className={styles.profileName}>Ada Women</p>
-                    <p className={styles.profileDesc}>Descripción ejemplo acerca de ada women y sus videos</p>
+                    <p className={styles.profileName}>{profileData.name}</p>
+                    <p className={styles.profileDesc}>
+                        {profileData.desc || 
+                        `
+                        ¡Hola! Esta es la página de videos de ${profileData.name}. 
+                        Para añadir una foto de perfil, entra a gravatar.com y crea una
+                        cuenta con el mismo correo electrónico de Viuteca. 
+                        `}</p>
                     <div className={styles.categories}>
                         {tags.map(t => <Tag>{t}</Tag>)}
                     </div>

@@ -1,0 +1,53 @@
+@import './global', './shared.scss';
+.videoPlayer {
+    width: 100%;
+    height: auto;
+}
+
+.wrapper{
+    width: 90%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5% 5%;
+    background-color: $cream;
+    border-radius: 25px;
+}
+.colClass{
+    min-height:100%;
+    width: 45%;
+    margin: 5%;
+}
+.rowClass{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 15%;
+}
+.labelClass{
+    font-weight: bold;
+    text-align: left;
+    margin-right: 20px;
+}
+.titleClass{
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+}
+.smallInput{
+    width:70px;
+}
+@media (max-width: 1000px) {
+    .wrapper {
+        flex-direction: column;
+    }
+    .colClass{
+        width: 90%;
+    }
+    .rowClass{
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+}
