@@ -90,12 +90,14 @@ controller.createVideo = async (video) => {
 }
 
 controller.deleteVideo = async (videoId) => {
-  const docRef = doc(db, "videos", videoId)
+  const docRef = doc(db, "video", videoId)
   console.log("Deleting video", videoId);
   try {
+    console.log("Sí entró!!!!")
     await deleteDoc(docRef);
-    return null
+    return null // ZTVH0BN6Ml2ltb3JG41Y
   } catch (err) {
+    console.error("Error", err);
     return {
       error: err
     }
