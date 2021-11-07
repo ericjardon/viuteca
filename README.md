@@ -29,7 +29,3 @@ The solution is to have a single platform that can aggregate all of these videos
 - You can also provide a description, duration in minutes and seconds, and a thumbnail to your videos.
 - All of your recorded events in a single place!
 
-
-## Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
