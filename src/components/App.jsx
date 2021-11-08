@@ -9,39 +9,30 @@ import Home from './Home'
 import Error404 from './404';
 import VideoForm from './VideoForm'
 import VideoDetail from './VideoDetail';
+import Group from './GroupProfile';
 import { useState } from 'react'
 import { QueryParamProvider } from 'use-query-params'
 
 function App() {
-
-  const [currentSearch, setCurrentSearch] = useState(null);
-
-  const submitSearch = (searchType, searchTerm) => {
-    console.log("Submitting search:", searchType, searchTerm);
-
-    if (searchTerm.trim() === "") {
-      setCurrentSearch(null);
-      return;
-    }
-    setCurrentSearch([searchType, searchTerm]);
-  }
 
   return (
     <div className="App">
       <Router>
         {/* NAV BAR */}
         <QueryParamProvider ReactRouterRoute={Route}>
-          <NavHeader submitSearch={submitSearch} />
+          <NavHeader/>
           
           <Switch>
             <Route exact path="/" render={() => <Home />} />
             <Route exact path="/register" render={() => <Register />} />
             <Route exact path="/testing" render={() => <Testing />} />
             <Route exact path="/login" render={() => <Login />} />
-            <Route path="/videos" render={(props) => <VideosDisplay search={currentSearch} {...props} />} />
+            <Route path="/videos" render={(props) => <VideosDisplay {...props} />} />
             <Route exact path="/video/:id" render={(props) => <VideoDetail {...props} />} />
             <Route exact path="/newVideo" render={() => <VideoForm />} />
             <Route exact path="/*" render={() => <Error404/>}/>
+            <Route exact path="/p/:id" render={(props) => <Group {...props}/>} />
+            <Route exact path="/new-video" render={() => <VideoForm />} />
           </Switch>
         </QueryParamProvider>
       </Router>
@@ -49,8 +40,5 @@ function App() {
   );
 }
 
-const showHeader = (path) => {
-  return path !== '/login' && path !== '/register';
-}
 
 export default App;

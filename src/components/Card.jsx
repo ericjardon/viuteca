@@ -5,10 +5,15 @@ import { Link } from "react-router-dom";
 import defaultImg from '../assets/default_video.PNG'
 
 function Card(props) {
-  const {project} = props;
-  const {data} =project;
-
+  const { project } = props;
+  const { data } = project;
   const videoLength = (data.durationMins || '0') + ':' + String((data.durationSecs || '0')).padStart(2, '0')
+
+  const date = data.dateAdded.toDate();
+  const mm = date.toLocaleString("es-ES", { month: "long" });
+  const dd = date.getDate();
+  const yyyy = date.getFullYear();
+  const dateString = mm + " " + dd + ", " + yyyy;
 
   const backgroundImage = () => {
     if (data.img) {
@@ -23,27 +28,30 @@ function Card(props) {
 
   return (
     <div className={styles.dummyContainer}>
-      <div className={styles.Card}>
+      <Link to={"/video/" + project.id} className={styles.CardText}>
+        <div className={styles.Card}>
+          <div className={styles.CardImage} style={backgroundImage()} >
+            <p className={styles.durationStamp}>
+              {videoLength}
+            </p>
+          </div>
 
-        <div className={styles.CardImage} style={backgroundImage()} >
-          <p className={styles.durationStamp}>
-            {videoLength}
-          </p>
+          <div className={styles.titleAndParagraph}>
+            <h4 className={styles.videoTitle}>{data.title}</h4>
+            <p className={styles.paragraph}>
+              {data.description}
+            </p>
+          </div>
+          <div className={styles.buttonContainer}>
+          <p className={styles.dateString}>
+              {dateString}
+            </p>
+            <Link to={"/video/" + project.id} style={{ backgroundColor: '#D9CAB3' }}>
+              <Button color="primary">Ver más</Button>
+            </Link>
+          </div>
         </div>
-
-        <div className={styles.titleAndParagraph}>
-          <h4>{data.title}</h4>
-          <p className={styles.paragraph}>
-            {data.description}
-          </p>
-        </div>
-
-        <div className={styles.buttonContainer}>
-          <Link to={"/video/" + project.id} style={{ backgroundColor: '#D9CAB3' }}>
-            <Button style={{ backgroundColor: '#D9CAB3' }}>Ver más</Button>
-          </Link>
-        </div>
-      </div>
+      </Link>
     </div>
 
   );

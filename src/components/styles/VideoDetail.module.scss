@@ -60,6 +60,7 @@ p.videoOwner {
     color: $green;
     font-weight: 600;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .videoPlayer {
@@ -75,6 +76,11 @@ p.videoOwner {
 
 .dateString {
     font-style: italic;    
+}
+
+.linkToOwner {
+    text-decoration: none;
+    color: black;
 }
 
 

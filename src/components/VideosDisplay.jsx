@@ -5,7 +5,7 @@ import styles from './styles/VideoDetail.module.scss';
 import Video from '../firebase/videos'
 import { Spinner } from "reactstrap";
 import { searchVideo } from '../firebase/search'
-import {useLocation} from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useQueryParams, StringParam, withDefault } from "use-query-params";
 
 const names = {
@@ -19,11 +19,13 @@ const VideosDisplay = (props) => {
   const [loading, setLoading] = useState(true);
   const [videos, setVideos] = useState({});
   const [query, setQuery] = useQueryParams({
-      searchTerm: withDefault(StringParam, ""),
-      searchType: withDefault(StringParam, ""),
+    searchTerm: withDefault(StringParam, ""),
+    searchType: withDefault(StringParam, ""),
   })
 
-  const {searchTerm, searchType} = query;
+  const [resultsLabel, setresultsLabel] = useState("Videos más recientes")
+
+  const { searchTerm, searchType } = query;
 
   async function fetchData() {
     console.log("Query: ", query)
@@ -31,7 +33,17 @@ const VideosDisplay = (props) => {
       console.log("Fetching videos from search:", searchTerm);
       const videos = await searchVideo(searchType, searchTerm);
       setVideos(videos);
-      setLoading(false); 
+      setLoading(false);
+      if (videos.length === 0) {
+
+      }
+      if (searchType === 'owner') {
+        setresultsLabel(`Videos publicados por: ${searchTerm}`)
+      }
+      if (searchType === 'title') {
+        setresultsLabel(`Videos con el título: ${searchTerm}`)
+      }
+
     } else {
       console.log("Fetching all videos...");
       const videos = await Video.getAllVideos();
@@ -52,14 +64,16 @@ const VideosDisplay = (props) => {
 
   return (
     <div className="CenteredContainer">
+      <p className="ResultsLabel">
+        {resultsLabel}
+      </p>
       <div className="VideosDisplay">
-
         {videos.length ? (
           videos.map((project, index) => (
-            <Card project={project} index={index} />
+            <Card key={index} project={project} index={index} />
           ))
         ) : (
-          <h1>¡Ups! No se encontraron videos con {names[searchType]}: "{searchTerm}".</h1>
+          <h1>No se encontraron videos con {names[searchType]}: "{searchTerm}" 😭</h1>
         )}
 
       </div>

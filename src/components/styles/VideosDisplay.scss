@@ -9,6 +9,13 @@
 .CenteredContainer {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+}
+
+.ResultsLabel {
+    margin: 30px auto 20px 100px;
+    font-size: 32px;
+    font-weight: 600;
 }
 
 
