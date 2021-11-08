@@ -9,7 +9,9 @@ import {
 import { NavLink, Redirect, withRouter } from 'react-router-dom';
 import { useMediaSize } from "use-media-size";
 import fullLogo from '../assets/viutecaLogoComplete.png';
+import authManager from '../firebase/authManager'
 import iconLogo from '../assets/viutecaLogo.png';
+import useLogin from '../hooks/useLogin'
 import mGlass from '../assets/mGlass.png';
 
 const placeholders = {
@@ -19,6 +21,8 @@ const placeholders = {
 }
 
 const NavHeader = (props) => {
+
+    const loggedIn = useLogin();
 
     const [collapse, setCollapse] = useState(false);
     const [dropdownopen, setOpen] = useState(false);
@@ -36,6 +40,11 @@ const NavHeader = (props) => {
 
     const handleOnChange = (e) => {
         setsearchTerm(e.target.value);
+    }
+
+    const logOut = async () => {
+        const res = await authManager.logOut();
+        console.log("Response", res);
     }
 
     const toggleCollapse = (e) =>{
@@ -97,6 +106,7 @@ const NavHeader = (props) => {
                                 <NavItem>
                                     <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
                                         <DropdownToggle style={{ backgroundColor: 'black', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
+                                        {loggedIn ? 
                                         <DropdownMenu style={{ backgroundColor: 'black' }}>
                                             <DropdownItem>
                                                 <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
@@ -106,18 +116,34 @@ const NavHeader = (props) => {
                                             <DropdownItem divider />
 
                                             <DropdownItem>
-                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
+                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/newVideo'>
                                                     AÑADIR VIDEO
                                                 </NavLink>
                                             </DropdownItem>
                                             <DropdownItem divider />
 
                                             <DropdownItem>
-                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/projects'>
+                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/login' onClick={logOut}>
                                                     CERRAR SESIÓN
                                                 </NavLink>
                                             </DropdownItem>
                                         </DropdownMenu>
+                                        :
+                                        <DropdownMenu style={{ backgroundColor: 'black' }}>
+                                            <DropdownItem>
+                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/login'>
+                                                    Iniciar sesion
+                                                </NavLink>
+                                            </DropdownItem>
+                                            <DropdownItem divider />
+
+                                            <DropdownItem>
+                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
+                                                    Registrarse
+                                                </NavLink>
+                                            </DropdownItem>
+                                            <DropdownItem divider />
+                                        </DropdownMenu>}
                                     </ButtonDropdown>
                                 </NavItem>
                             </Nav>
@@ -132,7 +158,9 @@ const NavHeader = (props) => {
                 <Navbar color="black">
                     <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
                                 <DropdownToggle style={{ backgroundColor: 'black', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
-                                <DropdownMenu style={{ backgroundColor: 'black', width:'350px' }}>
+                                {loggedIn ? 
+                                <div>
+                                    <DropdownMenu style={{ backgroundColor: 'black', width:'350px' }}>
                                     <DropdownItem>
                                         <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
                                             HOME
@@ -164,6 +192,23 @@ const NavHeader = (props) => {
                                         </DropdownMenu>
                                     </InputGroupButtonDropdown>
                                 </InputGroup>
+                                </div>
+                                :
+                                <DropdownMenu style={{ backgroundColor: 'black', width:'350px' }}>
+                                    <DropdownItem>
+                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/login'>
+                                            Iniciar sesion
+                                        </NavLink>
+                                    </DropdownItem>
+                                    <DropdownItem divider />
+
+                                    <DropdownItem>
+                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
+                                            Registrarse
+                                        </NavLink>
+                                    </DropdownItem>
+                                    <DropdownItem divider />
+                                </DropdownMenu>}
                             </ButtonDropdown>
                 </Navbar>
             </div>
