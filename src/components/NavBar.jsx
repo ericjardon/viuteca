@@ -13,8 +13,6 @@ import authManager from '../firebase/authManager'
 import iconLogo from '../assets/viutecaLogo.png';
 import useLogin from '../hooks/useLogin'
 import mGlass from '../assets/mGlass.png';
-import useLogin from '../hooks/useLogin';
-import authManager from '../firebase/authManager';
 
 const placeholders = {
     'owner': 'Busca por grupo',
@@ -179,42 +177,40 @@ const NavHeader = (props) => {
                                     </DropdownItem>
                                     <DropdownItem divider />
 
-                                    {!loggedIn &&
+                                    {/* {!loggedIn &&
                                         <DropdownItem>
                                         <NavLink style={{ color: 'white' }} className='nav-link' to='/login'>
                                             LOGIN GRUPOS
                                         </NavLink>
                                     </DropdownItem>
-                                    }
+                                    } */}
 
-                                    {loggedIn && 
-                                        <>
-                                            <DropdownItem>
-                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
-                                                    AÑADIR VIDEO
-                                                </NavLink>
-                                            </DropdownItem>
-                                            <DropdownItem divider />
 
-                                            <DropdownItem>
-                                                <NavLink onClick={handleLogout} style={{ color: 'white' }} className='nav-link' to='/login'>
-                                                    CERRAR SESIÓN
-                                                </NavLink>
-                                            </DropdownItem>
-                                        </>
-                                    }
-                                </DropdownMenu>
-                                <InputGroup>
-                                    <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
-                                    <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
-                                        <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
-                                        <DropdownMenu style={{ backgroundColor: 'black', border: 'None', fontSize: "100%" }}>
-                                            <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
-                                            <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
-                                            <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
-                                        </DropdownMenu>
-                                    </InputGroupButtonDropdown>
-                                </InputGroup>
+                                        
+                                    <DropdownItem>
+                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/newVideo'>
+                                            AÑADIR VIDEO
+                                        </NavLink>
+                                    </DropdownItem>
+                                    <DropdownItem divider />
+
+                                    <DropdownItem>
+                                        <NavLink onClick={handleLogout} style={{ color: 'white' }} className='nav-link' to='/login'>
+                                            CERRAR SESIÓN
+                                        </NavLink>
+                                    </DropdownItem>
+                                    </DropdownMenu>
+                                    <InputGroup>
+                                        <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
+                                        <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
+                                            <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
+                                            <DropdownMenu style={{ backgroundColor: 'black', border: 'None', fontSize: "100%" }}>
+                                                <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
+                                                <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
+                                                <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
+                                            </DropdownMenu>
+                                        </InputGroupButtonDropdown>
+                                    </InputGroup>
                                 </div>
                                 :
                                 <DropdownMenu style={{ backgroundColor: 'black', width:'350px' }}>
