@@ -50,6 +50,7 @@
     width: 560px;
     font-weight: bold;
     text-shadow: 3px 3px black;//$primaryText;
+    z-index: 100;
 }
 
 .MainText{
@@ -91,6 +92,8 @@
     width: 560px;
     font-weight: bold;
     text-shadow: 3px 3px $dark;//$primaryText;
+    z-index: 100;
+
 }
 
 .MainText2 {
@@ -111,6 +114,8 @@
     width: 560px;
     font-weight: bold;
     text-shadow: 3px 3px white;//$primaryText;
+    z-index: 100;
+
 }
 
 .attribution {
