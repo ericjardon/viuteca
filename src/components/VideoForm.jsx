@@ -64,7 +64,7 @@ export default function VideoForm() {
         setShowSpinner(true);
         let videoFinal = {
             ...video,
-            video_lower: video.title.toLowerCase(),
+            title_lower: video.title.toLowerCase(),
             owner: auth.currentUser.email,
             likes: 0,
             dateAdded: Timestamp.fromDate(new Date()),

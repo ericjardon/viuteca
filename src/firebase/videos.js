@@ -87,6 +87,9 @@ controller.updateLikesCount = async (videoId, newLikes) => {
 
 controller.createVideo = async (video) => {
 
+  if (Object.keys(video).indexOf('title_lower') == -1) {
+    video['title_lower'] = video.title.toLowerCase()
+  }
   // Save to database
   try {
     const docRef = await addDoc(collection(db, "video"), video);
@@ -103,10 +106,10 @@ controller.createVideo = async (video) => {
 }
 
 controller.deleteVideo = async (videoId) => {
+  // FIXME: add deleteImageFromStorage
   const docRef = doc(db, "video", videoId)
   console.log("Deleting video", videoId);
   try {
-    console.log("Sí entró!!!!")
     await deleteDoc(docRef);
     return null
   } catch (err) {
