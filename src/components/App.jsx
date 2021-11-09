@@ -29,10 +29,10 @@ function App() {
             <Route exact path="/login" render={() => <Login />} />
             <Route path="/videos" render={(props) => <VideosDisplay {...props} />} />
             <Route exact path="/video/:id" render={(props) => <VideoDetail {...props} />} />
-            <Route exact path="/newVideo" render={() => <VideoForm />} />
-            <Route exact path="/*" render={() => <Error404/>}/>
             <Route exact path="/p/:id" render={(props) => <Group {...props}/>} />
             <Route exact path="/new-video" render={() => <VideoForm />} />
+            <Route path="/*" render={() => <Error404/>}/>
+
           </Switch>
         </QueryParamProvider>
       </Router>
