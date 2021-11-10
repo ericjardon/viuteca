@@ -183,7 +183,7 @@ const NavHeader = (props) => {
                     <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
                                 <DropdownToggle style={{ backgroundColor: '#212121', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
                                 {loggedIn ? 
-                                <div style={{display:"flex", justifyContent:"space-between"}}>
+                                <>
                                     <DropdownMenu style={{ backgroundColor: '#212121', width:'250px' }}>
                                         <DropdownItem>
                                             <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
@@ -221,9 +221,9 @@ const NavHeader = (props) => {
                                             </DropdownMenu>
                                         </InputGroupButtonDropdown>
                                     </InputGroup>
-                                </div>
+                                </>
                                 :
-                                <div style={{display:"flex", justifyContent:"space-between"}}>
+                                <>
                                 <DropdownMenu style={{ backgroundColor: '#212121', width:'250px' }}>
                                     <DropdownItem>
                                         <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
@@ -264,7 +264,7 @@ const NavHeader = (props) => {
                                         </DropdownMenu>
                                     </InputGroupButtonDropdown>
                                 </InputGroup>
-                                </div>
+                                </>
                                 }
                             </ButtonDropdown>
                 </Navbar>

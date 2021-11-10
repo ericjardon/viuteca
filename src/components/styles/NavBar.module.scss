@@ -17,10 +17,7 @@
 /*Media query 425px should change header*/
 
 
-@media (max-width: 425px) {
-    .navBar{
-        display:hidden;
-    }
+@media (max-width: 426px) {
     .collapseStyles{
         display: inline;
     }
