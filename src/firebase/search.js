@@ -1,7 +1,12 @@
 import { db } from "../base"
-import { collection, query, where, getDocs } from 'firebase/firestore'
+import { collection, 
+    query, 
+    where, 
+    getDocs,
+    orderBy,
+    Timestamp
+ } from 'firebase/firestore'
 import Video from './videos'
-import Group from './groups'
 
 /* COLLECTION REFERENCES */
 const videos = collection(db, "video");
@@ -11,7 +16,7 @@ const groups = collection(db, "groups");
 /* SEARCHING FUNCTIONS */
 const searchVideosByTitle = async (title) => {
     title = title.toLowerCase()
-    const q = query(videos, where("title_lower", "==", title));
+    const q = query(videos, where("title_lower", "==", title), orderBy('dateAdded', 'desc'));
     const querySnapshot = await getDocs(q);
 
     let results = [];
@@ -37,7 +42,7 @@ const searchVideosByOwner = async (ownerName) => {
 
     ownerName = ownerName.toLowerCase();
     console.log("name_lower", ownerName);
-    const ownerquery = query(groups, where("name_lower", "==", ownerName));
+    const ownerquery = query(groups, where("name_lower", "==", ownerName), orderBy('dateAdded', 'desc'));
     const ownerSnapshot = await getDocs(ownerquery);
 
     try {
@@ -61,6 +66,25 @@ const searchVideosByOwner = async (ownerName) => {
     }
 }
 
+const searchVideosByDateAdded = async (dateString) => {
+    // Assumes date format is YYYY-MM-DD
+    //dateString= "YYYY-MM-DDTHH:mm:ss. sssZ"
+    let dateAdded = Timestamp.fromDate(new Date(dateString))
+
+    const q = query(videos, where("dateAdded", "==", dateAdded));
+    const querySnapshot = await getDocs(q);
+
+    let results = [];
+    querySnapshot.forEach((doc) => {
+        let video = {
+            id: doc.id,
+            data: doc.data()
+        }
+        results.push(video)
+    });
+    return results; 
+}
+
 
 export const searchVideo = async (searchType, searchTerm) => {
     console.log(`Searching for ${searchType}: "${searchTerm}"`)
@@ -73,7 +97,13 @@ export const searchVideo = async (searchType, searchTerm) => {
         return await searchVideosByOwner(searchTerm);
     }
 
-    /* else {
+    else if (searchType === "date") {
+        return await searchVideosByDateAdded(searchTerm);
+    }
+
+    // default
+    else {
+        console.log("Defaulting search to all videos")
         return await Video.getAllVideos(); 
-    } */
+    }
 }

@@ -9,7 +9,8 @@ import {
   getDoc,
   addDoc,
   deleteDoc,
-  updateDoc
+  updateDoc,
+  orderBy
 } from 'firebase/firestore';
 
 const controller = {}
@@ -32,7 +33,8 @@ controller.getVideoById = async (videoId) => {
 controller.getAllVideos = async () => {
   let videos = [];
 
-  const querySnapshot = await getDocs(collection(db, "video"));
+  const q = query(collection(db, "video"), orderBy('dateAdded', 'desc'))
+  const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     let video = {
       id: doc.id,

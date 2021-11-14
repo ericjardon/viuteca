@@ -61,13 +61,15 @@ export default function VideoForm() {
 
     const tryCreate = async () => {
         //CHECK USER
+        let dateStr = (new Date()).toISOString().split('T')[0]
+
         setShowSpinner(true);
         let videoFinal = {
             ...video,
             title_lower: video.title.toLowerCase(),
             owner: auth.currentUser.email,
             likes: 0,
-            dateAdded: Timestamp.fromDate(new Date()),
+            dateAdded: Timestamp.fromDate(new Date(dateStr)),
         }
 
         if (videoFinal.title === '' || videoFinal.description === '' || videoFinal.url === '') {

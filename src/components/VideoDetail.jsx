@@ -49,10 +49,11 @@ export default function VideoDetail(props) {
             setLikes(video.likes);
             setLoading(false);
             const date = video.dateAdded.toDate();
-            const mm = date.toLocaleString("es-ES", { month: "long" });
-            const dd = date.getDate();
-            const yyyy = date.getFullYear();
-            setDateString(mm + " " + dd + ", " + yyyy);
+            let options = {year: 'numeric', month:'long', day: 'numeric' }
+            options.timeZone = 'UTC';
+            const string = date.toLocaleDateString("es-ES", options);
+
+            setDateString(string);
         }
 
         fetchData();
