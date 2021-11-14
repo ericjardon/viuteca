@@ -133,6 +133,7 @@
     .HeadLine {
         font-size: 55px;
         margin-left: 25px;
+        width: 400px;
     }
     .MainText {
         font-size: 18px;
@@ -149,7 +150,7 @@
 
     .HeadLine2 {
         margin-top:25px;
-        font-size: 45px;
+        font-size: 35px;
         text-align: right;
         width: auto;
         padding-right: 25px;
@@ -163,25 +164,25 @@
     }
     .imageContainer1 {
         position: absolute;
-        bottom: 0;
+        bottom: 100px;
         right: 0;
-        width: 400px;
+        width: 250px;
     }
     .imageContainer2 {
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 400px;
+        width: 250px;
     }
     .imageContainer3 {
         position: absolute;
-        bottom: 0;
+        bottom: 100px;
         right: 0;
-        width: 400px;
+        width: 250px;
     }
 
     .HeadLine3 {
-        font-size: 45px;
+        font-size: 35px;
         margin-left: 20px;
     }
     .MainText3 {
