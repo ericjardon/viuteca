@@ -65,7 +65,7 @@ export default function VideoDetail(props) {
             console.log("Confirmed deletion...")
             // Delete video
             const videoId = props.match.params.id;
-            await Video.deleteVideo(videoId)
+            await Video.deleteVideo(videoId, video)
             // Redirect to Feed 
             setRedirect(true);
         } else {

@@ -6,6 +6,7 @@ import VideosDisplay from './VideosDisplay';
 import Testing from './Testing';
 import Login from './Login'
 import Home from './Home'
+import Error404 from './404';
 import VideoForm from './VideoForm'
 import VideoDetail from './VideoDetail';
 import Group from './GroupProfile';
@@ -30,6 +31,8 @@ function App() {
             <Route exact path="/video/:id" render={(props) => <VideoDetail {...props} />} />
             <Route exact path="/p/:id" render={(props) => <Group {...props}/>} />
             <Route exact path="/new-video" render={() => <VideoForm />} />
+            <Route path="/*" render={() => <Error404/>}/>
+
           </Switch>
         </QueryParamProvider>
       </Router>

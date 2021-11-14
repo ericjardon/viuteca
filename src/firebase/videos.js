@@ -1,5 +1,5 @@
 import { db, storage } from "../base"
-import {getDownloadURL, ref, uploadBytes} from 'firebase/storage'
+import {getDownloadURL, ref, uploadBytes, deleteObject} from 'firebase/storage'
 import {
   doc,
   query,
@@ -105,11 +105,27 @@ controller.createVideo = async (video) => {
 
 }
 
-controller.deleteVideo = async (videoId) => {
-  // FIXME: add deleteImageFromStorage
-  const docRef = doc(db, "video", videoId)
-  console.log("Deleting video", videoId);
+
+controller.deleteImageFromStorage = async (videoId, fileUrl) => {
+  console.log("deleting file at ", fileUrl)
   try {
+    let fileRef = ref(storage, fileUrl);
+    await deleteObject(fileRef);
+    return null;
+  } catch (err) {
+    console.log("Delete from storage error", err)
+    return err;
+  }  
+
+}
+
+controller.deleteVideo = async (videoId, video) => {
+  // FIXME: add deleteImageFromStorage
+  const docRef = doc(db, "video", videoId);
+  console.log("Deleting video", videoId);
+  console.log("Deleting img", video.img);
+  try {
+    await controller.deleteImageFromStorage(videoId, video.img);
     await deleteDoc(docRef);
     return null
   } catch (err) {
@@ -118,19 +134,6 @@ controller.deleteVideo = async (videoId) => {
       error: err
     }
   }
-}
-
-controller.deleteImageFromStorage = async (videoId, fileUrl) => {
-  console.log("deleting file at ", fileUrl)
-  try {
-    let fileRef = ref(storage, fileUrl);
-    await fileRef.delete();
-    return null;
-  } catch (err) {
-    console.log("Delete from storage error", err)
-    return err;
-  }  
-
 }
 
 
