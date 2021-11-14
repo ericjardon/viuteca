@@ -37,14 +37,14 @@ function Card(props) {
 
           <div className={styles.titleAndParagraph}>
             <h4 className={styles.videoTitle}>{data.title}</h4>
+            <p className={styles.dateString}>
+              {dateString}
+            </p>
             <p className={styles.paragraph}>
               {data.description}
             </p>
           </div>
           <div className={styles.buttonContainer}>
-          <p className={styles.dateString}>
-              {dateString}
-            </p>
             <Link to={"/video/" + project.id} style={{ backgroundColor: '#D9CAB3' }}>
               <Button color="primary">Ver más</Button>
             </Link>
