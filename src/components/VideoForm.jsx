@@ -109,6 +109,8 @@ export default function VideoForm() {
                     console.log("Succesful image upload", imgUpload);
                     redirect()
                 }
+            } else {
+                redirect()
             }
         }
         setShowSpinner(false);
