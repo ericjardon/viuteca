@@ -43,6 +43,9 @@ const VideosDisplay = (props) => {
       if (searchType === 'title') {
         setresultsLabel(`Videos con el título: ${searchTerm}`)
       }
+      if (searchType === 'date') {
+        setresultsLabel(`Videos publicados en: ${searchTerm}`)
+      }
 
     } else {
       console.log("Fetching all videos...");

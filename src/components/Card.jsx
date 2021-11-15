@@ -10,10 +10,9 @@ function Card(props) {
   const videoLength = (data.durationMins || '0') + ':' + String((data.durationSecs || '0')).padStart(2, '0')
 
   const date = data.dateAdded.toDate();
-  const mm = date.toLocaleString("es-ES", { month: "long" });
-  const dd = date.getDate();
-  const yyyy = date.getFullYear();
-  const dateString = mm + " " + dd + ", " + yyyy;
+  let options = { year: 'numeric', month:'short', day: 'numeric' };
+  options.timeZone='UTC';
+  const dateString = date.toLocaleDateString("es-ES", options);
 
   const backgroundImage = () => {
     if (data.img) {
@@ -38,14 +37,14 @@ function Card(props) {
 
           <div className={styles.titleAndParagraph}>
             <h4 className={styles.videoTitle}>{data.title}</h4>
+            <p className={styles.dateString}>
+              {dateString}
+            </p>
             <p className={styles.paragraph}>
               {data.description}
             </p>
           </div>
           <div className={styles.buttonContainer}>
-          <p className={styles.dateString}>
-              {dateString}
-            </p>
             <Link to={"/video/" + project.id} style={{ backgroundColor: '#D9CAB3' }}>
               <Button color="primary">Ver más</Button>
             </Link>

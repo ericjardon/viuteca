@@ -84,7 +84,7 @@ const NavHeader = (props) => {
                 <div>
                     <div className={styles.navBar}>
                         <Navbar style={{ padding: 0, backgroundColor: '#212121' }}>
-                            <NavbarBrand href='/'>
+                            <NavbarBrand href='/videos'>
                                 <img className={isMd ? styles.iconLogo : styles.fullLogo} src={isMd ? iconLogo : fullLogo} alt='ViutecaLogo' />
                             </NavbarBrand>
                             <div style={{ width: "45%" }}>
@@ -124,7 +124,7 @@ const NavHeader = (props) => {
                                             </DropdownItem>
                                             <DropdownItem divider />  
                                             <DropdownItem>
-                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/newVideo'>
+                                                <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
                                                     AÑADIR VIDEO
                                                 </NavLink>
                                             </DropdownItem>
@@ -198,7 +198,7 @@ const NavHeader = (props) => {
                                         </DropdownItem>
                                         <DropdownItem divider />  
                                         <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/newVideo'>
+                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
                                                 AÑADIR VIDEO
                                             </NavLink>
                                         </DropdownItem>
