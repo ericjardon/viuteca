@@ -10,6 +10,8 @@ import { auth } from '../base'
 
 export default function VideoDetail(props) {
 
+    const videoId = props.match.params.id;
+
     const [video, setVideo] = useState({});
     const [videoOwner, setVideoOwner] = useState("");
     const [loading, setLoading] = useState(true);
@@ -19,8 +21,8 @@ export default function VideoDetail(props) {
     const [errorNotFound, seterrorNotFound] = useState(null);
     const [isOwner, setisOwner] = useState(false);
     const [redirect, setRedirect] = useState(false);
-    const [clapFirstTime, setClapFirstTime] = useState(true)
-
+    const [clapFirstTime, setClapFirstTime] = useState(() => localStorage.getItem(videoId) === null)
+    console.log("Can update likes count?", clapFirstTime)
     const toggle = () => {
         setToggleDescription(toggleDescription => !toggleDescription);
     }
@@ -28,7 +30,6 @@ export default function VideoDetail(props) {
     useEffect(() => {
         const videoId = props.match.params.id;
         // fetch the data at videos.videoId in firestore
-        console.log("Video id", videoId);
         async function fetchData() {
             //const video = await Video.getVideoByIdTest();
             const video = await Video.getVideoById(videoId);
@@ -116,7 +117,7 @@ export default function VideoDetail(props) {
                         </Link>
                     </div>
                     <div className={styles.likesContainer}>
-                        <LikeButton likesCount={likes} updateLikesCount={updateLikesCount} />
+                        <LikeButton likesCount={likes} updateLikesCount={updateLikesCount} videoId={videoId} />
                     </div>
                 </div>
 

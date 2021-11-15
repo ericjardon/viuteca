@@ -78,7 +78,7 @@ controller.updateLikesCount = async (videoId, newLikes) => {
     await updateDoc(docRef, {
       likes: newLikes
     })
-    console.log("Updated likes", newLikes);
+    console.log("Updated likes in Firestore", newLikes);
     return null
   } catch (err) {
     return {

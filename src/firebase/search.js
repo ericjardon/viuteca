@@ -42,9 +42,9 @@ const searchVideosByOwner = async (ownerName) => {
 
     ownerName = ownerName.toLowerCase();
     console.log("name_lower", ownerName);
-    const ownerquery = query(groups, where("name_lower", "==", ownerName), orderBy('dateAdded', 'desc'));
+    const ownerquery = query(groups, where("name_lower", "==", ownerName));
     const ownerSnapshot = await getDocs(ownerquery);
-
+    console.log("owner query for name", ownerName);
     try {
         const ownerEmails = ownerSnapshot.docs.map(d => d.id);
         console.log("ownerEmail", ownerEmails)
