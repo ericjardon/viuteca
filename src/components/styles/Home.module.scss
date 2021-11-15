@@ -148,11 +148,18 @@
         flex-direction: row-reverse;
     }
 
+    .HeadLine3 {
+        margin-top:25px;
+        font-size: 35px;
+        text-align: right;
+        width: 400px;
+        padding-right: 25px;
+    }
     .HeadLine2 {
         margin-top:25px;
         font-size: 35px;
         text-align: right;
-        width: auto;
+        width: 200px;
         padding-right: 25px;
     }
     .MainText2 {
@@ -170,7 +177,7 @@
     }
     .imageContainer2 {
         position: absolute;
-        bottom: 0;
+        top: 150px;
         left: 0;
         width: 250px;
     }

@@ -69,7 +69,6 @@ export default function VideoForm() {
             likes: 0,
             dateAdded: Timestamp.fromDate(new Date()),
         }
-
         if (videoFinal.title === '' || videoFinal.description === '' || videoFinal.url === '') {
             setAlert(<Alert color="warning">Debes llenar todos los campos</Alert>)
             setShowAlert(true);
@@ -123,9 +122,9 @@ export default function VideoForm() {
                     </div>
                     <div className={styles.rowClass}>
                         <Label className={styles.labelClass}>Minutos duración</Label>
-                        <div className={styles.smallInput}><Input type="number" defaultValue="15" onChange={handleOnChange} name="durationMins"></Input></div>
+                        <div className={styles.smallInput}><Input type="number" max="60" defaultValue="15" onChange={handleOnChange} name="durationMins"></Input></div>
                         <Label className={styles.labelClass}>Segundos Duración</Label>
-                        <div className={styles.smallInput}><Input type="number" defaultValue="15" onChange={handleOnChange} name="durationSecs"></Input></div>
+                        <div className={styles.smallInput}><Input type="number" max="60" defaultValue="15" onChange={handleOnChange} name="durationSecs"></Input></div>
                     </div>
                     <div >
                         <Label className={styles.titleClass}>Descripción</Label>
