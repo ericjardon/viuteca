@@ -40,11 +40,14 @@ const VideosDisplay = (props) => {
       if (searchType === 'owner') {
         setresultsLabel(`Videos publicados por: ${searchTerm}`)
       }
-      if (searchType === 'title') {
+      else if (searchType === 'title') {
         setresultsLabel(`Videos con el título: ${searchTerm}`)
       }
-      if (searchType === 'date') {
+      else if (searchType === 'date') {
         setresultsLabel(`Videos publicados en: ${searchTerm}`)
+      }
+      else {
+        setresultsLabel("Videos más recientes");
       }
 
     } else {

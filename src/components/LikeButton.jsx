@@ -5,24 +5,25 @@ import styles from './styles/LikeButton.module.scss'
 
 export default function LikeButton(props) {
 
-    const {updateLikesCount, likesCount} = props; 
-    const [clicked, setClicked] = useState(false);
+    const {updateLikesCount, likesCount, videoId} = props; 
+    const [clicked, setClicked] = useState( () => localStorage.getItem(videoId) !== null );
 
     const toggleClicked = () => {
         setClicked(clicked => !clicked);
     }
 
     const handleClicked = (e) => {
-        // store a cookie if clicked==false
+
         toggleClicked();
-        if (clicked) {
-            console.log("Removing cookie...")
+        if (clicked) {  // unclicked
+            console.log("Unclicking, remove local storage...")
+            localStorage.removeItem(videoId)
             updateLikesCount(-1);
-        } else {
-            console.log("Inserting cookie...")
+        } else {   // has clicked
+            console.log("Set Local Storage...")
+            localStorage.setItem(videoId, 1);
             updateLikesCount(+1);
         }
-        // remove the cookie if cliked==true
     }
 
     const source = clicked ? clapFill : clapVoid;
