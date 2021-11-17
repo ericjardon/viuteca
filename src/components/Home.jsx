@@ -8,10 +8,14 @@ import illustration2 from '../assets/ill2-cuate.png';
 import illustration3 from '../assets/webinar-blue.png'
 import { BsArrowRight } from 'react-icons/bs'
 import { BiCheck } from 'react-icons/bi'
+import useLogin from '../hooks/useLogin'
 
 /* Component for the main screen with listed videos */
 // <a href="https://storyset.com/web">Web illustrations by Storyset</a>
 export default function Home() {
+
+    const loggedIn = useLogin();
+
     return (
         <div className={styles.HomeContainer}>
             <div className={styles.firstSection}>
@@ -55,9 +59,14 @@ export default function Home() {
                         Si formas parte de un grupo estudantil, ¡crea
                         tu cuenta para subir tus eventos, obtener más difusión y
                         tener todas tus grabaciones en un solo lugar! <br /> <br/>
-                        Lo único que necesitas para subir un video es su URL de archivo, Viuteca se encarga del resto ;-)
+                        Lo único que necesitas para subir un video es el URL de su{" "} 
+                        <a 
+                        className={styles.refLink}
+                        href="https://interesting-ground-e69.notion.site/Subir-un-video-a-Viuteca-5831b4fce9e4407ab730491c3f0c6241" 
+                        target="_blank">código de embed</a>, 
+                        Viuteca se encarga del resto ;)
                     </p>
-                    <Link to="/videos">
+                    <Link to={loggedIn ? "/videos" : "/register"}>
                         <Button className={styles.RegisterButton}>Regístrate <BiCheck/></Button>
                     </Link>
                 </div>
