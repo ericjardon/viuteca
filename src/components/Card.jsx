@@ -10,8 +10,8 @@ function Card(props) {
   const videoLength = (data.durationMins || '0') + ':' + String((data.durationSecs || '0')).padStart(2, '0')
 
   const date = data.dateAdded.toDate();
-  let options = { year: 'numeric', month:'short', day: 'numeric' };
-  options.timeZone='UTC';
+  let options = { year: 'numeric', month: 'short', day: 'numeric' };
+  options.timeZone = 'UTC';
   const dateString = date.toLocaleDateString("es-ES", options);
 
   const backgroundImage = () => {

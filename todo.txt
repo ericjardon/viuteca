@@ -1,0 +1,7 @@
+TODOS
+Front End:
+- Redesign the search bar
+- Finish dateFormatter module
+
+Back End:
+- Migrate back end to MySQL server for better search queries
