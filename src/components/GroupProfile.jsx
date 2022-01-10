@@ -1,10 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import md5 from 'md5'
 import styles from './styles/GroupProfile.module.scss'
-import {Spinner} from 'reactstrap'
+import {Spinner, Button} from 'reactstrap'
 import Group from '../firebase/groups'
 import Tag from './Tag'
 import ProfileVideos from './ProfileVideos'
+import { auth } from '../base'
+import { AiTwotoneEdit } from 'react-icons/ai'
+import { Link } from 'react-router-dom';
+
 
 const GroupProfile = (props) => {
     /* Implements the profile page for any given group.
@@ -20,6 +24,8 @@ const GroupProfile = (props) => {
 
     const [errorNotFound, seterrorNotFound] = useState(null);
     const [profilePicURL, setProfilePicURL] = useState("");
+
+    const [isOwner, setisOwner] = useState(false);
 
     // FETCH THE GROUP PROFILE DATA FROM URL
     useEffect(() => {
@@ -37,6 +43,11 @@ const GroupProfile = (props) => {
             setLoading(false);
             console.log("Profile Data:\n", group)
             setProfilePicURL(getGravatarURL(groupId));
+            const currentUser = auth.currentUser
+            if (currentUser) {
+                console.log("Is profile owner");
+                setisOwner(groupId == currentUser.email)
+            }
         }
 
         fetchData();
@@ -79,8 +90,14 @@ const GroupProfile = (props) => {
                     <div className={styles.categories}>
                         {tags.map(t => <Tag>{t}</Tag>)}
                     </div>
+                    <div className={styles.editBtnContainer}>
+                        <Link to={profileData.id ? `/p/edit/${profileData.id}` : ''}>
+                        <Button className={styles.editBtn}>Editar <AiTwotoneEdit/></Button>
+                        </Link>
+                    </div>
                 </div>
             </div>
+
             <div className={styles.postedVideos}>
                 <ProfileVideos ownerEmail={profileData.id} ownerName={profileData.name}/>
             </div>

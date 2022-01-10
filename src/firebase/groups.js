@@ -79,17 +79,19 @@ controller.getGroupById = async (emailId) => {
 }
 
 
-controller.updateGroup = async (groupId, newData) => {
+controller.updateGroup = async (groupId, data) => {
     // use Set to use previous id
     const result = {}
 
     // .set does not return anything
     try {
         await db.collection("groups").doc(groupId)
-            .set(newData)
+            .set(data);
         result.ok = true;
+        console.log("Firebase updated ->\n", data)
         return result;
     } catch (error) {
+        console.log("Firebase error:", error);
         result.error = error;
         return result;
     }

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import md5 from 'md5'
 import './styles/VideosDisplay.scss'
 import styles from './styles/GroupProfile.module.scss'
-import { Spinner } from 'reactstrap'
+import { Spinner, Button } from 'reactstrap'
 import Group from '../firebase/groups'
 import Tag from './Tag'
-import { Button } from 'reactstrap'
 import { AiTwotoneEdit } from 'react-icons/ai'
 import { DEFAULT_BIO } from '../utils/defaultCopies'
+import { Redirect } from 'react-router'
+import {auth} from '../base'
 
 // import ProfileVideos from './ProfileVideos'
 
@@ -24,6 +25,9 @@ const EditProfile = (props) => {
     const [errorNotFound, seterrorNotFound] = useState(null);
     const [profilePicURL, setProfilePicURL] = useState("");
 
+    const [originalData, setOriginalData] = useState(null);
+    const [isOwner, setisOwner] = useState(true);
+
     useEffect(() => {
         const groupId = props.match.params.id;
         console.log("Group id", groupId);
@@ -39,6 +43,13 @@ const EditProfile = (props) => {
             setLoading(false);
             console.log("Profile Data:\n", group)
             setProfilePicURL(getGravatarURL(groupId));
+            const currentUser = auth.currentUser
+            if (currentUser) {
+                console.log("Is profile owner");
+                setisOwner(groupId == currentUser.email)
+            } else {
+                setisOwner(false);
+            }
         }
 
         fetchData();
@@ -59,6 +70,21 @@ const EditProfile = (props) => {
         console.log("Update->\n", profileData);
     }
 
+    const onSave = async () => {
+        // which data should it receive?
+        if (dataDidChange()) {
+            const res = await Group.updateGroup(profileData); // handles specific fields to send to back
+            if (res.ok) {
+                console.log("Updated Succesfully!");
+                // redirect
+            } else {
+                console.log("Something went wrong");
+            }
+        } else {
+            console.log("No data to update");
+        }
+    }
+
     if (loading) return (
         <div className={styles.containerLoading}>
             <Spinner children="" style={{ width: '15rem', height: '15rem' }} />
@@ -70,6 +96,8 @@ const EditProfile = (props) => {
             {errorNotFound}
         </div>
     )
+
+    if (!isOwner) return <Redirect to='/404'/>
 
     return (
         <div className={styles.containerEP}>
@@ -99,6 +127,8 @@ const EditProfile = (props) => {
         </div>
     )
 }
+
+const dataDidChange = (oldData, newData) => JSON.stringify(oldData) === JSON.stringify(newData);
 
 
 const getGravatarURL = (email) => {

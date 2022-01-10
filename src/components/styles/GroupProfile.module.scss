@@ -12,6 +12,7 @@
 
 .PageTitle {
     @extend .ResultsLabel;
+    margin: 30px auto 20px auto;
     text-shadow: 2px 2px black;
 }
 
@@ -23,7 +24,7 @@
     display: inline-flex;
     align-items: center;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     background-color: $lightBg;
     width: 50vw;
     border-radius: 10px;
@@ -69,6 +70,15 @@
 .categories {
     font-size: 16px;
     color: $cream;
+}
+
+.editBtn {
+    margin-bottom: 10px;
+}
+
+.editBtnContainer {
+    display: flex;
+    justify-content: flex-end;
 }
 
 /*--- Edit Profile Styles ---*/
