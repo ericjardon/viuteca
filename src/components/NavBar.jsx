@@ -16,7 +16,7 @@ import mGlass from '../assets/mGlass.png';
 import { auth } from '../base';
 
 const placeholders = {
-    'owner': 'Busca por grupo',
+    'owner': 'Busca por nombre de grupo',
     'title': 'Busca por título',
     'date': 'Busca por fecha: 2020-11-03'
 }
@@ -124,7 +124,7 @@ const NavHeader = (props) => {
                                                 <DropdownItem divider />
                                                 <DropdownItem>
                                                     <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
-                                                        AÑADIR VIDEO
+                                                        SUBIR VIDEO
                                                     </NavLink>
                                                 </DropdownItem>
                                                 <DropdownItem divider />
@@ -204,7 +204,7 @@ const NavHeader = (props) => {
                                         <DropdownItem divider />
                                         <DropdownItem>
                                             <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
-                                                AÑADIR VIDEO
+                                                SUBIR VIDEO
                                             </NavLink>
                                         </DropdownItem>
                                         <DropdownItem divider />

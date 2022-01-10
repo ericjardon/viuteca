@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { Timestamp } from 'firebase/firestore'
 import { auth } from '../base'
 import { AiOutlineCheckCircle } from 'react-icons/ai'
+import {refLink} from './styles/Home.module.scss';
 
 /* Component for the main screen with listed videos */
 export default function VideoForm() {
@@ -123,29 +124,33 @@ export default function VideoForm() {
                 <Form>
                     <div className={styles.rowClass}>
                         <Label className={styles.labelClass}>Titulo</Label>
-                        <Input placeholder="Introduce el título del video." name="title" onChange={handleOnChange}></Input >
+                        <Input placeholder="Título del video" name="title" onChange={handleOnChange}></Input >
                     </div>
                     <div className={styles.rowClass}>
                         <Label className={styles.labelClass}>Minutos duración</Label>
-                        <div className={styles.smallInput}><Input type="number" defaultValue="15" onChange={handleOnChange} name="durationMins"></Input></div>
+                        <div className={styles.smallInput}><Input type="number" defaultValue="15" min="0" onChange={handleOnChange} name="durationMins"></Input></div>
                         <Label className={styles.labelClass}>Segundos Duración</Label>
-                        <div className={styles.smallInput}><Input type="number" defaultValue="15" onChange={handleOnChange} name="durationSecs"></Input></div>
+                        <div className={styles.smallInput}><Input type="number" defaultValue="15" max="59" min="0" onChange={handleOnChange} name="durationSecs"></Input></div>
                     </div>
                     <div >
                         <Label className={styles.titleClass}>Descripción</Label>
-                        <Input type="textarea" onChange={handleOnChange} name="description"></Input>
+                        <Input placeholder="Cuéntanos de qué trata..." type="textarea" onChange={handleOnChange} name="description"></Input>
                     </div>
                 </Form>
             </div>
             <div className={styles.colClass}>
                 <Form>
                     <div>
-                        <Label style={{ textAlign: "left" }}>Sube tu video a drive e ingresa su embed URL en este espacio</Label>
+                        <Label style={{ textAlign: "left" }}>Ingresa el{' '}
+                        <a className={refLink}
+                        href="https://interesting-ground-e69.notion.site/Subir-un-video-a-Viuteca-5831b4fce9e4407ab730491c3f0c6241" 
+                        target="_blank">URL de embed</a>
+                        {' '}de tu video en este espacio</Label>
                     </div>
                     <div className={styles.rowClass}>
                         <Label className={styles.labelClass}>Video</Label>
                         <Input type="url" placeholder="Introduce el link." name="url" onChange={handleOnChange}></Input>
-                        <div style={{ marginLeft: "0px" }}><Button md={4} style={{ backgrounddivor: "#D9CAB3", color: "black" }} onClick={handleOnClick}>Subir</Button></div>
+                        <div style={{ marginLeft: "0px" }}><Button md={4} onClick={handleOnClick}>Subir</Button></div>
                     </div>
                     {uploadVideo &&
                         <div >
@@ -155,7 +160,7 @@ export default function VideoForm() {
                         </div>
                     }
                     <div>
-                        <Label style={{ textAlign: "left" }}>Sube tu foto a drive e ingresa la liga en el siguiente espacio</Label>
+                        <Label style={{ textAlign: "left" }}>Sube una imagen de vista previa si quieres.</Label>
                     </div>
                     <div className={styles.rowClass}>
                         <Label className={styles.labelClass} >Imagen {file ? <AiOutlineCheckCircle /> : ""}</Label>
@@ -163,7 +168,7 @@ export default function VideoForm() {
                     </div>
                     <div >
                         <div>
-                            <Button style={{ backgrounddivor: "#D9CAB3", color: "black" }} onClick={tryCreate}>
+                            <Button onClick={tryCreate}>
                             {showSpinner? <Spinner color="light" children="" /> : "Publicar"}
                             </Button>
                         </div>

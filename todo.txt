@@ -1,5 +1,8 @@
 TODOS
 Front End:
+- Edit Profile
+- Restore password link
+- Back arrows
 - Redesign the search bar
 - Finish dateFormatter module
 
