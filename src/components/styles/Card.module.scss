@@ -51,9 +51,13 @@ a.CardText, h4.CardText{
     font-size: 13px;
     width: 80%;
     margin: 0 auto;
-    text-overflow: ellipsis;
     text-align: justify;
     flex: 2;
+}
+
+.paragraph-short {
+    @extend .paragraph;
+    -webkit-line-clamp: 4;
 }
 
 .buttonContainer {
@@ -69,6 +73,12 @@ a.CardText, h4.CardText{
 }
 
 .videoTitle {
+    font-size: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
     margin-bottom: 2px;
 }
 .dateString {

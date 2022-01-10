@@ -199,6 +199,14 @@
     }
 }
 
+.refLink {
+    text-decoration: none;
+    color: #d63384;
+    &:hover {
+        color: #d63384;
+        text-decoration: underline;
+    }
+}
 
 @media (max-width: 426px) {
 
