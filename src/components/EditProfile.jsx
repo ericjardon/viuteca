@@ -9,6 +9,7 @@ import { AiTwotoneEdit } from 'react-icons/ai'
 import { DEFAULT_BIO } from '../utils/defaultCopies'
 import { Redirect } from 'react-router'
 import {auth} from '../base'
+import { equalSets } from '../utils/math'
 
 // import ProfileVideos from './ProfileVideos'
 
@@ -40,6 +41,7 @@ const EditProfile = (props) => {
             }
             group.id = groupId;
             setprofileData(group);
+            setOriginalData(group);
             setLoading(false);
             console.log("Profile Data:\n", group)
             setProfilePicURL(getGravatarURL(groupId));
@@ -72,7 +74,7 @@ const EditProfile = (props) => {
 
     const onSave = async () => {
         // which data should it receive?
-        if (dataDidChange()) {
+        if (dataDidChange(originalData, profileData)) {
             const res = await Group.updateGroup(profileData); // handles specific fields to send to back
             if (res.ok) {
                 console.log("Updated Succesfully!");
@@ -102,6 +104,10 @@ const EditProfile = (props) => {
     return (
         <div className={styles.containerEP}>
             <p class={styles.PageTitle}>Editar Información</p>
+            <p>
+                Puedes escribir en el texto que deseas modificar. <br/> 
+                Si todo se ve bien, presiona "Guardar"
+            </p>
             <div className={styles.editProfileCard}>
                 <div className={styles.profilePicDummy}>
                     <div className={styles.profilePic} style={profileImage()}></div>
@@ -117,9 +123,7 @@ const EditProfile = (props) => {
                     </div>
                 </div>
             </div>
-            <p>
-                Si todo se ve bien, presiona "Guardar"
-            </p>
+
             <Button>Guardar</Button>
             {/* <div className={styles.postedVideos}>
                 <ProfileVideos ownerEmail={profileData.id} ownerName={profileData.name}/>
@@ -129,7 +133,7 @@ const EditProfile = (props) => {
 }
 
 const dataDidChange = (oldData, newData) => JSON.stringify(oldData) === JSON.stringify(newData);
-
+const tagsDidChange = (oldTags, newTags) => equalSets(new Set(oldTags), new Set(newTags));
 
 const getGravatarURL = (email) => {
     return `https://gravatar.com/avatar/${md5(email)}?s=128`;

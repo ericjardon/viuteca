@@ -90,11 +90,11 @@ const GroupProfile = (props) => {
                     <div className={styles.categories}>
                         {tags.map(t => <Tag>{t}</Tag>)}
                     </div>
-                    <div className={styles.editBtnContainer}>
+                    {isOwner && (<div className={styles.editBtnContainer}>
                         <Link to={profileData.id ? `/p/edit/${profileData.id}` : ''}>
                         <Button className={styles.editBtn}>Editar <AiTwotoneEdit/></Button>
                         </Link>
-                    </div>
+                    </div>)}
                 </div>
             </div>
 
