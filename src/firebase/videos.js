@@ -89,7 +89,7 @@ controller.updateLikesCount = async (videoId, newLikes) => {
 
 controller.createVideo = async (video) => {
 
-  if (Object.keys(video).indexOf('title_lower') == -1) {
+  if (Object.keys(video).indexOf('title_lower') === -1) {
     video['title_lower'] = video.title.toLowerCase()
   }
   // Save to database

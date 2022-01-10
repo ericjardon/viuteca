@@ -1,8 +1,18 @@
-@import "./global", "./shared.scss";
+@import "./global", "./shared.scss", "./VideosDisplay.scss";
 
 .container {
     @include centeredContainer;
     justify-content: flex-start;
+}
+
+.containerEP {
+    @extend .container;
+    padding-bottom: 60px;
+}
+
+.PageTitle {
+    @extend .ResultsLabel;
+    text-shadow: 2px 2px black;
 }
 
 .containerLoading {
@@ -61,6 +71,19 @@
     color: $cream;
 }
 
+/*--- Edit Profile Styles ---*/
+.editProfileCard {
+    @extend .profileCard;
+    margin-top: 5px;
+}
+
+.editableText {
+    font-style: italic;
+    color: #707070;
+}
+
+
+/*-- Responsive --*/
 
 @media (max-width: 768px) {
     .profileCard {

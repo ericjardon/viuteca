@@ -10,6 +10,7 @@ import Error404 from './404';
 import VideoForm from './VideoForm'
 import VideoDetail from './VideoDetail';
 import Group from './GroupProfile';
+import EditProfile from './EditProfile';
 import { useState } from 'react'
 import { QueryParamProvider } from 'use-query-params'
 
@@ -30,6 +31,7 @@ function App() {
             <Route path="/videos" render={(props) => <VideosDisplay {...props} />} />
             <Route exact path="/video/:id" render={(props) => <VideoDetail {...props} />} />
             <Route exact path="/p/:id" render={(props) => <Group {...props}/>} />
+            <Route exact path="/p/edit/:id" render={(props) => <EditProfile {...props}/>} />
             <Route exact path="/new-video" render={() => <VideoForm />} />
             <Route path="/*" render={() => <Error404/>}/>
 

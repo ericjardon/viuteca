@@ -168,7 +168,7 @@ export default function VideoForm() {
                     </div>
                     <div >
                         <div>
-                            <Button onClick={tryCreate}>
+                            <Button color="primary" onClick={tryCreate}>
                             {showSpinner? <Spinner color="light" children="" /> : "Publicar"}
                             </Button>
                         </div>
