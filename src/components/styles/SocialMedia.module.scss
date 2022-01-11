@@ -5,6 +5,11 @@
     margin-bottom: 16px;
 }
 
+.containerEdit {
+    width: 100%;
+    @include flexBoxV;
+}
+
 a.smLink {
     text-decoration: none;
     color: $dark;

@@ -5,6 +5,7 @@ import styles from './styles/GroupProfile.module.scss'
 import { Spinner, Button, Input } from 'reactstrap'
 import Group from '../firebase/groups'
 import Tag from './Tag'
+import SocialMediaEdit from './SocialMediaEdit'
 import { AiTwotoneEdit, AiFillSave } from 'react-icons/ai'
 import { DEFAULT_BIO, EXAMPLE_TAGS } from '../utils/defaultCopies'
 import { Redirect } from 'react-router'
@@ -162,6 +163,9 @@ const EditProfile = (props) => {
                         {profileData.desc ||
                             DEFAULT_BIO(profileData.name)}  <AiTwotoneEdit />
                     </p>
+
+                    <SocialMediaEdit ig={profileData.ig} fb={profileData.fb} handleChange={(e) => console.log(e)}/>
+
                     <div className={styles.tagsInputContainer}>
                         <Input 
                             value={currentTag} 
