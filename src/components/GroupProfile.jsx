@@ -4,6 +4,7 @@ import styles from './styles/GroupProfile.module.scss'
 import {Spinner, Button} from 'reactstrap'
 import Group from '../firebase/groups'
 import Tag from './Tag'
+import SocialMedia from './SocialMedia'
 import ProfileVideos from './ProfileVideos'
 import { auth } from '../base'
 import { AiTwotoneEdit } from 'react-icons/ai'
@@ -54,7 +55,6 @@ const GroupProfile = (props) => {
     }, []);
 
     const profileImage = () => {
-        
         return {
             backgroundImage: `url(${profilePicURL})`,
         }
@@ -83,7 +83,8 @@ const GroupProfile = (props) => {
                     <p className={styles.profileDesc}>
                         {profileData.desc ||
                             DEFAULT_BIO(profileData.name)}
-                        </p>
+                    </p>
+                    <SocialMedia ig={profileData.ig} fb={profileData.fb}/>
                     <div className={styles.categories}>
                         {tags.map(t => <Tag>{t}</Tag>)}
                     </div>

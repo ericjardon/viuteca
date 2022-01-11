@@ -2,7 +2,10 @@ TODOS
 Front End:
 - Edit Profile
     - Add Instagram and Twitter Links
-    - Duplicate interface and make all text editable with a 'save' button
+- Add Back arrows everywhere
+- Prettiness
+    - Adjust background text size
+    - 
 
 - Restore password link
 - Back arrows

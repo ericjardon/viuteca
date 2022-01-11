@@ -88,11 +88,18 @@ controller.updateGroup = async (groupData) => {
         name_lower: groupData.name.trim().toLowerCase(),
     }
 
+    // TOFIX: Refactor the following; maybe add intermediate isEmpty() function
     if (groupData.desc) {
-        newData.desc = groupData.desc;
+        newData.desc = groupData.desc.trim();
     }
     if (groupData.tags) {
         newData.tags = groupData.tags;
+    }
+    if (groupData.fb) {
+        newData.fb = groupData.fb;
+    }
+    if (groupData.ig) {
+        newData.ig = groupData.ig;
     }
 
     console.log("sending new data to firebase", newData);

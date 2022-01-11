@@ -15,7 +15,7 @@ const tagStyle = {
     borderRadius: '5px',
     backgroundColor: '#212121',
     padding: '2px 5px',
-    color: '#D9CAB3',
+    color: '#e7e7e7',
     marginRight: '6px',
     marginBottom: '6px',
     position:'relative',
