@@ -92,6 +92,14 @@
     color: #707070;
 }
 
+.tagsInputContainer{
+    @include flexBoxH;
+    margin-bottom: 16px;
+}
+
+.tagsInput {
+    width: 100em;
+}
 
 /*-- Responsive --*/
 

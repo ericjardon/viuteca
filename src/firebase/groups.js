@@ -79,21 +79,33 @@ controller.getGroupById = async (emailId) => {
 }
 
 
-controller.updateGroup = async (groupId, data) => {
-    // use Set to use previous id
-    const result = {}
+controller.updateGroup = async (groupData) => {
+    // Expects {id, name, desc*, tags*}
+    console.log("Received data in updateGroup", groupData);
 
-    // .set does not return anything
+    let newData = {
+        name: groupData.name.trim(),
+        name_lower: groupData.name.trim().toLowerCase(),
+    }
+
+    if (groupData.desc) {
+        newData.desc = groupData.desc;
+    }
+    if (groupData.tags) {
+        newData.tags = groupData.tags;
+    }
+
+    console.log("sending new data to firebase", newData);
+
     try {
-        await db.collection("groups").doc(groupId)
-            .set(data);
-        result.ok = true;
-        console.log("Firebase updated ->\n", data)
-        return result;
+        const groupRef = doc(db, 'groups', groupData.id);
+        await setDoc(groupRef, newData);
+        console.log("Firebase updated succesfully");
+        return { ok: true };
+
     } catch (error) {
         console.log("Firebase error:", error);
-        result.error = error;
-        return result;
+        return { ok: false, error: error };
     }
 
 }

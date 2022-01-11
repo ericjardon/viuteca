@@ -105,7 +105,9 @@ export default function Register(props) {
     return (
         <div className={"Main"}>
             <div className={"leftSide"}>
+                <Link to='/videos'>
                 <img src={photo} alt='ViutecaLogo' />
+                </Link>
                 <p id="copyright" className={"copyRight"}>Copyright © 2021, Viuteca</p>
             </div>
 

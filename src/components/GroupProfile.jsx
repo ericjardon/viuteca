@@ -8,19 +8,14 @@ import ProfileVideos from './ProfileVideos'
 import { auth } from '../base'
 import { AiTwotoneEdit } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
+import { DEFAULT_BIO, EXAMPLE_TAGS } from '../utils/defaultCopies'
 
 
 const GroupProfile = (props) => {
-    /* Implements the profile page for any given group.
-        - Uses Gravatar avatar image, size 128px, as profile picture.
-        - Like emaus, every text area etc is editable.
-        - We add a save button that sends the request to firebase, and fecthes data again.
-        - FIXME: implement tags and edit profile
-    */
 
     const [profileData, setprofileData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [tags, setTags] = useState(["Women in Stem", "Tecnologías Computacionales", "Ingeniería"])
+    const [tags, setTags] = useState(["Grupo Estudiantil", "ITESM"])
 
     const [errorNotFound, seterrorNotFound] = useState(null);
     const [profilePicURL, setProfilePicURL] = useState("");
@@ -43,6 +38,11 @@ const GroupProfile = (props) => {
             setLoading(false);
             console.log("Profile Data:\n", group)
             setProfilePicURL(getGravatarURL(groupId));
+
+            if (group.tags) {
+                setTags(group.tags);
+            }
+
             const currentUser = auth.currentUser
             if (currentUser) {
                 console.log("Is profile owner");
@@ -81,12 +81,9 @@ const GroupProfile = (props) => {
                 <div className={styles.nameAndDesc}>
                     <p className={styles.profileName}>{profileData.name}</p>
                     <p className={styles.profileDesc}>
-                        {profileData.desc || 
-                        `
-                        ¡Hola! Esta es la página de videos de ${profileData.name}. 
-                        Para añadir una foto de perfil, entra a gravatar.com y crea una
-                        cuenta con el mismo correo electrónico de Viuteca. 
-                        `}</p>
+                        {profileData.desc ||
+                            DEFAULT_BIO(profileData.name)}
+                        </p>
                     <div className={styles.categories}>
                         {tags.map(t => <Tag>{t}</Tag>)}
                     </div>

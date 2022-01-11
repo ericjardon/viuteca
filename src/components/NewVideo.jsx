@@ -10,7 +10,7 @@ import { AiOutlineCheckCircle } from 'react-icons/ai'
 import {refLink} from './styles/Home.module.scss';
 
 /* Component for the main screen with listed videos */
-export default function VideoForm() {
+export default function NewVideo() {
     const [video, setVideo] = useState({
         title: '',
         durationMins: 15,

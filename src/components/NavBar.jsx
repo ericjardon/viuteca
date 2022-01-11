@@ -6,14 +6,15 @@ import {
     InputGroupButtonDropdown,
     Collapse, Button
 } from 'reactstrap';
-import { NavLink, Redirect, withRouter } from 'react-router-dom';
-import { useMediaSize } from "use-media-size";
-import fullLogo from '../assets/viutecaLogoComplete.png';
+import { NavLink, Redirect, withRouter } from 'react-router-dom'
+import { useMediaSize } from "use-media-size"
+import fullLogo from '../assets/viutecaLogoComplete.png'
 import authManager from '../firebase/authManager'
-import iconLogo from '../assets/viutecaLogo.png';
+import iconLogo from '../assets/viutecaLogo.png'
 import useLogin from '../hooks/useLogin'
-import mGlass from '../assets/mGlass.png';
-import { auth } from '../base';
+import mGlass from '../assets/mGlass.png'
+import {BiSearchAlt2} from 'react-icons/bi'
+import { auth } from '../base'
 
 const placeholders = {
     'owner': 'Busca por nombre de grupo',
