@@ -2,13 +2,11 @@ TODOS
 Front End:
 
 == 12 jan ==
-- Edit Profile
-    - Add Instagram and Twitter Links
-    - Edit Profile sm Links CURRENT
+- Add Feedback Form DONE
+- Hide number?
 - Finish dateFormatter module
 - Add Back arrows everywhere
 - Add FAQ
-- Add Feedback Form
 
 
 - Prettiness
