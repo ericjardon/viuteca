@@ -96,10 +96,10 @@ controller.updateGroup = async (groupData) => {
         newData.tags = groupData.tags;
     }
     if (groupData.fb) {
-        newData.fb = groupData.fb;
+        newData.fb = groupData.fb.trim();
     }
     if (groupData.ig) {
-        newData.ig = groupData.ig;
+        newData.ig = groupData.ig.trim();
     }
 
     console.log("sending new data to firebase", newData);

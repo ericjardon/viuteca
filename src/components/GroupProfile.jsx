@@ -9,7 +9,7 @@ import ProfileVideos from './ProfileVideos'
 import { auth } from '../base'
 import { AiTwotoneEdit } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
-import { DEFAULT_BIO, EXAMPLE_TAGS } from '../utils/defaultCopies'
+import { DEFAULT_BIO, EXAMPLE_TAGS } from '../utils/constants'
 
 
 const GroupProfile = (props) => {

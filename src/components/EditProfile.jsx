@@ -6,8 +6,8 @@ import { Spinner, Button, Input } from 'reactstrap'
 import Group from '../firebase/groups'
 import Tag from './Tag'
 import SocialMediaEdit from './SocialMediaEdit'
-import { AiTwotoneEdit, AiFillSave } from 'react-icons/ai'
-import { DEFAULT_BIO, EXAMPLE_TAGS } from '../utils/defaultCopies'
+import { AiTwotoneEdit } from 'react-icons/ai'
+import { DEFAULT_BIO, MAX_CATEGORIES } from '../utils/constants'
 import { Redirect } from 'react-router'
 import {auth} from '../base'
 import { equalSets } from '../utils/math'
@@ -20,7 +20,10 @@ const EditProfile = (props) => {
         id: null,
         name: null,
         desc: null,
+        fb: null,
+        ig: null,
     });
+
     const [tags, setTags] = useState([])
     const [currentTag, setcurrentTag] = useState("")
 
@@ -84,6 +87,13 @@ const EditProfile = (props) => {
         });
     }
 
+    const handleSMChange = (event) => {
+        setprofileData({
+            ...profileData,
+            [event.target.id]: event.target.value,
+        });
+    }
+
     const handleTagInput = (event) => {
         setcurrentTag(event.target.value);
     }
@@ -91,6 +101,20 @@ const EditProfile = (props) => {
     const onSave = async () => {
         setShowSpinner(true);
         if (dataDidChange(originalData, profileData) || tagsDidChange(originalTags, tags)) {
+
+            // remove @ for fb and ig vals
+            if (!profileData.name) {
+                console.log("El nombre no puede estar vacío.")
+                setShowSpinner(false);
+                return;
+            }
+
+            if (profileData.fb && profileData.fb.startsWith('@')) {
+                profileData.fb = profileData.fb.slice(1);
+            }
+            if (profileData.ig && profileData.ig.startsWith('@')) {
+                profileData.ig = profileData.ig.slice(1);
+            }
 
             const data = {
                 ...profileData,
@@ -121,8 +145,11 @@ const EditProfile = (props) => {
         return currentTag.length > 26;
     }
 
-    const addTag = () => {        
+    const addTag = () => {  
+        if (tags.length +1 > MAX_CATEGORIES) return;  // add sound effects?
+
         setTags((tags) => [...tags, currentTag]);
+        setcurrentTag("");
     }
 
     const deleteTag = (index) => {
@@ -164,13 +191,13 @@ const EditProfile = (props) => {
                             DEFAULT_BIO(profileData.name)}  <AiTwotoneEdit />
                     </p>
 
-                    <SocialMediaEdit ig={profileData.ig} fb={profileData.fb} handleChange={(e) => console.log(e)}/>
+                    <SocialMediaEdit ig={profileData.ig} fb={profileData.fb} handleChange={handleSMChange}/>
 
                     <div className={styles.tagsInputContainer}>
                         <Input 
                             value={currentTag} 
                             type="text" 
-                            placeholder="Categorías..." 
+                            placeholder="Agrega hasta 5 categorías..." 
                             onChange={handleTagInput}
                             invalid={validateCurrentTag()}>
                         </Input>

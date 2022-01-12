@@ -52,6 +52,7 @@ const VideosDisplay = (props) => {
 
     } else {
       console.log("Fetching all videos...");
+      setresultsLabel("Videos más recientes");
       const videos = await Video.getAllVideos();
       setVideos(videos);
       setLoading(false);
