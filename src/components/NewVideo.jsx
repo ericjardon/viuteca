@@ -144,7 +144,7 @@ export default function NewVideo() {
                         <Label style={{ textAlign: "left" }}>Ingresa el{' '}
                         <a className={refLink}
                         href="https://interesting-ground-e69.notion.site/Subir-un-video-a-Viuteca-5831b4fce9e4407ab730491c3f0c6241" 
-                        target="_blank">URL de embed</a>
+                        target="_blank" rel="noreferrer">URL de embed</a>
                         {' '}de tu video en este espacio</Label>
                     </div>
                     <div className={styles.rowClass}>

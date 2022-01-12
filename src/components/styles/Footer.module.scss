@@ -1,0 +1,38 @@
+@import './global', './shared.scss', './onboarding.scss';
+
+
+.container {
+    margin-top: 15px;
+    background-color: $dark;
+    color: $lightBg;
+    position: relative;
+    font-size: 12px;
+    min-height: 40px;
+    height:fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerContent {
+    text-align: center;
+    position:absolute;
+    display: contents;
+}
+
+.footerContent svg {
+    margin-left: 5px;
+}
+
+.footerText {
+    margin: 0;
+    padding: 10px 16px;
+}
+
+.waLink {
+    text-decoration: none;
+    color: $lightBg;
+    &:hover {
+        color: $cream;
+    }
+}
