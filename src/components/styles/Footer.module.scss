@@ -1,4 +1,4 @@
-@import './global', './shared.scss';
+@import './global', './shared.scss', './onboarding.scss';
 
 
 .container {
@@ -26,4 +26,13 @@
 
 .footerText {
     margin: 0;
+    padding: 10px 16px;
+}
+
+.waLink {
+    text-decoration: none;
+    color: $lightBg;
+    &:hover {
+        color: $cream;
+    }
 }

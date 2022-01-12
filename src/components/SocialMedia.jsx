@@ -17,12 +17,12 @@ export default function SocialMedia({fb, ig}) {
         {hasSM && (
             <div className={styles.container}>
                <span style={singleItemStyle}>
-                   <a target='_blank' className={styles.smLink} href={FB + fb}>
+                   <a target='_blank' rel="noreferrer" className={styles.smLink} href={FB + fb}>
                    <BsFacebook/>{' '}@{fb}
                    </a>
                 </span>
                <span style={singleItemStyle}>
-                   <a target='_blank' className={styles.smLink} href={IG + ig}>
+                   <a target='_blank' rel="noreferrer" className={styles.smLink} href={IG + ig}>
                    <GrInstagram/>{' '}@{ig}
                    </a>
                 </span> 
