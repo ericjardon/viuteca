@@ -1,8 +1,19 @@
-@import "./global", "./shared.scss";
+@import "./global", "./shared.scss", "./VideosDisplay.scss";
 
 .container {
     @include centeredContainer;
     justify-content: flex-start;
+}
+
+.containerEP {
+    @extend .container;
+    padding-bottom: 60px;
+}
+
+.PageTitle {
+    @extend .ResultsLabel;
+    margin: 30px auto 20px auto;
+    text-shadow: 2px 2px black;
 }
 
 .containerLoading {
@@ -13,7 +24,7 @@
     display: inline-flex;
     align-items: center;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     background-color: $lightBg;
     width: 50vw;
     border-radius: 10px;
@@ -23,7 +34,6 @@
 }
 
 .postedVideos {
-    width: calc(100vw - 140px);
     padding-bottom: 40px;
 }
 
@@ -61,10 +71,45 @@
     color: $cream;
 }
 
+.editBtn {
+    position:relative;
+}
+
+.editBtnContainer {
+    margin-top:10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/*--- Edit Profile Styles ---*/
+.editProfileCard {
+    @extend .profileCard;
+    margin-top: 5px;
+}
+
+.editableText {
+    font-style: italic;
+    color: #707070;
+}
+
+.tagsInputContainer{
+    @include flexBoxH;
+    margin-bottom: 16px;
+}
+
+.tagsInput {
+    width: 100em;
+}
+
+/*-- Responsive --*/
 
 @media (max-width: 768px) {
     .profileCard {
         flex-direction: column;
         width: calc(100% - 50px);
     }    
+
+    .nameAndDesc {
+        padding-left: 0;
+    }
 }

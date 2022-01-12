@@ -79,19 +79,40 @@ controller.getGroupById = async (emailId) => {
 }
 
 
-controller.updateGroup = async (groupId, newData) => {
-    // use Set to use previous id
-    const result = {}
+controller.updateGroup = async (groupData) => {
+    // Expects {id, name, desc*, tags*}
+    console.log("Received data in updateGroup", groupData);
 
-    // .set does not return anything
+    let newData = {
+        name: groupData.name.trim(),
+        name_lower: groupData.name.trim().toLowerCase(),
+    }
+
+    // TOFIX: Refactor the following; maybe add intermediate isEmpty() function
+    if (groupData.desc) {
+        newData.desc = groupData.desc.trim();
+    }
+    if (groupData.tags) {
+        newData.tags = groupData.tags;
+    }
+    if (groupData.fb) {
+        newData.fb = groupData.fb.trim();
+    }
+    if (groupData.ig) {
+        newData.ig = groupData.ig.trim();
+    }
+
+    console.log("sending new data to firebase", newData);
+
     try {
-        await db.collection("groups").doc(groupId)
-            .set(newData)
-        result.ok = true;
-        return result;
+        const groupRef = doc(db, 'groups', groupData.id);
+        await setDoc(groupRef, newData);
+        console.log("Firebase updated succesfully");
+        return { ok: true };
+
     } catch (error) {
-        result.error = error;
-        return result;
+        console.log("Firebase error:", error);
+        return { ok: false, error: error };
     }
 
 }
