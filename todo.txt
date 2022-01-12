@@ -1,7 +1,22 @@
 TODOS
 Front End:
-- Redesign the search bar
+
+== 12 jan ==
+- Edit Profile
+    - Add Instagram and Twitter Links
+    - Edit Profile sm Links CURRENT
 - Finish dateFormatter module
+- Add Back arrows everywhere
+- Add FAQ
+- Add Feedback Form
+
+
+- Prettiness
+    - Adjust background text size
+    - 
+
+- Restore password link
+- Redesign the search bar
 
 Back End:
 - Migrate back end to MySQL server for better search queries

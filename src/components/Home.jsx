@@ -63,7 +63,7 @@ export default function Home() {
                         <a 
                         className={styles.refLink}
                         href="https://interesting-ground-e69.notion.site/Subir-un-video-a-Viuteca-5831b4fce9e4407ab730491c3f0c6241" 
-                        target="_blank">código de embed</a>, 
+                        target="_blank">código embed</a>, 
                         Viuteca se encarga del resto ;)
                     </p>
                     <Link to={loggedIn ? "/videos" : "/register"}>

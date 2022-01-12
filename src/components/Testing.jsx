@@ -14,7 +14,7 @@ export default function Testing() {
 
     const [searchResults, setSearchResults] = useState([]);
 
-    const [videoForm, setVideoForm] = useState({
+    const [newVideo, setnewVideo] = useState({
         title: '',
         description: '',
         url: '',
@@ -56,7 +56,7 @@ export default function Testing() {
         console.log("submitting video")
 
         /* let video = {
-            ...videoForm,
+            ...newVideo,
             owner: auth.currentUser.email,
             likes: 0,
             dateAdded: Timestamp.fromDate(new Date()),

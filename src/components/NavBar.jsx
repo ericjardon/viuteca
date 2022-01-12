@@ -6,17 +6,18 @@ import {
     InputGroupButtonDropdown,
     Collapse, Button
 } from 'reactstrap';
-import { NavLink, Redirect, withRouter } from 'react-router-dom';
-import { useMediaSize } from "use-media-size";
-import fullLogo from '../assets/viutecaLogoComplete.png';
+import { NavLink, Redirect, withRouter } from 'react-router-dom'
+import { useMediaSize } from "use-media-size"
+import fullLogo from '../assets/viutecaLogoComplete.png'
 import authManager from '../firebase/authManager'
-import iconLogo from '../assets/viutecaLogo.png';
+import iconLogo from '../assets/viutecaLogo.png'
 import useLogin from '../hooks/useLogin'
-import mGlass from '../assets/mGlass.png';
-import { auth } from '../base';
+import mGlass from '../assets/mGlass.png'
+import {BiSearchAlt2} from 'react-icons/bi'
+import { auth } from '../base'
 
 const placeholders = {
-    'owner': 'Busca por grupo',
+    'owner': 'Busca por nombre de grupo',
     'title': 'Busca por título',
     'date': 'Busca por fecha: 2020-11-03'
 }
@@ -124,7 +125,7 @@ const NavHeader = (props) => {
                                                 <DropdownItem divider />
                                                 <DropdownItem>
                                                     <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
-                                                        AÑADIR VIDEO
+                                                        SUBIR VIDEO
                                                     </NavLink>
                                                 </DropdownItem>
                                                 <DropdownItem divider />
@@ -204,7 +205,7 @@ const NavHeader = (props) => {
                                         <DropdownItem divider />
                                         <DropdownItem>
                                             <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
-                                                AÑADIR VIDEO
+                                                SUBIR VIDEO
                                             </NavLink>
                                         </DropdownItem>
                                         <DropdownItem divider />
