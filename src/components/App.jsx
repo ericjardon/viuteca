@@ -12,6 +12,7 @@ import VideoDetail from './VideoDetail';
 import Group from './GroupProfile';
 import { useState } from 'react'
 import { QueryParamProvider } from 'use-query-params'
+import WhatsappFooter from './WhatsappFooter';
 
 function App() {
 
@@ -34,6 +35,8 @@ function App() {
             <Route path="/*" render={() => <Error404/>}/>
 
           </Switch>
+
+          <WhatsappFooter/>
         </QueryParamProvider>
       </Router>
     </div>
