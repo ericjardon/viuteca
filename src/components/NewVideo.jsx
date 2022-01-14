@@ -125,7 +125,7 @@ export default function NewVideo() {
                 <div className={styles.colClass}>
                     <p className={styles.PageTitle}>Nuevo Video</p>
                     <Form>
-                        <p className={styles.formSubtitle}>Titulo</p>
+                        <p className={styles.formSubtitle}>Título</p>
                         <div className={styles.rowClass}>
                             <Input placeholder="Título del video" name="title" onChange={handleOnChange}></Input >
                         </div>

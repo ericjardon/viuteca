@@ -13,7 +13,7 @@ import authManager from '../firebase/authManager'
 import iconLogo from '../assets/viutecaLogo.png'
 import useLogin from '../hooks/useLogin'
 import mGlass from '../assets/mGlass.png'
-import {BiSearchAlt2} from 'react-icons/bi'
+import { BiSearchAlt2 } from 'react-icons/bi'
 import { auth } from '../base'
 
 const placeholders = {
@@ -78,7 +78,7 @@ const NavHeader = (props) => {
                 <div>
                     <div className={styles.navBar}>
                         <Navbar style={{ padding: 0, backgroundColor: '#212121' }}>
-                            <NavbarBrand href='/videos'>
+                            <NavbarBrand href='/'>
                                 <img className={isMd ? styles.iconLogo : styles.fullLogo} src={isMd ? iconLogo : fullLogo} alt='ViutecaLogo' />
                             </NavbarBrand>
                             <div style={{ width: "45%" }}>
@@ -106,14 +106,14 @@ const NavHeader = (props) => {
                                         {loggedIn ?
                                             <DropdownMenu style={{ backgroundColor: '#212121' }}>
                                                 <DropdownItem>
-                                                    <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
-                                                        HOME
+                                                    <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
+                                                        SUBIR VIDEO
                                                     </NavLink>
                                                 </DropdownItem>
                                                 <DropdownItem divider />
                                                 <DropdownItem>
                                                     <NavLink style={{ color: 'white' }} className='nav-link' to='/videos'>
-                                                        VIDEOS
+                                                        HOME
                                                     </NavLink>
                                                 </DropdownItem>
                                                 <DropdownItem divider />
@@ -124,13 +124,6 @@ const NavHeader = (props) => {
                                                 </DropdownItem>
                                                 <DropdownItem divider />
                                                 <DropdownItem>
-                                                    <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
-                                                        SUBIR VIDEO
-                                                    </NavLink>
-                                                </DropdownItem>
-                                                <DropdownItem divider />
-
-                                                <DropdownItem>
                                                     <NavLink onClick={handleLogout} style={{ color: 'white' }} className='nav-link' to='/login'>
                                                         CERRAR SESIÓN
                                                     </NavLink>
@@ -140,26 +133,17 @@ const NavHeader = (props) => {
                                             <>
                                                 <DropdownMenu style={{ backgroundColor: '#212121' }}>
                                                     <DropdownItem>
-                                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
+                                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/videos'>
                                                             HOME
                                                         </NavLink>
                                                     </DropdownItem>
                                                     <DropdownItem divider />
-                                                    <DropdownItem>
-                                                        <NavLink style={{ color: 'white' }} className='nav-link' to='/videos'>
-                                                            VIDEOS
-                                                        </NavLink>
-                                                    </DropdownItem>
-                                                    <DropdownItem divider />
-
                                                     <DropdownItem>
                                                         <NavLink style={{ color: 'white' }} className='nav-link' to='/login'>
                                                             LOGIN GRUPOS
                                                         </NavLink>
                                                     </DropdownItem>
                                                     <DropdownItem divider />
-
-
                                                     <DropdownItem>
                                                         <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
                                                             REGISTARSE
@@ -186,14 +170,14 @@ const NavHeader = (props) => {
                                 <>
                                     <DropdownMenu style={{ backgroundColor: '#212121', width: '250px' }}>
                                         <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
-                                                HOME
+                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
+                                                SUBIR VIDEO
                                             </NavLink>
                                         </DropdownItem>
                                         <DropdownItem divider />
                                         <DropdownItem>
                                             <NavLink style={{ color: 'white' }} className='nav-link' to='/videos'>
-                                                VIDEOS
+                                                HOME
                                             </NavLink>
                                         </DropdownItem>
                                         <DropdownItem divider />
@@ -204,12 +188,11 @@ const NavHeader = (props) => {
                                         </DropdownItem>
                                         <DropdownItem divider />
                                         <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
-                                                SUBIR VIDEO
+                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
+                                                ACERCA DE
                                             </NavLink>
                                         </DropdownItem>
                                         <DropdownItem divider />
-
                                         <DropdownItem>
                                             <NavLink onClick={handleLogout} style={{ color: 'white' }} className='nav-link' to='/login'>
                                                 CERRAR SESIÓN
@@ -232,26 +215,23 @@ const NavHeader = (props) => {
                                 <>
                                     <DropdownMenu style={{ backgroundColor: '#212121', width: '250px' }}>
                                         <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
+                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/videos'>
                                                 HOME
                                             </NavLink>
                                         </DropdownItem>
                                         <DropdownItem divider />
                                         <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/videos'>
-                                                VIDEOS
+                                            <NavLink style={{ color: 'white' }} className='nav-link' to='/'>
+                                                ACERCA DE
                                             </NavLink>
                                         </DropdownItem>
                                         <DropdownItem divider />
-
                                         <DropdownItem>
                                             <NavLink style={{ color: 'white' }} className='nav-link' to='/login'>
                                                 LOGIN GRUPOS
                                             </NavLink>
                                         </DropdownItem>
                                         <DropdownItem divider />
-
-
                                         <DropdownItem>
                                             <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
                                                 REGISTARSE
