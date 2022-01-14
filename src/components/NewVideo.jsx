@@ -7,14 +7,15 @@ import { useHistory } from 'react-router-dom';
 import { Timestamp } from 'firebase/firestore'
 import { auth } from '../base'
 import { AiOutlineCheckCircle } from 'react-icons/ai'
-import {refLink} from './styles/Home.module.scss';
+import { refLink } from './styles/Home.module.scss';
 
 /* Component for the main screen with listed videos */
 export default function NewVideo() {
     const [video, setVideo] = useState({
         title: '',
-        durationMins: 15,
-        durationSecs: 15,
+        durationMins: 0,
+        durationSecs: 0,
+        durationHrs: 0,
         description: '',
         url: ''
     });
@@ -45,7 +46,7 @@ export default function NewVideo() {
         setUploadVideo(true);
     }
     const handleOnChange = (e) => {
-        if (e.target.name === 'durationMins' || e.target.name === 'durationSecs') {
+        if (e.target.name === 'durationMins' || e.target.name === 'durationSecs' || e.target.name === 'durationHrs') {
             setVideo(prev => ({
                 ...prev,
                 [e.target.name]: Number(e.target.value)
@@ -119,63 +120,68 @@ export default function NewVideo() {
     }
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.colClass}>
-                <Form>
-                    <div className={styles.rowClass}>
-                        <Label className={styles.labelClass}>Titulo</Label>
-                        <Input placeholder="Título del video" name="title" onChange={handleOnChange}></Input >
-                    </div>
-                    <div className={styles.rowClass}>
-                        <Label className={styles.labelClass}>Minutos duración</Label>
-                        <div className={styles.smallInput}><Input type="number" defaultValue="15" min="0" onChange={handleOnChange} name="durationMins"></Input></div>
-                        <Label className={styles.labelClass}>Segundos Duración</Label>
-                        <div className={styles.smallInput}><Input type="number" defaultValue="15" max="59" min="0" onChange={handleOnChange} name="durationSecs"></Input></div>
-                    </div>
-                    <div >
-                        <Label className={styles.titleClass}>Descripción</Label>
-                        <Input placeholder="Cuéntanos de qué trata..." type="textarea" onChange={handleOnChange} name="description"></Input>
-                    </div>
-                </Form>
-            </div>
-            <div className={styles.colClass}>
-                <Form>
-                    <div>
-                        <Label style={{ textAlign: "left" }}>Ingresa el{' '}
-                        <a className={refLink}
-                        href="https://interesting-ground-e69.notion.site/Subir-un-video-a-Viuteca-5831b4fce9e4407ab730491c3f0c6241" 
-                        target="_blank" rel="noreferrer">URL de embed</a>
-                        {' '}de tu video en este espacio</Label>
-                    </div>
-                    <div className={styles.rowClass}>
-                        <Label className={styles.labelClass}>Video</Label>
-                        <Input type="url" placeholder="Introduce el link." name="url" onChange={handleOnChange}></Input>
-                        <div style={{ marginLeft: "0px" }}><Button md={4} onClick={handleOnClick}>Subir</Button></div>
-                    </div>
-                    {uploadVideo &&
+        <div className={styles.container}>
+            <div className={styles.wrapper}>
+                <div className={styles.colClass}>
+                    <p className={styles.PageTitle}>Nuevo Video</p>
+                    <Form>
+                        <p className={styles.formSubtitle}>Título</p>
+                        <div className={styles.rowClass}>
+                            <Input placeholder="Título del video" name="title" onChange={handleOnChange}></Input >
+                        </div>
+                        <p className={styles.formSubtitle}>Duración</p>
+                        <div className={styles.rowClass}>
+                            <Label className={styles.labelClass}>Horas:</Label>
+                            <div className={styles.smallInput}><Input type="number" defaultValue="0" min="0" max="5" onChange={handleOnChange} name="durationHrs"></Input></div>
+                            <Label className={styles.labelClass}>Minutos:</Label>
+                            <div className={styles.smallInput}><Input type="number" defaultValue="0" min="0" max="59" onChange={handleOnChange} name="durationMins"></Input></div>
+                            <Label className={styles.labelClass}>Segundos:</Label>
+                            <div className={styles.smallInput}><Input type="number" defaultValue="0" min="0" max="59" onChange={handleOnChange} name="durationSecs"></Input></div>
+                        </div>
                         <div >
-                            <div className={styles.videoPlayer}>
+                            <p className={styles.formSubtitle}>Descripción</p>
+                            <Input placeholder="Cuéntanos de qué trata..." type="textarea" onChange={handleOnChange} name="description"></Input>
+                        </div>
+                    </Form>
+                </div>
+                <div className={styles.colClass}>
+                    <Form>
+                        <div>
+                            <p className={styles.formSubtitle}>Ingresa el{' '}
+                                <a className={refLink}
+                                    href="https://interesting-ground-e69.notion.site/Subir-un-video-a-Viuteca-5831b4fce9e4407ab730491c3f0c6241"
+                                    target="_blank" rel="noreferrer">URL de embed</a>
+                                {' '}de tu video en este espacio</p>
+                        </div>
+                        <div className={styles.rowClass}>
+                            <Label className={styles.labelClass}>Video</Label>
+                            <Input type="url" placeholder="Introduce el link." name="url" onChange={handleOnChange}></Input>
+                            <div style={{ marginLeft: "0px" }}><Button md={4} onClick={handleOnClick}>Subir</Button></div>
+                        </div>
+                        {uploadVideo &&
+                                <div className={styles.videoPlayer}>
                                 <iframe src={video.url} className={styles.videoPlayer} allow="autoplay"></iframe>
                             </div>
-                        </div>
-                    }
-                    <div>
-                        <Label style={{ textAlign: "left" }}>Sube una imagen de vista previa si quieres.</Label>
-                    </div>
-                    <div className={styles.rowClass}>
-                        <Label className={styles.labelClass} >Imagen {file ? <AiOutlineCheckCircle /> : ""}</Label>
-                        <Input type="file" placeholder="Introduce el link." onChange={handleFileInput} name="img"></Input>
-                    </div>
-                    <div >
+                        }
                         <div>
-                            <Button color="primary" onClick={tryCreate}>
-                            {showSpinner? <Spinner color="light" children="" /> : "Publicar"}
-                            </Button>
+                            <p className={styles.formCaption}>Opcionalmente, sube una imagen de vista previa.</p>
                         </div>
-                    </div>
-                </Form>
-                {(showAlert && alert)}
+                        <div className={styles.rowClass}>
+                            <Label className={styles.labelClass} >Imagen {file ? <AiOutlineCheckCircle /> : ""}</Label>
+                            <Input type="file" placeholder="Introduce el link." onChange={handleFileInput} name="img"></Input>
+                        </div>
+                        <div >
+                            <div>
+                                <Button color="primary" onClick={tryCreate}>
+                                    {showSpinner ? <Spinner color="light" children="" /> : "Publicar"}
+                                </Button>
+                            </div>
+                        </div>
+                    </Form>
+                    {(showAlert && alert)}
+                </div>
             </div>
         </div>
+
     )
 }

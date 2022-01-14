@@ -1,36 +1,60 @@
-@import './global', './shared.scss';
+@import './global', './shared.scss', './VideosDisplay.scss';
 
 .videoPlayer {
-    width: 100%;
-    height: auto;
+    max-width: 560px;
+    max-height: 420px;
+    width: 60vw;
+    height: 45vw;
+    min-width: 210px;
+    min-height: 165px;
+    margin:auto;
+}
+
+.container {
+    @include centeredContainer;
 }
 
 .wrapper{
-    width: 90%;
     height: 70%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    margin: 5% 5%;
-    background-color: $cream;
+    background-color: $lightBg;
     border-radius: 25px;
+    width: 691px;
+    margin: 45px auto;
+}
+.PageTitle {
+    @extend .ResultsLabel;
+    margin: 40px auto 20px auto;
+    color: black;
+    text-shadow: 2px 2px white;
 }
 .colClass{
     min-height:100%;
-    width: 45%;
-    margin: 5%;
+    padding: 0 0 7% 0;
+    margin: auto;
 }
 .rowClass{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    margin-bottom: 15%;
+    margin-bottom: 40px;
+}
+.formSubtitle {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
 }
 .labelClass{
     font-weight: bold;
     text-align: left;
     margin-right: 20px;
+}
+.formCaption {
+    text-align: left;
+    margin-top: 30px;
 }
 .titleClass{
     font-weight: bold;
@@ -38,17 +62,30 @@
     text-align: left;
 }
 .smallInput{
-    width:70px;
+    width:60px;
+    margin-right: 12px;
 }
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
     .wrapper {
-        flex-direction: column;
+        margin: 5% 5%;
     }
     .colClass{
         width: 90%;
     }
     .rowClass{
-        flex-direction: column;
         margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 425px) {
+    .wrapper {
+        width: 90%;
+    }
+    .rowClass {
+        flex-direction: column;
+    }
+    .smallInput{
+        width:50%;
+        margin-right: 0;
     }
 }

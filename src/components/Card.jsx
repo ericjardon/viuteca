@@ -7,7 +7,10 @@ import defaultImg from '../assets/default_video.PNG'
 function Card(props) {
   const { project } = props;
   const { data } = project;
-  const videoLength = (data.durationMins || '0') + ':' + String((data.durationSecs || '0')).padStart(2, '0')
+  //   const videoLength = 
+
+  const videoLength = data.durationHrs ? (data.durationHrs + ':' + String((data.durationMins || '0')).padStart(2,'0') + ':' + String((data.durationSecs || '0')).padStart(2, '0') )
+  : (data.durationMins || '0') + ':' + String((data.durationSecs || '0')).padStart(2, '0')
 
   const date = data.dateAdded.toDate();
   let options = { year: 'numeric', month: 'short', day: 'numeric' };
