@@ -1,20 +1,28 @@
 TODOS
-Front End:
 
-== 12 jan ==
-- Add Feedback Form DONE
-- Hide number?
+NEXT
+
+== 17 jan ==
+- Finish autocomplete for Groups
+- Redesign searchbar
 - Finish dateFormatter module
 - Add Back arrows everywhere
-- Add FAQ
+- Restore Password Link?
+- Style: adjust background text
 
+**MySQL back end**
+- For category-tag filtering
+- Group name filtering
+- Date sorting
+- Semester grouping
+- Text in title filtering
 
-- Prettiness
-    - Adjust background text size
-    - 
+BACKLOG
 
-- Restore password link
-- Redesign the search bar
+- Búsqueda por categorías del Perfil
+- Un nuevo searchbar, con autocompletado y filtros: categorías, mes, semestre, nombre de grupo
+- Limitar la lista de Categorías
+
 
 Back End:
 - Migrate back end to MySQL server for better search queries
