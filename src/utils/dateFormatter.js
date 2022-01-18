@@ -29,13 +29,13 @@ PERIODS = {
 }
 
 DEFAULT = {
-    year: (new Date.getFullYear().toString()),
-    month: (new Date.getFullMonth() +1).toString().padStart(2, '0'),
-    date: (new Date.getDate()).toString().padStart(2,'0'),
+    year: (new Date().getFullYear().toString()),
+    month: (new Date().getMonth() +1).toString().padStart(2, '0'),
+    date: (new Date().getDate()).toString().padStart(2,'0'),
 }  // for iso strings only
 
 const PATTERNS = [
-    /(\d{1,2})? *(de +)?([a-z]{1,10}) *(de +)?(\d{4})/, // full date
+    /(\d{1,2})?( de )? *(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)\w{0,8}( de )? *(\d{4})?/, // full date
     /(\d{4})/,  // single year
     /([a-z]{1,10})/,  // single month
     /([a-z]{1,10})[ -]+([a-z]{1,10}) ?(\d{2,4})?/,  // agosto - diciembre 2021
@@ -49,7 +49,7 @@ const processMatch = (matchObj, index) => {
     if (index==0) {
         // full date
         return {
-            date: matchObj[1],
+            date: matchObj[1].padStart(2, '0'),
             month: matchObj[3],
             year: matchObj[5],
         }
@@ -69,7 +69,6 @@ const processMatch = (matchObj, index) => {
     else if (index == 3) {
     }
     else if (index == 4) {
-
     }
     return null;
 }
@@ -103,14 +102,23 @@ const fmtDate = (searchTerm) => {
 
     return toISODateStr(dateParts)
 
-    return null
 }
 
 const toISODateStr = (data) => {
+    // receives an obj with optionals {year, month, date}
     // returns a string yyyy-mm-dd
+    console.log("data", data);
     let dt = ''
     
-    dt += (data.year || DEFAULT[year])
-    dt += (data.month || DEFAULT[month])
+    dt += (data.year || DEFAULT['year'])
+    dt += '-'
+    dt += (getMonthNumber(data.month) || DEFAULT['month'])
+    dt += '-'
+    dt += (data.date || DEFAULT['date']);
+    console.log("Converted date", dt);
 
+    return dt;
 }
+
+
+fmtDate('5 de Agosto');
