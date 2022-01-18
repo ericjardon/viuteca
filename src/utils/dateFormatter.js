@@ -8,7 +8,7 @@ The result is passed to a function fmt query to send to the MySQL back end
 
 */
 
-MONTHS = {
+const MONTHS = {
     'ene':'01',
     'feb':'02',
     'mar':'03',
@@ -23,12 +23,8 @@ MONTHS = {
     'dic':'12'
 }
 
-PERIODS = {
-    'ad': [08,12],
-    'fj': [02, 06],
-}
 
-DEFAULT = {
+const DEFAULT = {
     year: (new Date().getFullYear().toString()),
     month: (new Date().getMonth() +1).toString().padStart(2, '0'),
     date: (new Date().getDate()).toString().padStart(2,'0'),
@@ -41,6 +37,8 @@ const PATTERNS = [
     /([a-z]{1,10})[ -]+([a-z]{1,10}) ?(\d{2,4})?/,  // agosto - diciembre 2021
     /([a-z]{2}\d{2})/  // AD21
 ]
+
+const ISO_DATE = /\d{4}-\d{2}-\d{2}/
 
 const processMatch = (matchObj, index) => {
     // returns the parts of date given the match {year, month, day}
@@ -85,7 +83,13 @@ const getMonthNumber = (token) => {
     return null
 }
 
-const fmtDate = (searchTerm) => {
+export const fmtDate = (searchTerm) => {
+
+    if (ISO_DATE.test(searchTerm)){
+        console.log("Already in ISO", searchTerm)
+        return searchTerm;
+    } 
+
     searchTerm = searchTerm.trim().toLowerCase();
     // Scan regex by regex, stop on first success
     let match;
@@ -119,6 +123,3 @@ const toISODateStr = (data) => {
 
     return dt;
 }
-
-
-fmtDate('5 de Agosto');

@@ -25,4 +25,5 @@ BACKLOG
 
 
 Back End:
+- Date range queries
 - Migrate back end to MySQL server for better search queries

@@ -7,6 +7,7 @@ import { collection,
     Timestamp
  } from 'firebase/firestore'
 import Video from './videos'
+import {fmtDate} from '../utils/dateFormatter'
 
 /* COLLECTION REFERENCES */
 const videos = collection(db, "video");
@@ -69,6 +70,7 @@ const searchVideosByOwner = async (ownerName) => {
 const searchVideosByDateAdded = async (dateString) => {
     // Assumes date format is YYYY-MM-DD
     //dateString= "YYYY-MM-DDTHH:mm:ss. sssZ"
+    console.log("Date received", dateString);
     let dateAdded = Timestamp.fromDate(new Date(dateString))
 
     const q = query(videos, where("dateAdded", "==", dateAdded));
@@ -98,7 +100,7 @@ export const searchVideo = async (searchType, searchTerm) => {
     }
 
     else if (searchType === "date") {
-        return await searchVideosByDateAdded(searchTerm);
+        return await searchVideosByDateAdded(fmtDate(searchTerm));
     }
 
     // default
