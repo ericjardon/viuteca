@@ -70,9 +70,9 @@ const searchVideosByOwner = async (ownerName) => {
 const searchVideosByDateAdded = async (dateString) => {
     // Assumes date format is YYYY-MM-DD
     //dateString= "YYYY-MM-DDTHH:mm:ss. sssZ"
-    console.log("Date received", dateString);
     let dateAdded = Timestamp.fromDate(new Date(dateString))
-
+    console.log("Searching by dateAdded");
+    console.dir(dateAdded.toDate())
     const q = query(videos, where("dateAdded", "==", dateAdded));
     const querySnapshot = await getDocs(q);
 

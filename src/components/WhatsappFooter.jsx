@@ -8,7 +8,6 @@ import { encodeToUrl } from '../utils/text';
 const WhatsappFooter = (props) => {
 
     const { location, history } = props;
-    console.log("Whatsapp", WA_URL);
 
     const show = location.pathname !== '/login' && location.pathname !== '/register'
     if (show)

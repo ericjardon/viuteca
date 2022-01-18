@@ -55,7 +55,6 @@ export default function Login(props) {
 
         // Successful login
         if (ok) {
-            console.log("Successful login");
             setTimeout(() => setRedirect(true), 1000);
         }
         // Wrong credentials

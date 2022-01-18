@@ -47,7 +47,6 @@ const NavHeader = (props) => {
 
     const handleDropdown = (e) => {
         let type = e.target.value;
-        console.log("Search type", type);
         setsearchType(type);
         setplaceholderSearch(placeholders[type]);
     }
