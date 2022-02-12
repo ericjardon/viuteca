@@ -18,7 +18,9 @@ NEXT
 - Text in title filtering
 
 BACKLOG
-
+- Rediseño Search
+- Página de Search
+- Búsqueda por semestres
 - Búsqueda por categorías del Perfil
 - Un nuevo searchbar, con autocompletado y filtros: categorías, mes, semestre, nombre de grupo
 - Limitar la lista de Categorías
