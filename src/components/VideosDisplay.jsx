@@ -23,12 +23,16 @@ const VideosDisplay = (props) => {
     searchType: withDefault(StringParam, ""),
   })
 
+
   const [resultsLabel, setresultsLabel] = useState("Videos más recientes")
 
   const { searchTerm, searchType } = query;
 
+  const resultMessage = () => `No se encontraron videos con ${names[searchType]}: "${searchTerm}" 😭`
+
   async function fetchData() {
     console.log("Query: ", query)
+    setLoading(true);
     if (searchTerm !== "" && searchType !== "") {
       console.log("Fetching videos from search:", searchTerm);
       const videos = await searchVideo(searchType, searchTerm);
@@ -70,7 +74,7 @@ const VideosDisplay = (props) => {
   )
 
   return (
-    <div className="CenteredContainer">
+    <div className="CenteredContainerFull">
       <p className="ResultsLabel">
         {resultsLabel}
       </p>
@@ -80,7 +84,7 @@ const VideosDisplay = (props) => {
             <Card key={index} project={project} index={index} />
           ))
         ) : (
-          <h1>No se encontraron videos con {names[searchType]}: "{searchTerm}" 😭</h1>
+          <h1>{loading ? <Spinner children="" style={{ width: '15rem', height: '15rem' }} /> : resultMessage()}</h1>
         )}
 
       </div>

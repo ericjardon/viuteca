@@ -14,6 +14,11 @@
     flex-direction: column;
 }
 
+.CenteredContainerFull {
+    @extend .CenteredContainer;
+    min-height: calc(100vh - 110px);
+}
+
 .ResultsLabel {
     margin: 30px auto 20px 100px;
     font-size: 32px;
@@ -33,6 +38,10 @@
     .VideosDisplay{
         flex-direction: row;
     }
+    .ResultsLabel {
+        text-align: left;
+        margin: 30px 0 20px 35px;
+    }
 }
 @media (max-width: 426px) {
     .VideosDisplay{
@@ -41,7 +50,7 @@
     .ResultsLabel {
         width: calc(100% - 50px);
         text-align: left;
-        margin: 30px 0 20px 35px;
+        //margin: 30px 0 20px 35px;
         font-size: 28px;
         font-weight: 600;
     }
