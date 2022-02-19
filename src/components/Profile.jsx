@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import md5 from 'md5'
-import styles from './styles/GroupProfile.module.scss'
+import styles from './styles/Profile.module.scss'
 import {Spinner, Button} from 'reactstrap'
 import Group from '../firebase/groups'
 import Tag from './Tag'
@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { DEFAULT_BIO, EXAMPLE_TAGS } from '../utils/constants'
 
 
-const GroupProfile = (props) => {
+const Profile = (props) => {
 
     const [profileData, setprofileData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -108,4 +108,4 @@ const getGravatarURL = (email) => {
     return `https://gravatar.com/avatar/${md5(email)}?s=128`;
 }
 
-export default GroupProfile;
+export default Profile;

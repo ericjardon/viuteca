@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import md5 from 'md5'
 import './styles/VideosDisplay.scss'
-import styles from './styles/GroupProfile.module.scss'
+import styles from './styles/Profile.module.scss'
 import { Spinner, Button, Input } from 'reactstrap'
 import Group from '../firebase/groups'
 import Tag from './Tag'
