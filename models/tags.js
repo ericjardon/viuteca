@@ -1,0 +1,1 @@
+/* Module for making calls to /tags/ endpoints in Viuteca API */
