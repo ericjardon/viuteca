@@ -7,6 +7,7 @@ import LikeButton from './LikeButton'
 import { Link, Redirect } from 'react-router-dom'
 import { MdDeleteSweep } from 'react-icons/md'
 import { auth } from '../base'
+import {uids} from '../utils/ids_temp';
 
 export default function VideoDetail(props) {
 
@@ -99,7 +100,7 @@ export default function VideoDetail(props) {
 
     if (redirect) {
         return (
-            <Redirect to={video.owner ? `/p/${video.owner}` : '/videos'}/>
+            <Redirect to={video.owner ? `/p/${uids[video.owner]}` : '/videos'}/>
         )
     }
 
@@ -112,7 +113,7 @@ export default function VideoDetail(props) {
                 <div className={styles.videoInfo}>
                     <div className={styles.titleOwner}>
                         <p className={styles.videoTitle}>{video.title}</p>
-                        <Link to={'/p/' + video.owner} className={styles.linkToOwner}>
+                        <Link to={'/p/' + uids[video.owner]} className={styles.linkToOwner}>
                             <p className={styles.videoOwner}>{videoOwner}</p>
                         </Link>
                     </div>

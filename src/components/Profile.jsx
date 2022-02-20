@@ -10,10 +10,11 @@ import { auth } from '../base'
 import { AiTwotoneEdit } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import { DEFAULT_BIO, EXAMPLE_TAGS } from '../utils/constants'
-
+import {getProfile} from '../models/profiles'
+import {getProfileTags} from '../models/tags'
+import {emails} from '../utils/ids_temp';
 
 const Profile = (props) => {
-
     const [profileData, setprofileData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [tags, setTags] = useState(["Grupo Estudiantil", "ITESM"])
@@ -25,20 +26,32 @@ const Profile = (props) => {
 
     // FETCH THE GROUP PROFILE DATA FROM URL
     useEffect(() => {
-        const groupId = props.match.params.id;
-        console.log("Group id", groupId);
+        const groupUid = props.match.params.id;  // holds fb uid
+        console.log("Group id", groupUid);
+        const email = emails[groupUid];
+
         async function fetchData() {
-            const group = await Group.getGroupById(groupId);
+            const group = await Group.getGroupById(email);
+            try {
+                console.log("UID", group.uid)
+                getProfile(group.uid).then(res => {
+                    console.log('after getprofile returns, pg profile:')
+                    console.dir(res);
+                });
+            } catch (err) {
+                console.log("Error fetching profile");
+            }
+
             if (group.error) {
                 setLoading(false)
                 seterrorNotFound(group.error);
                 return
             }
-            group.id = groupId;
+            group.id = email;
             setprofileData(group);
             setLoading(false);
             console.log("Profile Data:\n", group)
-            setProfilePicURL(getGravatarURL(groupId));
+            setProfilePicURL(getGravatarURL(email));
 
             if (group.tags) {
                 setTags(group.tags);
@@ -47,7 +60,7 @@ const Profile = (props) => {
             const currentUser = auth.currentUser
             if (currentUser) {
                 console.log("Is profile owner");
-                setisOwner(groupId == currentUser.email)
+                setisOwner(email == currentUser.email)
             }
         }
 
@@ -86,7 +99,7 @@ const Profile = (props) => {
                     </p>
                     <SocialMedia ig={profileData.ig} fb={profileData.fb}/>
                     <div className={styles.categories}>
-                        {tags.map(t => <Tag>{t}</Tag>)}
+                        {tags.map((t, i) => <Tag key={i}>{t}</Tag>)}
                     </div>
                     {isOwner && (<div className={styles.editBtnContainer}>
                         <Link to={profileData.id ? `/p/edit/${profileData.id}` : ''}>
