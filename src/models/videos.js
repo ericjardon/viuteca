@@ -1,1 +1,1 @@
-/* Module for making calls to /videos/ endpoints in Viuteca API */
+/* Module for making requests to /videos/ endpoints in Viuteca API */

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Card from './Card';
-import './styles/VideosDisplay.scss';
-import styles from './styles/VideoDetail.module.scss';
-import { Spinner } from "reactstrap";
+import React, { useState, useEffect } from "react"
+import Card from './Card'
+import './styles/VideosDisplay.scss'
+import styles from './styles/VideoDetail.module.scss'
+import { Spinner } from "reactstrap"
 import Video from '../firebase/videos'
-
+import {emails} from '../utils/ids_temp'
 /* VIDEO DISPLAY COMPONENT FOR PROFILE
     -- Receives ownerEmail for query through props
     -- Only requires owner email Id and owner Name
@@ -13,9 +13,10 @@ const VideosDisplay = (props) => {
 
     const [loading, setLoading] = useState(true);
     const [videos, setVideos] = useState({});
-    const { ownerEmail, ownerName } = props;
+    const { ownerUid, ownerName } = props;
 
     async function fetchData() {
+        let ownerEmail = emails[ownerUid];
         const videos = await Video.getVideosFromOwner(ownerEmail);
         setVideos(videos);
         setLoading(false);

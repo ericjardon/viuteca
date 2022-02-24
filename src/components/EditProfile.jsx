@@ -11,6 +11,8 @@ import { DEFAULT_BIO, MAX_CATEGORIES } from '../utils/constants'
 import { Redirect } from 'react-router'
 import {auth} from '../base'
 import { equalSets } from '../utils/math'
+import {getProfile, updateProfile} from '../models/profiles'
+import {emails} from '../utils/ids_temp'
 
 // import ProfileVideos from './ProfileVideos'
 
@@ -19,7 +21,8 @@ const EditProfile = (props) => {
     const [profileData, setprofileData] = useState({
         id: null,
         name: null,
-        desc: null,
+        email: null,
+        description: null,
         fb: null,
         ig: null,
     });
@@ -41,35 +44,62 @@ const EditProfile = (props) => {
 
 
     useEffect(() => {
-        const groupId = props.match.params.id;
-        console.log("Group id", groupId);
+        const groupUid = props.match.params.id;
+        //const email = emails[groupUid];
         async function fetchData() {
-            const group = await Group.getGroupById(groupId);
-            console.log("Profile Data:\n", group)
+            getProfile(groupUid).then(data => {
+                console.log('PG Profile:\n', data)
+                setprofileData(data);
+                setOriginalData(data);
+                setLoading(false);
 
-            if (group.error) {
-                setLoading(false)
-                seterrorNotFound(group.error);
-                return
-            }
-            group.id = groupId;
-            setprofileData(group);
-            setOriginalData(group);
+                setProfilePicURL(getGravatarURL(data.email));
+    
+                if (data.tags) {
+                    setTags(data.tags);
+                    setOriginalTags(data.tags);
+                }
 
-            setLoading(false);
-            setProfilePicURL(getGravatarURL(groupId));
-            const currentUser = auth.currentUser
-            if (currentUser) {
-                setisOwner(groupId == currentUser.email)
-            } else {
-                setisOwner(false);
-            }
-
-            if (group.tags) {
-                setTags(group.tags);
-                setOriginalTags(group.tags);
-            } 
+                const currentUser = auth.currentUser
+                if (currentUser) {
+                    console.log("Is profile owner");
+                    setisOwner(data.email == currentUser.email)
+                }
+            }).catch((err) => {
+                console.log('error fetching profile');
+                seterrorNotFound(JSON.stringify(err));
+                setLoading(false);
+            });
+    
         }
+
+        // async function fetchData() {
+            // const group = await Group.getGroupById(groupId);
+        //     console.log("Profile Data:\n", group)
+
+        //     if (group.error) {
+        //         setLoading(false)
+        //         seterrorNotFound(group.error);
+        //         return
+        //     }
+        //     group.id = groupId;
+        //     setprofileData(group);
+        //     setOriginalData(group);
+
+        //     setLoading(false);
+        //     setProfilePicURL(getGravatarURL(groupId));
+        //     const currentUser = auth.currentUser
+        //     if (currentUser) {
+        //         setisOwner(groupId == currentUser.email)
+        //     } else {
+        //         setisOwner(false);
+        //     }
+
+        //     if (group.tags) {
+        //         setTags(group.tags);
+        //         setOriginalTags(group.tags);
+        //     } 
+        // }
 
         fetchData();
     }, []);
@@ -81,6 +111,8 @@ const EditProfile = (props) => {
     }
 
     const handleOnChange = (event) => {
+        console.log('Updated profileData');
+        console.log(profileData);
         setprofileData({
             ...profileData,
             [event.target.id]: event.target.textContent,
@@ -98,48 +130,6 @@ const EditProfile = (props) => {
         setcurrentTag(event.target.value);
     }
 
-    const onSave = async () => {
-        setShowSpinner(true);
-        if (dataDidChange(originalData, profileData) || tagsDidChange(originalTags, tags)) {
-
-            // remove @ for fb and ig vals
-            if (!profileData.name) {
-                console.log("El nombre no puede estar vacío.")
-                setShowSpinner(false);
-                return;
-            }
-
-            if (profileData.fb && profileData.fb.startsWith('@')) {
-                profileData.fb = profileData.fb.slice(1);
-            }
-            if (profileData.ig && profileData.ig.startsWith('@')) {
-                profileData.ig = profileData.ig.slice(1);
-            }
-
-            const data = {
-                ...profileData,
-                tags
-            }
-
-            const res = await Group.updateGroup(data);
-            if (res.ok) {
-                console.log("Updated Succesfully!");
-                // redirect
-                setInterval(() => {
-                    setShowSpinner(false);
-                    setRedirect(true)
-                }, 1000);
-
-            } else {
-                console.log("Something went wrong", res.error);
-                setShowSpinner(false);
-            }
-        } else {
-            console.log("No data to update");
-            setShowSpinner(false);
-        }
-    }
-
     
     const validateCurrentTag = () => {
         return currentTag.length > 26;
@@ -155,6 +145,49 @@ const EditProfile = (props) => {
     const deleteTag = (index) => {
         console.log("deleting", tags[index]);
         setTags(tags.filter((tag, i) => i !== index));
+    }
+
+    const onSave = async () => {
+        console.log("profile to submit:");
+        console.dir(profileData);
+        console.log(tags);
+        setShowSpinner(true);
+
+        if (dataDidChange(originalData, profileData) || tagsDidChange(originalTags, tags)) {
+            if (!profileData.name) {
+                console.log("El nombre no puede estar vacío.")
+                setShowSpinner(false);
+                return;
+            }
+
+            // remove @ for fb and ig vals
+            if (profileData.fb && profileData.fb.startsWith('@')) {
+                profileData.fb = profileData.fb.slice(1);
+            }
+            if (profileData.ig && profileData.ig.startsWith('@')) {
+                profileData.ig = profileData.ig.slice(1);
+            }
+
+            // Overwrite previous tags
+            profileData.tags = tags;
+
+            updateProfile(profileData).then(result => {
+                console.log(result);
+                // redirect on succesful update
+                setInterval(() => {
+                    setShowSpinner(false);
+                    setRedirect(true)
+                }, 1000);
+
+            }).catch(err => {
+                console.log("Something went wrong", err);
+                setShowSpinner(false);            
+            })
+
+        } else {
+            console.log("No data to update");
+            setShowSpinner(false);
+        }
     }
 
     if (loading) return (
@@ -186,8 +219,8 @@ const EditProfile = (props) => {
                 </div>
                 <div className={styles.nameAndDesc}>
                     <p contenteditable="True" id="name" onBlur={handleOnChange} className={styles.profileName}>{profileData.name}  <AiTwotoneEdit /></p>
-                    <p contenteditable="True" id="desc" onBlur={handleOnChange} className={styles.profileDesc}>
-                        {profileData.desc ||
+                    <p contenteditable="True" id="description" onBlur={handleOnChange} className={styles.profileDesc}>
+                        {profileData.description ||
                             DEFAULT_BIO(profileData.name)}  <AiTwotoneEdit />
                     </p>
 
