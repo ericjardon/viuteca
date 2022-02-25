@@ -9,13 +9,24 @@ $dark: #212121;
 $cream: #D9CAB3;
 $lightBg: #e7e7e7;
 
+// New Palette
+$dominant1: #FEFFFF;
+$dominant2: #17252A; // 212121;
+$primary: #3AAFA9;
+$darkPrimary: #2b7a78;
+$lightPrimary: #DEF2F1;
+$secondary: #0074E1;
 
+// buttons shade
+$shadeDarkPrimary: rgb(50, 130, 135); //rgb(43, 122, 120);
+$shadePrimary:rgb(74, 182, 175);//rgb(58, 175, 169);
+
+$secondary2: #77a6f7;
 // reactstrap
 $dangerText: #721c24;
 
-
 // GEEB palette colors
-$primary: #90caf9;
+// $primaryBlue: #90caf9;
 $primaryText: #0d47a1;
 $secundary: #80cbc4;
 $secundaryText: #004d40;

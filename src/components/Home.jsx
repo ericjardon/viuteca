@@ -1,14 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom'
+import { Button } from 'reactstrap'
 import { auth } from '../base'
-import styles from './styles/Home.module.scss';
-import illustration1 from '../assets/ill1-cuate.png';
-import illustration2 from '../assets/ill2-cuate.png';
-import illustration3 from '../assets/webinar-blue.png'
+import styles from './styles/Home.module.scss'
+import illustration1 from '../assets/ill1-cuateb.png'
+import illustration2 from '../assets/ill2-cuatec.png'
+import illustration3 from '../assets/ill3-cuateb.png'
 import { BsArrowRight } from 'react-icons/bs'
 import { BiCheck } from 'react-icons/bi'
 import useLogin from '../hooks/useLogin'
+import VButton from './VButton';
 
 /* Component for the main screen with listed videos */
 // <a href="https://storyset.com/web">Web illustrations by Storyset</a>
@@ -27,8 +28,12 @@ export default function Home() {
                         para que no te pierdas de nada. <br /> Encuentra talleres, conferencias, presentaciones ¡y más!
                     </p>
                     <Link to="/videos">
-                        <Button className={styles.StartButton} color="primary">Ir a Viuteca <BsArrowRight /></Button>
+                        {/* <VButton color={"#0074E1"}>Ir a Viuteca <BsArrowRight /></VButton> */}
+                        <VButton color='primary' className={styles.StartButton}>Ir a Viuteca <BsArrowRight /></VButton>
                     </Link>
+                    {/* <Link to="/videos">
+                        <Button className={styles.StartButton} color="primary">Ir a Viuteca <BsArrowRight /></Button>
+                    </Link> */}
                 </div>
                 <div className={styles.imageContainer1}>
                     <img className={styles.ill1} src={illustration1} alt="" />
@@ -67,7 +72,8 @@ export default function Home() {
                         Viuteca se encarga del resto ;)
                     </p>
                     <Link to={loggedIn ? "/videos" : "/register"}>
-                        <Button className={styles.RegisterButton}>Regístrate <BiCheck/></Button>
+                        {/* <Button className={styles.RegisterButton}>Regístrate <BiCheck/></Button> */}
+                        <VButton className={styles.RegisterButton}>Regístrate <BiCheck/></VButton>
                     </Link>
                 </div>
                 <div className={styles.imageContainer3}>

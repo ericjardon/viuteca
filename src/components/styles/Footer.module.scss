@@ -2,8 +2,8 @@
 
 
 .container {
-    margin-top: 15px;
-    background-color: $dark;
+    margin-top: 0px; // 15px
+    background-color: $dominant2;
     color: $lightBg;
     position: relative;
     font-size: 12px;
@@ -33,6 +33,6 @@
     text-decoration: none;
     color: $lightBg;
     &:hover {
-        color: $cream;
+        color: $darkPrimary;
     }
 }

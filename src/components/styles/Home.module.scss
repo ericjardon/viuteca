@@ -7,8 +7,8 @@
 
 .firstSection {
     @include flexBoxH;
+    background-color: $primary;
     position: relative;
-
 }
 
 .secondSection {
@@ -19,7 +19,7 @@
 }
 .thirdSection {
     @include flexBoxH;
-    background-color: $dark;
+    background-color: $dominant2;
     position: relative;
 }
 
@@ -61,6 +61,7 @@
     margin-bottom: 32px;
 }
 
+
 .StartButton {
     border-radius: 10px !important;
     text-decoration: none !important;
@@ -85,13 +86,13 @@
 
 .HeadLine2 {
     text-align: left;
-    color: $green; //$primary;
+    color: $secondary; //$primary;
     font-size: 52px;
     margin-bottom: 45px;
     margin-left: 0;
     width: 560px;
     font-weight: bold;
-    text-shadow: 3px 3px $dark;//$primaryText;
+    text-shadow: 3px 3px $dark;
     z-index: 100;
 
 }
@@ -106,25 +107,28 @@
 
 .HeadLine3 {
     text-align: left;
-    color: $primary; //$primary;
+    color: #FFEFFF; 
     font-size: 52px;
     margin-top: 45px;
     margin-bottom: 45px;
     margin-left: 60px;
     width: 560px;
     font-weight: bold;
-    text-shadow: 3px 3px white;//$primaryText;
+    text-shadow: 3px 3px $primary;
     z-index: 100;
 
 }
 
 .attribution {
-    background-color: $dark;
+    background-color: $dominant2;
     text-align: right;
     a {
         text-decoration: underline;
         color: grey;
         margin-right: 10px;
+        &:hover {
+            color: grey;
+        }
     }
 }
 
@@ -201,9 +205,9 @@
 
 .refLink {
     text-decoration: none;
-    color: #d63384;
+    color: $secondary;
     &:hover {
-        color: #d63384;
+        color: $secondary;
         text-decoration: underline;
     }
 }
