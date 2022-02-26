@@ -57,7 +57,7 @@ p.videoOwner {
 }
 
 .descButton {
-    color: $primary;
+    color: $coolcoral;
     font-weight: 600;
     text-decoration: underline;
     cursor: pointer;
@@ -80,7 +80,10 @@ p.videoOwner {
 
 .linkToOwner {
     text-decoration: none;
-    color: black;
+    color: $paragraph;
+    &:hover {
+        color: $coolbleen;
+    }
 }
 
 

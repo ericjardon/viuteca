@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import clapFill from '../assets/clapping_green.png'
+import clapFill from '../assets/clapping-fill.png'
 import clapVoid from '../assets/clapping_black.png'
 import styles from './styles/LikeButton.module.scss'
 
@@ -27,7 +27,7 @@ export default function LikeButton(props) {
     }
 
     const source = clicked ? clapFill : clapVoid;
-    const countColor = clicked ? '#6D9886' : '#000'
+    const countColor = clicked ? '#078080' : '#000' // '#6D9886' : '#000' prev palette
 
     return (
         <span className={styles.buttonContainer}>
