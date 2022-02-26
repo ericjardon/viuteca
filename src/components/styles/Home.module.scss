@@ -238,7 +238,7 @@
         width: auto;
         margin: 24px 0;
         text-align: center;
-        color: white; 
+        color: $coolbleen; 
         font-size: 40px;
         font-weight: bold;
         text-shadow: 3px 3px black;
@@ -272,7 +272,7 @@
         font-size: 32px;
         margin: 24px 0;
         width: auto;
-        text-shadow: 2px 2px $paragraph;
+        text-shadow: 2px 2px $white;
         padding: 0;
     }
 
@@ -281,7 +281,7 @@
         font-size: 32px;
         margin: 24px 0;
         width: auto;
-        text-shadow: 2px 2px white;
+        text-shadow: 2px 2px $stroke;
     }
     
     .RegisterButton {

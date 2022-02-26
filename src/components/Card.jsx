@@ -1,4 +1,5 @@
 import { Button } from 'reactstrap';
+import VButton from './VButton'
 import styles from './styles/Card.module.scss';
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -49,7 +50,7 @@ function Card(props) {
           </div>
           <div className={styles.buttonContainer}>
             <Link to={"/video/" + project.id} style={{ backgroundColor: '#D9CAB3' }}>
-              <Button color="primary">Ver más</Button>
+              <VButton color="primary">Ver más</VButton>
             </Link>
           </div>
         </div>
