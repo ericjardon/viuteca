@@ -9,17 +9,28 @@ $dark: #212121;
 $cream: #D9CAB3;
 $lightBg: #e7e7e7;
 
-// New Palette
+// Blue Palette
 $dominant1: #FEFFFF;
-$dominant2: #17252A; // 212121;
+$dominant2: #17252A; ;
 $primary: #3AAFA9;
 $darkPrimary: #2b7a78;
 $lightPrimary: #DEF2F1;
 $secondary: #0074E1;
 
+// Happy Hues
+$background: #f8f5f2;  // cream
+$stroke: #232323;
+$paragraph: #222525;
+$accent: #078080;
+$_button: #078080;
+$ill_secondary: #f45d48;
+$white: #fffffe;
+
+
+
 // buttons shade
-$shadeDarkPrimary: rgb(50, 130, 135); //rgb(43, 122, 120);
-$shadePrimary:rgb(74, 182, 175);//rgb(58, 175, 169);
+$shadeDarkPrimary: rgb(43 - 16, 122 - 25, 120- 25);
+$shadePrimary:rgb(74 - 16, 182 - 25, 175 - 25);//rgb(58, 175, 169);
 
 $secondary2: #77a6f7;
 // reactstrap

@@ -12,7 +12,6 @@
     cursor: pointer;
     -webkit-user-select: none;
     user-select: none;
-    background-color: transparent;
     border: 1px solid transparent;
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -21,12 +20,12 @@
 }
 
 .primaryBtn {
-    color: #FFEFFF !important;
-    background-color: $darkPrimary !important;
-    border-color: $darkPrimary !important;
+    color: #FFEFFF ;
+    background-color: $darkPrimary ;
+    border-color: $darkPrimary ;
     &:hover {
-        background-color: $shadeDarkPrimary !important;
-        border-color: $shadeDarkPrimary !important;
+        background-color: $shadeDarkPrimary ;
+        border-color: $shadeDarkPrimary ;
     }
 }
 
