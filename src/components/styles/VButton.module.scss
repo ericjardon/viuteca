@@ -47,3 +47,23 @@
         border-color: $_hoverbtn2;
     }
 }
+
+.tertiaryBtn {
+    color: $white;
+    background-color: $_button3;
+    border-color: $_button3; 
+    &:hover {
+        background-color: $_hoverbtn3;
+        border-color: $_hoverbtn3;
+    }
+}
+
+.blackBtn {
+    color: $white;
+    background-color: $_buttonb;
+    border-color: $_buttonb;
+    &:hover {
+        background-color: $_hoverbtnb;
+        border-color: $_hoverbtnb;
+    }
+}

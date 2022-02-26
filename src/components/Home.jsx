@@ -72,7 +72,7 @@ export default function Home() {
                     </p>
                     <Link to={loggedIn ? "/videos" : "/register"}>
                         {/* <Button className={styles.RegisterButton}>Regístrate <BiCheck/></Button> */}
-                        <VButton className={styles.RegisterButton}>Regístrate <BiCheck/></VButton>
+                        <VButton className={styles.RegisterButton} color='secondary'>Regístrate <BiCheck/></VButton>
                     </Link>
                 </div>
                 <div className={styles.imageContainer3}>

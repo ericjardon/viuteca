@@ -6,6 +6,7 @@ import {Redirect, Link} from 'react-router-dom'
 import authManager, {validateRegister} from '../firebase/authManager'
 import Group from '../firebase/groups'
 import {auth} from '../base'
+import VButton from './VButton';
 
 export default function Register(props) {
 
@@ -135,9 +136,9 @@ export default function Register(props) {
                             <Input id="confirmPassword" name="confirmPassword" type="password" onChange={handleOnChange} onKeyDown={handleKeyDown}/>
                             <p className="registerErrorMsg">{formErrors.confirmPassword}</p>
                         </FormGroup>
-                        <Button onClick={handleSubmit} className={"createAccount"}>
+                        <VButton onClick={handleSubmit} className={"createAccount"} color='black'>
                             {showSpinner? <Spinner color="light" children="" /> : "Crear Cuenta"}
-                        </Button>
+                        </VButton>
                     </Form>
                 </div>
                 {showAlert && alert}

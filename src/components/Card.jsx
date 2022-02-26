@@ -49,8 +49,8 @@ function Card(props) {
             </p>
           </div>
           <div className={styles.buttonContainer}>
-            <Link to={"/video/" + project.id} style={{ backgroundColor: '#D9CAB3' }}>
-              <VButton color="primary">Ver más</VButton>
+            <Link to={"/video/" + project.id} >
+              <VButton >Ver más</VButton>
             </Link>
           </div>
         </div>
