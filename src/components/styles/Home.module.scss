@@ -34,13 +34,13 @@
 
 .secondSection {
     @include flexBoxH;
-    background-color: $white;
+    background-color: $stroke;
     position: relative;
 
 }
 .thirdSection {
     @include flexBoxH;
-    background-color: $stroke;
+    background-color: $background;
     position: relative;
 }
 
@@ -93,7 +93,7 @@
     margin-left: 0;
     width: 560px;
     font-weight: bold;
-    text-shadow: 3px 3px $stroke;
+    text-shadow: 3px 3px $white;
     z-index: 100;
 
 }
@@ -101,33 +101,33 @@
 .MainText2 {
     font-size: 22px;
     text-align: left;
-    color: $paragraph;
+    color: $white;
     margin-right: 70px;
     margin-bottom: 32px;
 }
 
 .MainText3 {
     @extend .MainText;
-    color: $white;
+    color: $paragraph;
 }
 
 .HeadLine3 {
     text-align: left;
-    color: $white; 
+    color: $coolblue; 
     font-size: 52px;
     margin-top: 45px;
     margin-bottom: 45px;
     margin-left: 60px;
     width: 560px;
     font-weight: bold;
-    text-shadow: 3px 3px $coolblue;
+    text-shadow: 3px 3px $stroke;
     z-index: 100;
 
 }
 
 .attribution {
-    border-color: $stroke;
-    background-color: $stroke;
+    border-color: $background;
+    background-color: $background;
     text-align: right;
     a {
         text-decoration: underline;
@@ -212,9 +212,9 @@
 
 .refLink {
     text-decoration: none;
-    color: $coolblue2;
+    color: $coolblue;
     &:hover {
-        color: $coolblue2;
+        color: $coolblue;
         text-decoration: underline;
     }
 }
