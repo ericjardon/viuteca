@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import { Button } from 'reactstrap'
 import { auth } from '../base'
 import styles from './styles/Home.module.scss'
-import illustration1 from '../assets/ill1-cuateb.png'
-import illustration2 from '../assets/ill2-cuatec.png'
-import illustration3 from '../assets/ill3-cuateb.png'
+import illustration1 from '../assets/ill1-greenish.png'
+import illustration2 from '../assets/ill2-redish.png'
+import illustration3 from '../assets/ill3-blue.png'
 import { BsArrowRight } from 'react-icons/bs'
 import { BiCheck } from 'react-icons/bi'
 import useLogin from '../hooks/useLogin'
@@ -28,7 +28,6 @@ export default function Home() {
                         para que no te pierdas de nada. <br /> Encuentra talleres, conferencias, presentaciones ¡y más!
                     </p>
                     <Link to="/videos">
-                        {/* <VButton color={"#0074E1"}>Ir a Viuteca <BsArrowRight /></VButton> */}
                         <VButton color='primary' className={styles.StartButton}>Ir a Viuteca <BsArrowRight /></VButton>
                     </Link>
                     {/* <Link to="/videos">
@@ -60,7 +59,7 @@ export default function Home() {
                 <div className={styles.textContainer1}>
                     <p className={styles.HeadLine3}>¿Eres de un grupo o sociedad estudiantil?</p>
 
-                    <p className={styles.MainText}>
+                    <p className={styles.MainText3}>
                         Si formas parte de un grupo estudantil, ¡crea
                         tu cuenta para subir tus eventos, obtener más difusión y
                         tener todas tus grabaciones en un solo lugar! <br /> <br/>

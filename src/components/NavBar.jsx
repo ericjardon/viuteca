@@ -22,7 +22,7 @@ const placeholders = {
     'date': 'Busca por fecha: 2020-11-03'
 }
 
-const navBarColor = '#17252A';
+const navBarColor = '#232323';
 
 const NavHeader = (props) => {
 

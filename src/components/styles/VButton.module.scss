@@ -19,7 +19,7 @@
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.primaryBtn {
+/* .primaryBtn {
     color: #FFEFFF ;
     background-color: $darkPrimary ;
     border-color: $darkPrimary ;
@@ -27,14 +27,23 @@
         background-color: $shadeDarkPrimary ;
         border-color: $shadeDarkPrimary ;
     }
+} */
+.primaryBtn {
+    color: $white;
+    background-color: $coolbleen ;
+    border-color: $coolbleen ;
+    &:hover {
+        background-color: $_hoverbtn ;
+        border-color: $_hoverbtn ;
+    }
 }
 
 .secondaryBtn {
-    background-color: $primary !important;
-    border-color: $primary !important; 
-    color: #FFEFFF !important;
+    color: $white;
+    background-color: $_button2;
+    border-color: $_button2; 
     &:hover {
-        background-color: $shadePrimary !important;
-        border-color: $shadePrimary !important;
+        background-color: $_hoverbtn2;
+        border-color: $_hoverbtn2;
     }
 }

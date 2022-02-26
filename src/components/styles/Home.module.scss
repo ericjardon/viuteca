@@ -7,20 +7,21 @@
 
 .firstSection {
     @include flexBoxH;
-    background-color: $primary;
+    background-color: $background;
     position: relative;
 }
 
-.secondSection {
-    @include flexBoxH;
-    background-color: $lightBg;
-    position: relative;
-
-}
-.thirdSection {
-    @include flexBoxH;
-    background-color: $dominant2;
-    position: relative;
+.HeadLine {
+    text-align: left;
+    color: $coolbleen; //$primary;
+    font-size: 75px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 60px;
+    width: 560px;
+    font-weight: bold;
+    text-shadow: 3px 3px $stroke;//$primaryText;
+    z-index: 100;
 }
 
 .textContainer1 {
@@ -31,6 +32,19 @@
     flex-direction: column;
 }
 
+.secondSection {
+    @include flexBoxH;
+    background-color: $white;
+    position: relative;
+
+}
+.thirdSection {
+    @include flexBoxH;
+    background-color: $stroke;
+    position: relative;
+}
+
+
 .imageContainer1, .imageContainer2, .imageContainer3 {
     display: block;
     width: 50vw;
@@ -40,23 +54,10 @@
     width: 100%;
 }
 
-.HeadLine {
-    text-align: left;
-    color: white; //$primary;
-    font-size: 75px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    margin-left: 60px;
-    width: 560px;
-    font-weight: bold;
-    text-shadow: 3px 3px black;//$primaryText;
-    z-index: 100;
-}
-
 .MainText{
     font-size: 22px;
     text-align: left;
-    color: white;
+    color: $paragraph;
     margin-left: 60px;
     margin-bottom: 32px;
 }
@@ -86,13 +87,13 @@
 
 .HeadLine2 {
     text-align: left;
-    color: $secondary; //$primary;
+    color: $coolcoral; //$primary;
     font-size: 52px;
     margin-bottom: 45px;
     margin-left: 0;
     width: 560px;
     font-weight: bold;
-    text-shadow: 3px 3px $dark;
+    text-shadow: 3px 3px $stroke;
     z-index: 100;
 
 }
@@ -100,27 +101,33 @@
 .MainText2 {
     font-size: 22px;
     text-align: left;
-    color: $dark;
+    color: $paragraph;
     margin-right: 70px;
     margin-bottom: 32px;
 }
 
+.MainText3 {
+    @extend .MainText;
+    color: $white;
+}
+
 .HeadLine3 {
     text-align: left;
-    color: #FFEFFF; 
+    color: $white; 
     font-size: 52px;
     margin-top: 45px;
     margin-bottom: 45px;
     margin-left: 60px;
     width: 560px;
     font-weight: bold;
-    text-shadow: 3px 3px $primary;
+    text-shadow: 3px 3px $coolblue;
     z-index: 100;
 
 }
 
 .attribution {
-    background-color: $dominant2;
+    border-color: $stroke;
+    background-color: $stroke;
     text-align: right;
     a {
         text-decoration: underline;
@@ -205,9 +212,9 @@
 
 .refLink {
     text-decoration: none;
-    color: $secondary;
+    color: $coolblue2;
     &:hover {
-        color: $secondary;
+        color: $coolblue2;
         text-decoration: underline;
     }
 }
@@ -265,7 +272,7 @@
         font-size: 32px;
         margin: 24px 0;
         width: auto;
-        text-shadow: 2px 2px $dark;
+        text-shadow: 2px 2px $paragraph;
         padding: 0;
     }
 

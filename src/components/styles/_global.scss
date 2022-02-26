@@ -15,15 +15,19 @@ $dominant2: #17252A; ;
 $primary: #3AAFA9;
 $darkPrimary: #2b7a78;
 $lightPrimary: #DEF2F1;
-$secondary: #0074E1;
+
+$coolblue: #0074E1;
 
 // Happy Hues
 $background: #f8f5f2;  // cream
 $stroke: #232323;
 $paragraph: #222525;
-$accent: #078080;
-$_button: #078080;
-$ill_secondary: #f45d48;
+$coolbleen: #078080;
+$_button: #078080 ;
+$_hoverbtn: rgb(7, 128 - 25, 128 - 25);
+$_button2: #0074E1;
+$_hoverbtn2: rgb(0, 116 - 35, 235 - 25);
+$coolcoral: #f45d48;
 $white: #fffffe;
 
 
@@ -31,14 +35,15 @@ $white: #fffffe;
 // buttons shade
 $shadeDarkPrimary: rgb(43 - 16, 122 - 25, 120- 25);
 $shadePrimary:rgb(74 - 16, 182 - 25, 175 - 25);//rgb(58, 175, 169);
+$shadeRedish: rgb(244 - 25, 93 - 16, 72 - 25); //rgb(244, 93, 72);
 
-$secondary2: #77a6f7;
+$coolblue2: #77a6f7;
 // reactstrap
 $dangerText: #721c24;
 
 // GEEB palette colors
 // $primaryBlue: #90caf9;
-$primaryText: #0d47a1;
+$darkerBlue: #0d47a1;
 $secundary: #80cbc4;
 $secundaryText: #004d40;
 
