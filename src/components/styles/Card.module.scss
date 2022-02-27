@@ -51,13 +51,19 @@ a.CardText, h4.CardText{
 }
 
 .linkToOwner {
-    font-size: 12px;
+    font-size: 13px;
     text-decoration: none;
     color: $paragraph;
     font-weight: 600;
     &:hover {
         color: $coolcoral
     } 
+}
+
+.dateString {
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 2px;
 }
 
 .paragraph{
@@ -105,7 +111,6 @@ a.CardText, h4.CardText{
     font-weight: 600;
 }
 
-
 .durationStamp {
     position: absolute;
     background-color: rgba(70, 70, 70, 0.7);
@@ -117,12 +122,6 @@ a.CardText, h4.CardText{
     margin: 0;
 }
 
-.dateString {
-    font-size: 12px;
-    font-style: italic;
-    margin-bottom: 2px;
-}
-
 @media (max-width: 768px) {
     .paragraph {
         width: 80%;
@@ -130,9 +129,25 @@ a.CardText, h4.CardText{
 }
 
 @media (max-width: 426px) {
+    .videoTitle {
+        font-size: 18px;
+    }
+
+    .linkToOwner, .dateString {
+        font-size: 15px;
+    }
+
+    .ownerAndDate {
+        margin-top: 8px;
+        margin-bottom: 5px;
+    }
 
     .paragraph {
-        -webkit-line-clamp: 8;
+        -webkit-line-clamp: 6;
+    }
+
+    .paragraphShort {
+        -webkit-line-clamp: 5;
     }
 
     .dummyContainer {
