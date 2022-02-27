@@ -1,0 +1,16 @@
+@import './global', './shared.scss';
+
+.tagStyle {
+    display: inline-flex;
+    border-radius: 5px;
+    background-color: $coolcoral;
+    padding: 2px 5px;
+    color: $white;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    position: relative;
+    cursor: pointer;
+    &:hover {
+        background-color: $stroke;
+    }
+}

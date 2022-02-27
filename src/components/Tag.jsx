@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
+import {tagStyle} from './styles/Tag.module.scss'
 
 export default function Tag({children, deleteSelf, editMode}) {
     return (
-        <div style={tagStyle} onClick={deleteSelf}>
+        <div className={tagStyle} onClick={deleteSelf}>
             {children}
             {editMode && ' ⨯'}
         </div>
@@ -10,14 +11,3 @@ export default function Tag({children, deleteSelf, editMode}) {
 }
 
 
-const tagStyle = {
-    display: 'inline-flex',
-    borderRadius: '5px',
-    backgroundColor: '#f45d48',// $coolcoral;
-    padding: '2px 5px',
-    color: '#fffffe',  // $white
-    marginRight: '6px',
-    marginBottom: '6px',
-    position:'relative',
-    cursor: 'pointer',
-}

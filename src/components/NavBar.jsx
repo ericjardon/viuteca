@@ -19,7 +19,7 @@ import { auth } from '../base'
 const placeholders = {
     'owner': 'Busca por nombre de grupo',
     'title': 'Busca por título',
-    'date': 'Busca por fecha: 2020-11-03'
+    'date': 'Busca por fecha: 2021-11-16'
 }
 
 const navBarColor = '#232323';

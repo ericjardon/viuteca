@@ -19,9 +19,9 @@
     &:hover {
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         margin-top: 0;
-        .videoTitle, .dateString {
+        /* .videoTitle, .dateString {
             color: $coolcoral;
-        }
+        } */
     }
 }
 
@@ -42,6 +42,22 @@ a.CardText, h4.CardText{
 .titleAndParagraph {
     padding: 10px;
     height: calc(100% - 250px);
+}
+
+.ownerAndDate {
+    width: 80%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.linkToOwner {
+    font-size: 12px;
+    text-decoration: none;
+    color: $paragraph;
+    font-weight: 600;
+    &:hover {
+        color: $coolcoral
+    } 
 }
 
 .paragraph{
