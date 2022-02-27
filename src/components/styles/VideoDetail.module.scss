@@ -87,6 +87,21 @@ p.videoOwner {
     }
 }
 
+.attribution {
+    border-color: $background;
+    background-color: $background;
+    text-align: right;
+    a {
+        font-size: 12px;
+        text-decoration: underline;
+        color: grey;
+        margin-right: 10px;
+        &:hover {
+            color: grey;
+        }
+    }
+}
+
 
 @media (max-width: 768px) {
 
