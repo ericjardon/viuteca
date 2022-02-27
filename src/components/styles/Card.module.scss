@@ -12,18 +12,19 @@
     width: 300px;
     height: 400px;
     border-radius: 25px;
-    background-color: $lightBg;
+    background-color: $white;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin-top: 10px;
     transition: all 0.2s ease-out;
     &:hover {
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         margin-top: 0;
+        /* .videoTitle, .dateString {
+            color: $coolcoral;
+        } */
     }
 }
-.btn{
-    background-color: $cream;
-}
+
 .CardImage{
     width:100%;
     height: 180px;
@@ -35,12 +36,34 @@
 }
 a.CardText, h4.CardText{
     text-decoration: none !important;
-    color: black !important;
+    color: $paragraph !important; // so links don't turn blue
 }
 
 .titleAndParagraph {
     padding: 10px;
     height: calc(100% - 250px);
+}
+
+.ownerAndDate {
+    width: 80%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.linkToOwner {
+    font-size: 13px;
+    text-decoration: none;
+    color: $paragraph;
+    font-weight: 600;
+    &:hover {
+        color: $coolcoral
+    } 
+}
+
+.dateString {
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 2px;
 }
 
 .paragraph{
@@ -55,7 +78,7 @@ a.CardText, h4.CardText{
     flex: 2;
 }
 
-.paragraph-short {
+.paragraphShort {
     @extend .paragraph;
     -webkit-line-clamp: 4;
 }
@@ -72,17 +95,20 @@ a.CardText, h4.CardText{
     height: 15%;
 }
 
+.playButton {
+    min-width: 80px; 
+}
+
 .videoTitle {
-    font-size: 20px;
+    font-size: 16px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
     overflow: hidden;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     margin-bottom: 2px;
-}
-.dateString {
-    margin-bottom: 8px;
+    color: $stroke;
+    margin: 0 12px;
+    font-weight: 600;
 }
 
 .durationStamp {
@@ -96,12 +122,6 @@ a.CardText, h4.CardText{
     margin: 0;
 }
 
-.dateString {
-    font-size: 12px;
-    font-style: italic;
-    margin-bottom: 2px;
-}
-
 @media (max-width: 768px) {
     .paragraph {
         width: 80%;
@@ -109,9 +129,25 @@ a.CardText, h4.CardText{
 }
 
 @media (max-width: 426px) {
+    .videoTitle {
+        font-size: 18px;
+    }
+
+    .linkToOwner, .dateString {
+        font-size: 15px;
+    }
+
+    .ownerAndDate {
+        margin-top: 8px;
+        margin-bottom: 5px;
+    }
 
     .paragraph {
-        -webkit-line-clamp: 8;
+        -webkit-line-clamp: 6;
+    }
+
+    .paragraphShort {
+        -webkit-line-clamp: 5;
     }
 
     .dummyContainer {

@@ -104,6 +104,7 @@ export default function VideoDetail(props) {
     }
 
     return (
+        <>
         <div className={styles.container}>
             <div className={styles.cardContainer}>
                 <div className={styles.videoPlayer}>
@@ -139,7 +140,8 @@ export default function VideoDetail(props) {
                     </Card>
                 </Collapse>
             </div>
-
         </div>
+        <div className={styles.attribution}><a href="https://www.flaticon.com/free-icons/clap" title="clap icons">Clap icons created by Smashicons - Flaticon</a></div>
+        </>
     )
 }

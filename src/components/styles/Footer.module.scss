@@ -2,8 +2,8 @@
 
 
 .container {
-    margin-top: 15px;
-    background-color: $dark;
+    margin-top: 0px; // 15px
+    background-color: $stroke;
     color: $lightBg;
     position: relative;
     font-size: 12px;
@@ -31,8 +31,8 @@
 
 .waLink {
     text-decoration: none;
-    color: $lightBg;
+    color: $white;
     &:hover {
-        color: $cream;
+        color: $coolcoral;
     }
 }

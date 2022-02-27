@@ -1,0 +1,69 @@
+@import './global', './shared.scss';
+
+
+.vbutton {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+/* .primaryBtn {
+    color: #FFEFFF ;
+    background-color: $strokePrimary ;
+    border-color: $strokePrimary ;
+    &:hover {
+        background-color: $shadeDarkPrimary ;
+        border-color: $shadeDarkPrimary ;
+    }
+} */
+.primaryBtn {
+    color: $white;
+    background-color: $coolbleen ;
+    border-color: $coolbleen ;
+    &:hover {
+        background-color: $_hoverbtn ;
+        border-color: $_hoverbtn ;
+    }
+}
+
+.secondaryBtn {
+    color: $white;
+    background-color: $_button2;
+    border-color: $_button2; 
+    &:hover {
+        background-color: $_hoverbtn2;
+        border-color: $_hoverbtn2;
+    }
+}
+
+.tertiaryBtn {
+    color: $white;
+    background-color: $_button3;
+    border-color: $_button3; 
+    &:hover {
+        background-color: $_hoverbtn3;
+        border-color: $_hoverbtn3;
+    }
+}
+
+.blackBtn {
+    color: $white;
+    background-color: $_buttonb;
+    border-color: $_buttonb;
+    &:hover {
+        background-color: $_hoverbtnb;
+        border-color: $_hoverbtnb;
+    }
+}

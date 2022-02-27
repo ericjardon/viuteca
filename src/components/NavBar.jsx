@@ -19,8 +19,10 @@ import { auth } from '../base'
 const placeholders = {
     'owner': 'Busca por nombre de grupo',
     'title': 'Busca por título',
-    'date': 'Busca por fecha: 2020-11-03'
+    'date': 'Busca por fecha: 2021-11-16'
 }
+
+const navBarColor = '#232323';
 
 const NavHeader = (props) => {
 
@@ -77,7 +79,7 @@ const NavHeader = (props) => {
             return (
                 <div>
                     <div className={styles.navBar}>
-                        <Navbar style={{ padding: 0, backgroundColor: '#212121' }}>
+                        <Navbar style={{ padding: 0, backgroundColor: navBarColor }}>
                             <NavbarBrand href='/'>
                                 <img className={isMd ? styles.iconLogo : styles.fullLogo} src={isMd ? iconLogo : fullLogo} alt='ViutecaLogo' />
                             </NavbarBrand>
@@ -91,7 +93,7 @@ const NavHeader = (props) => {
                                     <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
                                     <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit}>
                                         <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
-                                        <DropdownMenu style={{ backgroundColor: '#212121', border: 'None', fontSize: "100%" }}>
+                                        <DropdownMenu style={{ backgroundColor: navBarColor, border: 'None', fontSize: "100%" }}>
                                             <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
                                             <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
                                             <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
@@ -102,9 +104,9 @@ const NavHeader = (props) => {
                             <Nav navbar style={{ width: "22%" }}>
                                 <NavItem>
                                     <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
-                                        <DropdownToggle style={{ backgroundColor: '#212121', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
+                                        <DropdownToggle style={{ backgroundColor: navBarColor, border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
                                         {loggedIn ?
-                                            <DropdownMenu style={{ backgroundColor: '#212121' }}>
+                                            <DropdownMenu style={{ backgroundColor: navBarColor }}>
                                                 <DropdownItem>
                                                     <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
                                                         SUBIR VIDEO
@@ -131,7 +133,7 @@ const NavHeader = (props) => {
                                             </DropdownMenu>
                                             :
                                             <>
-                                                <DropdownMenu style={{ backgroundColor: '#212121' }}>
+                                                <DropdownMenu style={{ backgroundColor: navBarColor }}>
                                                     <DropdownItem>
                                                         <NavLink style={{ color: 'white' }} className='nav-link' to='/videos'>
                                                             HOME
@@ -146,7 +148,7 @@ const NavHeader = (props) => {
                                                     <DropdownItem divider />
                                                     <DropdownItem>
                                                         <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
-                                                            REGISTARSE
+                                                            REGÍSTRATE
                                                         </NavLink>
                                                     </DropdownItem>
                                                 </DropdownMenu>
@@ -165,10 +167,10 @@ const NavHeader = (props) => {
                 <div className={styles.collapseStyles}>
                     <Navbar style={{ backgroundColor: "#212121" }}>
                         <ButtonDropdown direction="down" isOpen={dropdownopen} toggle={toggle}>
-                            <DropdownToggle style={{ backgroundColor: '#212121', border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
+                            <DropdownToggle style={{ backgroundColor: navBarColor, border: 'None', fontSize: isSm ? "18px" : "24px" }} caret>Menu</DropdownToggle>
                             {loggedIn ?
                                 <>
-                                    <DropdownMenu style={{ backgroundColor: '#212121', width: '250px' }}>
+                                    <DropdownMenu style={{ backgroundColor: navBarColor, width: '250px' }}>
                                         <DropdownItem>
                                             <NavLink style={{ color: 'white' }} className='nav-link' to='/new-video'>
                                                 SUBIR VIDEO
@@ -203,7 +205,7 @@ const NavHeader = (props) => {
                                         <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
                                         <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit} direction={"left"}>
                                             <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
-                                            <DropdownMenu style={{ backgroundColor: '#212121', border: 'None', fontSize: "100%" }}>
+                                            <DropdownMenu style={{ backgroundColor: navBarColor, border: 'None', fontSize: "100%" }}>
                                                 <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
                                                 <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
                                                 <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>
@@ -213,7 +215,7 @@ const NavHeader = (props) => {
                                 </>
                                 :
                                 <>
-                                    <DropdownMenu style={{ backgroundColor: '#212121', width: '250px' }}>
+                                    <DropdownMenu style={{ backgroundColor: navBarColor, width: '250px' }}>
                                         <DropdownItem>
                                             <NavLink style={{ color: 'white' }} className='nav-link' to='/videos'>
                                                 HOME
@@ -234,7 +236,7 @@ const NavHeader = (props) => {
                                         <DropdownItem divider />
                                         <DropdownItem>
                                             <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
-                                                REGISTARSE
+                                                REGÍSTRATE
                                             </NavLink>
                                         </DropdownItem>
 
@@ -243,7 +245,7 @@ const NavHeader = (props) => {
                                         <Input placeholder={placeholderSearch} onChange={handleOnChange} onKeyPress={handleKeyPressed}></Input>
                                         <InputGroupButtonDropdown isOpen={splitButtonOpen} toggle={toggleSplit} direction={"left"}>
                                             <DropdownToggle split style={{ color: "white", backgroundColor: "transparent", border: "none" }}> </DropdownToggle>
-                                            <DropdownMenu style={{ backgroundColor: '#212121', border: 'None', fontSize: "100%" }}>
+                                            <DropdownMenu style={{ backgroundColor: navBarColor, border: 'None', fontSize: "100%" }}>
                                                 <DropdownItem value="title" style={{ color: 'white' }} onClick={handleDropdown}>Titulo</DropdownItem>
                                                 <DropdownItem value="owner" style={{ color: 'white' }} onClick={handleDropdown}>Autor</DropdownItem>
                                                 <DropdownItem value="date" style={{ color: 'white' }} onClick={handleDropdown}>Fecha</DropdownItem>

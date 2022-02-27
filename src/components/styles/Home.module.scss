@@ -7,20 +7,21 @@
 
 .firstSection {
     @include flexBoxH;
+    background-color: $background;
     position: relative;
-
 }
 
-.secondSection {
-    @include flexBoxH;
-    background-color: $lightBg;
-    position: relative;
-
-}
-.thirdSection {
-    @include flexBoxH;
-    background-color: $dark;
-    position: relative;
+.HeadLine {
+    text-align: left;
+    color: $coolbleen; //$primary;
+    font-size: 75px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 60px;
+    width: 560px;
+    font-weight: bold;
+    text-shadow: 3px 3px $stroke;//$primaryText;
+    z-index: 100;
 }
 
 .textContainer1 {
@@ -31,6 +32,19 @@
     flex-direction: column;
 }
 
+.secondSection {
+    @include flexBoxH;
+    background-color: $stroke;
+    position: relative;
+
+}
+.thirdSection {
+    @include flexBoxH;
+    background-color: $background;
+    position: relative;
+}
+
+
 .imageContainer1, .imageContainer2, .imageContainer3 {
     display: block;
     width: 50vw;
@@ -40,26 +54,14 @@
     width: 100%;
 }
 
-.HeadLine {
-    text-align: left;
-    color: white; //$primary;
-    font-size: 75px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    margin-left: 60px;
-    width: 560px;
-    font-weight: bold;
-    text-shadow: 3px 3px black;//$primaryText;
-    z-index: 100;
-}
-
 .MainText{
     font-size: 22px;
     text-align: left;
-    color: white;
+    color: $paragraph;
     margin-left: 60px;
     margin-bottom: 32px;
 }
+
 
 .StartButton {
     border-radius: 10px !important;
@@ -85,13 +87,13 @@
 
 .HeadLine2 {
     text-align: left;
-    color: $green; //$primary;
+    color: $coolcoral; //$primary;
     font-size: 52px;
     margin-bottom: 45px;
     margin-left: 0;
     width: 560px;
     font-weight: bold;
-    text-shadow: 3px 3px $dark;//$primaryText;
+    text-shadow: 3px 3px $white;
     z-index: 100;
 
 }
@@ -99,32 +101,41 @@
 .MainText2 {
     font-size: 22px;
     text-align: left;
-    color: $dark;
+    color: $white;
     margin-right: 70px;
     margin-bottom: 32px;
 }
 
+.MainText3 {
+    @extend .MainText;
+    color: $paragraph;
+}
+
 .HeadLine3 {
     text-align: left;
-    color: $primary; //$primary;
-    font-size: 52px;
+    color: $coolblue; 
+    font-size: 48px;
     margin-top: 45px;
     margin-bottom: 45px;
     margin-left: 60px;
     width: 560px;
     font-weight: bold;
-    text-shadow: 3px 3px white;//$primaryText;
+    text-shadow: 3px 3px $stroke;
     z-index: 100;
 
 }
 
 .attribution {
-    background-color: $dark;
+    border-color: $background;
+    background-color: $background;
     text-align: right;
     a {
         text-decoration: underline;
         color: grey;
         margin-right: 10px;
+        &:hover {
+            color: grey;
+        }
     }
 }
 
@@ -201,9 +212,9 @@
 
 .refLink {
     text-decoration: none;
-    color: #d63384;
+    color: $coolblue;
     &:hover {
-        color: #d63384;
+        color: $coolblue;
         text-decoration: underline;
     }
 }
@@ -227,7 +238,7 @@
         width: auto;
         margin: 24px 0;
         text-align: center;
-        color: white; 
+        color: $coolbleen; 
         font-size: 40px;
         font-weight: bold;
         text-shadow: 3px 3px black;
@@ -261,7 +272,7 @@
         font-size: 32px;
         margin: 24px 0;
         width: auto;
-        text-shadow: 2px 2px $dark;
+        text-shadow: 2px 2px $white;
         padding: 0;
     }
 
@@ -270,7 +281,7 @@
         font-size: 32px;
         margin: 24px 0;
         width: auto;
-        text-shadow: 2px 2px white;
+        text-shadow: 2px 2px $stroke;
     }
     
     .RegisterButton {

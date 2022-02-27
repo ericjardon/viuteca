@@ -14,7 +14,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: $dark;
+    background-color: $stroke;
     width: 50vw;
     color: white;
 }
@@ -24,7 +24,7 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-    background-color: $green;
+    background-color: $coolbleen;
     width: 50vw;
     color: #000;
 }
@@ -67,6 +67,7 @@
     color: $lightBg;
     font-weight: bold;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 .registerErrorMsg {
@@ -79,7 +80,7 @@ a.onboardingLink {
 }
 
 a.onboardingLink:hover {
-    color: $cream;
+    color: $coolcoral;
 }
 
 
@@ -104,6 +105,10 @@ a.onboardingLink:hover {
 @media (max-width: 426px) {
     .formHeader {
         font-size: 24px;
+    }
+
+    .rightSide {
+        height: 100vh;
     }
 
 }
