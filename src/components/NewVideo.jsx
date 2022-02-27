@@ -8,6 +8,7 @@ import { Timestamp } from 'firebase/firestore'
 import { auth } from '../base'
 import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { refLink } from './styles/Home.module.scss';
+import { MAX_TITLE_LENGTH } from '../utils/constants';
 
 /* Component for the main screen with listed videos */
 export default function NewVideo() {
@@ -80,6 +81,14 @@ export default function NewVideo() {
             setShowSpinner(false);
             return
         }
+
+        if (videoFinal.title.length > 50) {
+            setAlert(<Alert color="warning">El título no debe exceder 50 caracteres</Alert>)
+            setShowAlert(true);
+            setShowSpinner(false);
+            return
+        }
+
         if (videoFinal.owner === '' || videoFinal.dateAdded === '') {
             setAlert(<Alert color="warning">Algo salió mal, intenta de nuevo</Alert>)
             setShowAlert(true);

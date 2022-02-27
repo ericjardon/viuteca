@@ -3,7 +3,7 @@ export const DEFAULT_BIO = (name) => `¡Hola! Esta es la página de videos de ${
 export const EXAMPLE_TAGS = () => ["Ingeniería", "Software", "Women in STEM"];
 
 export const MAX_CATEGORIES = 5;
-
+export const MAX_TITLE_LENGTH = 50;
 const WA_BASE_URL = "https://wa.me/525528621156";
 const WA_MSG = "¡Hola! Estoy utilizando Viuteca y ... <tu comentario, pregunta o problema>";
 

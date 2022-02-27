@@ -148,7 +148,7 @@ const NavHeader = (props) => {
                                                     <DropdownItem divider />
                                                     <DropdownItem>
                                                         <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
-                                                            REGISTARSE
+                                                            REGÍSTRATE
                                                         </NavLink>
                                                     </DropdownItem>
                                                 </DropdownMenu>
@@ -236,7 +236,7 @@ const NavHeader = (props) => {
                                         <DropdownItem divider />
                                         <DropdownItem>
                                             <NavLink style={{ color: 'white' }} className='nav-link' to='/register'>
-                                                REGISTARSE
+                                                REGÍSTRATE
                                             </NavLink>
                                         </DropdownItem>
 
