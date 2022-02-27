@@ -3,6 +3,7 @@ import VButton from './VButton'
 import styles from './styles/Card.module.scss';
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {FaPlay} from 'react-icons/fa';
 import defaultImg from '../assets/default_video.PNG'
 
 function Card(props) {
@@ -44,13 +45,15 @@ function Card(props) {
             <p className={styles.dateString}>
               {dateString}
             </p>
-            <p className={styles.paragraph}>
+            <p className={data.title.length <= 28 ? styles.paragraph : styles.paragraphShort}>
               {data.description}
             </p>
           </div>
           <div className={styles.buttonContainer}>
             <Link to={"/video/" + project.id} >
-              <VButton >Ver más</VButton>
+              <VButton className={styles.playButton}>
+                <FaPlay />
+              </VButton>
             </Link>
           </div>
         </div>

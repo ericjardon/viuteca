@@ -13,9 +13,9 @@ export default function Tag({children, deleteSelf, editMode}) {
 const tagStyle = {
     display: 'inline-flex',
     borderRadius: '5px',
-    backgroundColor: '#212121',
+    backgroundColor: '#f45d48',// $coolcoral;
     padding: '2px 5px',
-    color: '#e7e7e7',
+    color: '#fffffe',  // $white
     marginRight: '6px',
     marginBottom: '6px',
     position:'relative',

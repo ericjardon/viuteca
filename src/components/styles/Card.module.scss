@@ -53,7 +53,7 @@ a.CardText, h4.CardText{
     flex: 2;
 }
 
-.paragraph-short {
+.paragraphShort {
     @extend .paragraph;
     -webkit-line-clamp: 4;
 }
@@ -70,12 +70,16 @@ a.CardText, h4.CardText{
     height: 15%;
 }
 
+.playButton {
+    min-width: 80px; 
+}
+
 .videoTitle {
     font-size: 16px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     margin-bottom: 2px;
     color: $stroke;
     margin: 0 12px;

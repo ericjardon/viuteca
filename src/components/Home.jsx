@@ -24,7 +24,7 @@ export default function Home() {
                     <p className={styles.HeadLine}>¡Bienvenidx a Viuteca!</p>
 
                     <p className={styles.MainText}>Viuteca es un proyecto desarrollado por estudiantes del Tec
-                        que busca poner a tu alcance las grabaciones de los eventos de grupos estudiantiles
+                        que busca hacer disponibles las grabaciones de los eventos de grupos estudiantiles
                         para que no te pierdas de nada. <br /> Encuentra talleres, conferencias, presentaciones ¡y más!
                     </p>
                     <Link to="/videos">
@@ -48,8 +48,8 @@ export default function Home() {
                     <p className={styles.HeadLine2}>Dale play a tus grupos estudiantiles</p>
 
                     <p className={styles.MainText2}>
-                        La gran ventaja del contenido grabado es poder compartirlo y revisitarlo cuantas veces queramos.
-                        <br/>¿El reto? Encontrarlo todo en un solo lugar, de forma
+                        Una gran ventaja del contenido grabado es poder compartirlo y revisitarlo cuantas veces queramos.
+                        <br/> El reto es poder encontrarlo todo en un solo lugar, de forma
                         ordenada y fácil de explorar. ¿La solución? ¡Viuteca!
                     </p>
                 </div>
@@ -57,8 +57,7 @@ export default function Home() {
             </div>
             <div className={styles.thirdSection}>
                 <div className={styles.textContainer1}>
-                    <p className={styles.HeadLine3}>¿Eres de un grupo o sociedad estudiantil?</p>
-
+                    <p className={styles.HeadLine3}>Tus videos, al alcance de tu audiencia</p>
                     <p className={styles.MainText3}>
                         Si formas parte de un grupo estudantil, ¡crea
                         tu cuenta para subir tus eventos, obtener más difusión y
@@ -68,7 +67,7 @@ export default function Home() {
                         className={styles.refLink}
                         href="https://interesting-ground-e69.notion.site/Subir-un-video-a-Viuteca-5831b4fce9e4407ab730491c3f0c6241" 
                         target="_blank" rel="noreferrer">código embed</a>, 
-                        Viuteca se encarga del resto ;)
+                        Viuteca se encarga del resto.
                     </p>
                     <Link to={loggedIn ? "/videos" : "/register"}>
                         {/* <Button className={styles.RegisterButton}>Regístrate <BiCheck/></Button> */}
