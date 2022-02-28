@@ -3,11 +3,13 @@ TODOS
 NEXT QUEUE
 
 - Implement get requests to new back end: https://viuteca-api.herokuapp.com/
-    - profile info: (temporary id mapping from email to uid and back)
-    - profile tags: (two server side queries approach)
-        - evaluate two approaches: single getProfileAndTags or two requests: getProfile and getProfileTags
+    x profile info: (temporary id mapping from email to uid and back)
+    x profile tags: (two server side queries approach)
+        -- (pending) evaluate two approaches: single getProfileAndTags or two requests: getProfile and getProfileTags
+    - Fix link to profile id in Card
     - update profile & tags (TODO: tags)
     - get all videos
+    
 - Implement search queries to new back end
     - profiles by name
     - videos by name
