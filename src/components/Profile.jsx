@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import md5 from 'md5'
 import styles from './styles/Profile.module.scss'
 import {Spinner, Button} from 'reactstrap'
+import VButton from './VButton'
+import Group from '../firebase/groups'
 import Tag from './Tag'
 import SocialMedia from './SocialMedia'
 import ProfileVideos from './ProfileVideos'
@@ -94,7 +96,7 @@ const Profile = (props) => {
                     </div>
                     {isOwner && (<div className={styles.editBtnContainer}>
                         <Link to={profileData.id ? `/p/edit/${profileData.id}` : ''}>
-                        <Button className={styles.editBtn}>Editar <AiTwotoneEdit/></Button>
+                        <VButton color='E7E7E7' border='232323' className={styles.editBtn}>Editar <AiTwotoneEdit/></VButton>
                         </Link>
                     </div>)}
                 </div>

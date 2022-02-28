@@ -23,7 +23,6 @@ export default function VideoDetail(props) {
     const [isOwner, setisOwner] = useState(false);
     const [redirect, setRedirect] = useState(false);
     const [clapFirstTime, setClapFirstTime] = useState(() => localStorage.getItem(videoId) === null)
-    console.log("Can update likes count?", clapFirstTime)
     const toggle = () => {
         setToggleDescription(toggleDescription => !toggleDescription);
     }
@@ -105,6 +104,7 @@ export default function VideoDetail(props) {
     }
 
     return (
+        <>
         <div className={styles.container}>
             <div className={styles.cardContainer}>
                 <div className={styles.videoPlayer}>
@@ -140,7 +140,8 @@ export default function VideoDetail(props) {
                     </Card>
                 </Collapse>
             </div>
-
         </div>
+        <div className={styles.attribution}><a href="https://www.flaticon.com/free-icons/clap" title="clap icons">Clap icons created by Smashicons - Flaticon</a></div>
+        </>
     )
 }

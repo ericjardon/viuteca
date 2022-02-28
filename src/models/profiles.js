@@ -1,8 +1,8 @@
 /* Module for making requests to /profiles/ endpoints in Viuteca API */
-import {API_URL} from '../config/config'
+import {API_URL_DEV} from '../config/config'
 import axios from "axios"
 
-const PATH = API_URL + '/profiles/';
+const PATH = API_URL_DEV + '/profiles/';
 
 export const getProfile = async (profileId) => new Promise((resolve, reject) => {
     if (!profileId) {

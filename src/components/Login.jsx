@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './styles/onboarding.scss'
 import { Button, Form, FormGroup, Label, Input, Spinner, Alert } from 'reactstrap';
+import VButton from './VButton'
 import photo from '../assets/viutecaLogoComplete.png'
 import authManager, { validateLogin } from '../firebase/authManager';
 import { Redirect } from 'react-router';
@@ -92,9 +93,9 @@ export default function Login(props) {
                                 <Label for="password">Contraseña:</Label>
                                 <Input id="password" name="password" type="password" onChange={handleOnChange} onKeyDown={handleKeyDown} />
                             </FormGroup>
-                            <Button onClick={handleSubmit} className={"createAccount"}>
+                            <VButton onClick={handleSubmit} className={"createAccount"} color="black">
                                 {showSpinner ? <Spinner color="light" children="" /> : "Inicia Sesión"}
-                            </Button>
+                            </VButton>
                         </Form>
                     </div>
                     <p>¿Aún no tienes cuenta? {" "}

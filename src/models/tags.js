@@ -1,8 +1,8 @@
 /* Module for making requests to /tags/ endpoints in Viuteca API */
-import {API_URL} from '../config/config'
+import {API_URL_DEV} from '../config/config'
 import axios from "axios"
 
-const PATH = API_URL + '/tags/';
+const PATH = API_URL_DEV + '/tags/';
 
 export const getProfileTags = (profileId) => new Promise((resolve, reject) => {
     if (!profileId) {

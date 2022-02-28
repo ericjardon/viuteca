@@ -6,7 +6,7 @@ import { Spinner, Button, Input } from 'reactstrap'
 import Group from '../firebase/groups'
 import Tag from './Tag'
 import SocialMediaEdit from './SocialMediaEdit'
-import { AiTwotoneEdit } from 'react-icons/ai'
+import { AiTwotoneEdit, AiOutlineSave } from 'react-icons/ai'
 import { DEFAULT_BIO, MAX_CATEGORIES } from '../utils/constants'
 import { Redirect } from 'react-router'
 import {auth} from '../base'
@@ -242,11 +242,14 @@ const EditProfile = (props) => {
                 </div>
             </div>
 
-            <Button style={{padding:'10px 15px', width:'92px'}} onClick={onSave}>{showSpinner? <Spinner color="light" children="" /> : "Guardar"}</Button>
+            <Button style={{padding:'10px 15px', width:'120px'}} onClick={onSave}>
+                {showSpinner? <Spinner color="light" children="" /> : <>Guardar <AiOutlineSave/></>}
+            </Button>
 
         </div>
     )
 }
+
 
 const dataDidChange = (oldData, newData) => JSON.stringify(oldData) !== JSON.stringify(newData);
 const tagsDidChange = (oldTags, newTags) => !equalSets(new Set(oldTags), new Set(newTags));
