@@ -15,11 +15,11 @@ import {getMonthName_ES, getMonthValue} from '../utils/dates'
 export default function NewVideo() {
     const [video, setVideo] = useState({
         title: '',
-        duration_mins: 0,
-        duration_secs: 0,
-        duration_hrs: 0,
+        durationMins: 0,
+        durationSecs: 0,
+        durationHrs: 0,
         description: '',
-        video_url: '',
+        url: '',
     });
     const [showSpinner, setShowSpinner] = useState(false)
     let history = useHistory();
@@ -101,12 +101,12 @@ export default function NewVideo() {
 
         let dateStr = buildDate();
         console.log(dateStr);
-        let dt;
+        let timestamp;
         try {
             let d = new Date(dateStr);
             if (d=='Invalid Date') throw d;
 
-            dt = Timestamp.fromDate(d);
+            timestamp = Timestamp.fromDate(d);
 
         } catch (e) {
             console.log(e);
@@ -122,8 +122,19 @@ export default function NewVideo() {
             title_lower: video.title.toLowerCase(),
             owner: auth.currentUser.email,
             likes: 0,
-            dateAdded: dt,
+            dateAdded: timestamp,
         }
+        const {title, description, url, img} = video;
+        let videoData = {
+            title,
+            description,
+            video_url: url,
+            dt: dateStr,
+            profile_id: auth.currentUser.uid,
+            img_url: img,
+        }
+
+        console.log('video data for PG', videoData);
 
         if (videoFinal.title === '' || videoFinal.description === '' || videoFinal.url === '') {
             setAlert(<Alert color="warning">Debes llenar todos los campos</Alert>)

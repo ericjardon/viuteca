@@ -6,6 +6,7 @@ NEXT QUEUE
     x profile info: (temporary id mapping from email to uid and back)
     x profile tags: (two server side queries approach)
         -- (pending) evaluate two approaches: single getProfileAndTags or two requests: getProfile and getProfileTags
+    - Fix duration field names for video card
     - Videos CRUD
     - replicate videos in sql (boomerang)
     - Update Tags on EditProfile!!!
