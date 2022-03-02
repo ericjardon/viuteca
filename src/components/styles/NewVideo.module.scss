@@ -1,4 +1,4 @@
-@import './global', './shared.scss', './VideosDisplay.scss';
+@import './global', './shared.scss', './VideosDisplay.scss', './VideoDetail.module.scss';
 
 .videoPlayer {
     max-width: 560px;
@@ -42,6 +42,10 @@
     justify-content: space-between;
     margin-bottom: 40px;
 }
+.rowClassDate{
+    @extend .rowClass;
+    margin-bottom: 15px;
+}
 .formSubtitle {
     font-weight: bold;
     font-size: 20px;
@@ -51,6 +55,10 @@
     font-weight: bold;
     text-align: left;
     margin-right: 20px;
+}
+.dateLabelClass {
+    @extend .labelClass;
+    margin-right: 8px;
 }
 .formCaption {
     text-align: left;
@@ -63,6 +71,16 @@
 }
 .smallInput{
     width:60px;
+    margin-right: 12px;
+}
+.dateInput {
+    width: 115px;
+    margin-right: 10px;
+}
+.autoFillToday {
+    @extend .descButton;
+    font-weight: normal;
+    text-align: right;
     margin-right: 12px;
 }
 @media (max-width: 768px) {

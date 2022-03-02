@@ -22,14 +22,6 @@ export default function Testing() {
         durationSecs: 0,
     })
 
-    /*
-    title: 'El Billete Informativo',
-    description: 'No description yet',
-    url: 'https://drive.google.com/file/d/19IOHhxfbltluAro_kAeBllczMy7NxtdJ/preview',
-    durationMins: 7,
-    durationSecs: 2,
-    */
-
     const getGroup = async () => {
         console.log("Get group...")
         const groupId = 'geebproject@gmail.com'
@@ -54,13 +46,6 @@ export default function Testing() {
         if (!loggedIn) return;
 
         console.log("submitting video")
-
-        /* let video = {
-            ...newVideo,
-            owner: auth.currentUser.email,
-            likes: 0,
-            dateAdded: Timestamp.fromDate(new Date()),
-        } */
 
         let video = {
             title: 'El Billete Informativo',
