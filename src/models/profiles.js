@@ -58,3 +58,37 @@ export const updateProfile = async (profileData) => new Promise((resolve, reject
 
 
 
+
+export const createProfile = async (profileData) => new Promise((resolve, reject) => {
+    // Profiles are created after Firebase Auth
+    // Reuse auth's new account ID
+    const {id, name, email} = profileData;  
+    
+    if (!id) {
+        reject('Profile id parameter is null');
+    }
+
+    let newData = {
+        id,
+        name: name.trim(),
+        email: email.trim()
+    }
+
+    console.log("Create new Profile:", newData);
+
+    const path = PATH + id;
+
+    console.log('Post to', path);
+    axios.post(path, newData).then(
+        (response) => {
+            console.log('create API returned', response)
+            resolve('Se creó el perfil exitosamente');
+        },
+        (error) => {
+            console.error('VIUTECA: ', error);
+            reject(`Error creando perfil: ${id} :(`);
+        }
+    );
+
+})
+

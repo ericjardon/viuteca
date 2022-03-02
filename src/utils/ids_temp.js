@@ -9,5 +9,13 @@ export const emails = {
     "xOtUFDGEcKQCePtyCL1h34nKWnk2": "geebproject@gmail.com",
 }
 
-
 export const uids = inverse(emails);
+
+
+export const _ownerNames = {
+    'adawomenitc@gmail.com':'Ada Women',
+    'ericjardon@hotmail.com':'Eric Chao',
+    'ccm.code.it@gmail.com':'Code.It',
+    'demianks2000@gmail.com':'Dems',
+    'geebproject@gmail.com':'GEEB',
+}

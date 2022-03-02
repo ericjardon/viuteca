@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {FaPlay} from 'react-icons/fa';
 import defaultImg from '../assets/default_video.PNG'
-import {_ownerNames} from '../utils/constants'
+import {_ownerNames} from '../utils/ids_temp'
 
 function Card(props) {
   const { project } = props;

@@ -6,9 +6,11 @@ NEXT QUEUE
     x profile info: (temporary id mapping from email to uid and back)
     x profile tags: (two server side queries approach)
         -- (pending) evaluate two approaches: single getProfileAndTags or two requests: getProfile and getProfileTags
+    - Videos CRUD
+    - replicate videos in sql (boomerang)
+    - Update Tags on EditProfile!!!
     - Fix link to profile id in Card
     - update profile & tags (TODO: tags)
-    - get all videos
     
 - Implement search queries to new back end
     - profiles by name

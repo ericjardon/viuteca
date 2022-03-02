@@ -6,7 +6,9 @@ import useLogin from '../hooks/useLogin'
 import { doc, addDoc, collection, Timestamp } from 'firebase/firestore'
 import { auth, db } from '../base'
 import { searchVideo } from '../firebase/search'
+import {uids, _ownerNames} from '../utils/ids_temp'
 
+const default_vid = 'https://www.youtube.com/embed/uolqbeCmSuw"';
 
 export default function Testing() {
 
@@ -15,20 +17,25 @@ export default function Testing() {
     const [searchResults, setSearchResults] = useState([]);
 
     const [newVideo, setnewVideo] = useState({
-        title: '',
-        description: '',
-        url: '',
-        durationMins: 0,
-        durationSecs: 0,
+        profile_id: '75Sm1S0fimXm9AzVsW7hbZqtbWH3',
+        title: 'Test Title',
+        dt: '2021-10-23',
+        duration_mins:9,
+        duration_secs:9,
+        duration_hrs:null,
+        description:'Test Desc',
+        video_url: '',
+        // likes, image_url
     })
 
-    /*
-    title: 'El Billete Informativo',
-    description: 'No description yet',
-    url: 'https://drive.google.com/file/d/19IOHhxfbltluAro_kAeBllczMy7NxtdJ/preview',
-    durationMins: 7,
-    durationSecs: 2,
-    */
+    const handleInput = (e) => {
+        let field = e.target.name;
+        setnewVideo({
+            ...newVideo,
+            [field]: e.target.value,
+        })
+        console.log(newVideo);
+    }
 
     const getGroup = async () => {
         console.log("Get group...")
@@ -53,32 +60,24 @@ export default function Testing() {
     const submitVideo = async () => {
         if (!loggedIn) return;
 
-        console.log("submitting video")
+        console.log("submitting video:")
+        console.dir(newVideo);
 
-        /* let video = {
-            ...newVideo,
-            owner: auth.currentUser.email,
-            likes: 0,
-            dateAdded: Timestamp.fromDate(new Date()),
-        } */
+        let video = newVideo;
 
-        let video = {
-            title: 'El Billete Informativo',
-            description: 'No description yet',
-            url: 'https://drive.google.com/file/d/19IOHhxfbltluAro_kAeBllczMy7NxtdJ/preview',
-            durationMins: 7,
-            durationSecs: 2,
-            likes: 0,
-            dateAdded: Timestamp.fromDate(new Date()),
-            owner: auth.currentUser.email,
+        if (!video.video_url) {
+            video.video_url = default_vid;
         }
+        // try {
+        //     const docRef = await addDoc(collection(db, "video"), video);
+        //     console.log(docRef.id);
+        // } catch (err) {
+        //     console.log("ERROR: ", err)
+        // }
 
-        try {
-            const docRef = await addDoc(collection(db, "video"), video);
-            console.log(docRef.id);
-        } catch (err) {
-            console.log("ERROR: ", err)
-        }
+        // upload to postgres
+        
+
     }
 
     const [searchTerm, setSearchTerm] = useState("");
@@ -121,6 +120,8 @@ export default function Testing() {
                 <input type="text" name="duration" />
                 Descripción
                 <input type="text" name="description" />
+                Video URL
+                <input type="text" name="url" />
                 Video URL
                 <input type="text" name="url" />
                 <button onClick={submitVideo}>Submit Video</button>

@@ -14,11 +14,11 @@ import { MAX_TITLE_LENGTH } from '../utils/constants';
 export default function NewVideo() {
     const [video, setVideo] = useState({
         title: '',
-        durationMins: 0,
-        durationSecs: 0,
-        durationHrs: 0,
+        duration_mins: 0,
+        duration_secs: 0,
+        duration_hrs: 0,
         description: '',
-        url: ''
+        video_url: '',
     });
     const [showSpinner, setShowSpinner] = useState(false)
     let history = useHistory();
