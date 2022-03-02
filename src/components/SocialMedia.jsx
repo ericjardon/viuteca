@@ -10,22 +10,24 @@ const FB = 'https://fb.com/'
 
 export default function SocialMedia({fb, ig}) {
 
-    const hasSM = fb !== undefined || ig !== undefined;
+    const hasFB = (fb !== undefined && fb !== null);
+    const hasIG = (ig !== undefined && ig !== null);
+    const hasSM = hasFB || hasIG;
 
     return (
         <>
         {hasSM && (
             <div className={styles.container}>
-               <span style={singleItemStyle}>
+               {hasFB && <span style={singleItemStyle}>
                    <a target='_blank' rel="noreferrer" className={styles.smLink} href={FB + fb}>
                    <BsFacebook/>{' '}@{fb}
                    </a>
-                </span>
-               <span style={singleItemStyle}>
+                </span>}
+               {hasIG && <span style={singleItemStyle}>
                    <a target='_blank' rel="noreferrer" className={styles.smLink} href={IG + ig}>
                    <GrInstagram/>{' '}@{ig}
                    </a>
-                </span> 
+                </span>} 
             </div>
         )}
         </>
