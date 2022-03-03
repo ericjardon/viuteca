@@ -10,16 +10,18 @@ import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { refLink } from './styles/Home.module.scss'
 import { MAX_LENGTH_TITLE, MONTH_NAMES_ES } from '../utils/constants'
 import {getMonthName_ES, getMonthValue} from '../utils/dates'
+import {createVideo} from '../models/videos'
 
 /* Component for the main screen with listed videos */
 export default function NewVideo() {
     const [video, setVideo] = useState({
         title: '',
-        durationMins: 0,
-        durationSecs: 0,
-        durationHrs: 0,
+        durationMins: 0, // duration_mins
+        durationSecs: 0, // duration_secs
+        durationHrs: 0, // duration_hrs
         description: '',
-        url: '',
+        url: null, // video_url
+        img: null,  // 
     });
     const [showSpinner, setShowSpinner] = useState(false)
     let history = useHistory();
@@ -65,7 +67,6 @@ export default function NewVideo() {
                 [e.target.name]: e.target.value
             }))
         }
-        console.log(video)
         setShowAlert(false);
     }
 
@@ -93,7 +94,7 @@ export default function NewVideo() {
         return (videoDate.year || '0000') + '-' + (parsedMonth || '00') + '-' + (videoDate.day || '00');
     }
 
-    const tryCreate = async () => {
+    const onSubmit = async () => {
         //CHECK USER
         //let dateStr = (new Date()).toISOString().split('T')[0]
         setShowSpinner(true);
@@ -105,7 +106,6 @@ export default function NewVideo() {
         try {
             let d = new Date(dateStr);
             if (d=='Invalid Date') throw d;
-
             timestamp = Timestamp.fromDate(d);
 
         } catch (e) {
@@ -124,17 +124,6 @@ export default function NewVideo() {
             likes: 0,
             dateAdded: timestamp,
         }
-        const {title, description, url, img} = video;
-        let videoData = {
-            title,
-            description,
-            video_url: url,
-            dt: dateStr,
-            profile_id: auth.currentUser.uid,
-            img_url: img,
-        }
-
-        console.log('video data for PG', videoData);
 
         if (videoFinal.title === '' || videoFinal.description === '' || videoFinal.url === '') {
             setAlert(<Alert color="warning">Debes llenar todos los campos</Alert>)
@@ -168,11 +157,13 @@ export default function NewVideo() {
         }
 
         //SEND TO FIREBASE
-        const dbRes = await Video.createVideo(videoFinal)
+        const dbRes = await Video.createVideo(videoFinal);
+
         if (dbRes.error) {
             console.log("Firestore error:", dbRes.error);
 
         } else {
+            // Upload an image to Storage if there is one
             if (file) {
                 const imgUpload = await Video.addImageToVideo(dbRes.id, file);
                 if (imgUpload.error) {
@@ -185,6 +176,7 @@ export default function NewVideo() {
                 redirect()
             }
         }
+
         setShowSpinner(false);
 
     }
@@ -217,11 +209,11 @@ export default function NewVideo() {
                         <p className={styles.formSubtitle}>Duración</p>
                         <div className={styles.rowClass}>
                             <Label className={styles.labelClass}>Horas:</Label>
-                            <div className={styles.smallInput}><Input type="number" defaultValue="0" min="0" max="5" onChange={handleOnChange} name="durationHrs"></Input></div>
+                            <div className={styles.smallInput}><Input name="durationHrs" value={video.durationHrs} type="number" defaultValue="0" min="0" max="5" onChange={handleOnChange}></Input></div>
                             <Label className={styles.labelClass}>Minutos:</Label>
-                            <div className={styles.smallInput}><Input type="number" defaultValue="0" min="0" max="59" onChange={handleOnChange} name="durationMins"></Input></div>
+                            <div className={styles.smallInput}><Input name="durationMins" value={video.durationMins} type="number" defaultValue="0" min="0" max="59" onChange={handleOnChange}></Input></div>
                             <Label className={styles.labelClass}>Segundos:</Label>
-                            <div className={styles.smallInput}><Input type="number" defaultValue="0" min="0" max="59" onChange={handleOnChange} name="durationSecs"></Input></div>
+                            <div className={styles.smallInput}><Input name="durationSecs" value={video.durationSecs} type="number" defaultValue="0" min="0" max="59" onChange={handleOnChange}></Input></div>
                         </div>
                         <div >
                             <p className={styles.formSubtitle}>Descripción</p>
@@ -257,7 +249,7 @@ export default function NewVideo() {
                         </div>
                         <div >
                             <div>
-                                <Button color="primary" onClick={tryCreate}>
+                                <Button color="primary" onClick={onSubmit}>
                                     {showSpinner ? <Spinner color="light" children="" /> : "Publicar"}
                                 </Button>
                             </div>

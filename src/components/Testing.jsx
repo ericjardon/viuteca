@@ -8,7 +8,7 @@ import { auth, db } from '../base'
 import { searchVideo } from '../firebase/search'
 import {uids, _ownerNames} from '../utils/ids_temp'
 
-const default_vid = 'https://www.youtube.com/embed/uolqbeCmSuw"';
+const default_vid = 'https://www.youtube.com/embed/uolqbeCmSuw';
 
 export default function Testing() {
 

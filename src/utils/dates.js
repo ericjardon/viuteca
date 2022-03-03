@@ -39,7 +39,7 @@ export const getMonthName_ES = (token) => {
     }
     return null
 }
-
+/* 
 const fmtDate = (term) => {
     // split the text into parts
 
@@ -52,3 +52,4 @@ const fmtDate = (term) => {
 const fmtQuery = (dateStr) => {
     return null
 }
+ */
