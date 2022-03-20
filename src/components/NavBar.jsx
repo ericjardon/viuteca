@@ -15,6 +15,7 @@ import useLogin from '../hooks/useLogin'
 import mGlass from '../assets/mGlass.png'
 import { BiSearchAlt2 } from 'react-icons/bi'
 import { auth } from '../base'
+import { uids } from '../utils/ids_temp';
 
 const placeholders = {
     'owner': 'Busca por nombre de grupo',
@@ -37,7 +38,6 @@ const NavHeader = (props) => {
     const [placeholderSearch, setplaceholderSearch] = useState(placeholders["owner"])
 
     const { location, history } = props;
-    console.log("You are now at ", location.pathname)
 
     const { isMd, isSm } = useMediaSize();
     const toggle = () => setOpen(!dropdownopen);
@@ -120,7 +120,7 @@ const NavHeader = (props) => {
                                                 </DropdownItem>
                                                 <DropdownItem divider />
                                                 <DropdownItem>
-                                                    <NavLink style={{ color: 'white' }} className='nav-link' to={`/p/${profileId}`}>
+                                                    <NavLink style={{ color: 'white' }} className='nav-link' to={`/p/${uids[profileId]}`}>
                                                         PERFIL
                                                     </NavLink>
                                                 </DropdownItem>
@@ -184,7 +184,7 @@ const NavHeader = (props) => {
                                         </DropdownItem>
                                         <DropdownItem divider />
                                         <DropdownItem>
-                                            <NavLink style={{ color: 'white' }} className='nav-link' to={`/p/${profileId}`}>
+                                            <NavLink style={{ color: 'white' }} className='nav-link' to={`/p/${uids[profileId]}`}>
                                                 PERFIL
                                             </NavLink>
                                         </DropdownItem>

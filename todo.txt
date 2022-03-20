@@ -1,11 +1,33 @@
 TODOS
 
-NEXT
+NEXT QUEUE
 
-== 17 jan ==
-- Finish autocomplete for Groups
-- Redesign searchbar
-- Finish dateFormatter module
+- Implement get requests to new back end: https://viuteca-api.herokuapp.com/
+    x profile info: (temporary id mapping from email to uid and back)
+    x profile tags: (two server side queries approach)
+        -- (pending) evaluate two approaches: single getProfileAndTags or two requests: getProfile and getProfileTags
+    - Fix duration field names for video card
+    - Videos CRUD
+    - replicate videos in sql (boomerang)
+    - Update Tags on EditProfile!!!
+    - Fix link to profile id in Card
+    - update profile & tags (TODO: tags)
+    
+- Implement search queries to new back end
+    - profiles by name
+    - videos by name
+    - profiles by tag
+    - videos by date
+    - videos by month
+    - videos by year
+    - videos by period
+- Redesign search bar or add a special search page
+- Advanced search functionality
+    - autocomplete on profile name
+
+
+== 21 jan ==
+BACKLOG
 - Add Back arrows everywhere
 - Restore Password Link?
 - Style: adjust background text
@@ -18,13 +40,6 @@ NEXT
 - Text in title filtering
 
 BACKLOG
-- Rediseño Search
-- Página de Search
-- Búsqueda por semestres
-- Búsqueda por categorías del Perfil
-- Un nuevo searchbar, con autocompletado y filtros: categorías, mes, semestre, nombre de grupo
-- Limitar la lista de Categorías
-
 
 Back End:
 - Migrate back end to MySQL server for better search queries

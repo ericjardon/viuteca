@@ -15,6 +15,20 @@ import {
 
 const controller = {}
 
+
+controller.deleteImageFromStorage = async (videoId, fileUrl) => {
+  console.log("deleting file at ", fileUrl)
+  try {
+    let fileRef = ref(storage, fileUrl);
+    await deleteObject(fileRef);
+    return null;
+  } catch (err) {
+    console.log("Delete from storage error", err)
+    return err;
+  }  
+}
+
+
 controller.getVideoById = async (videoId) => {
   const docRef = doc(db, "video", videoId);
   const video = await getDoc(docRef);
@@ -108,19 +122,6 @@ controller.createVideo = async (video) => {
 }
 
 
-controller.deleteImageFromStorage = async (videoId, fileUrl) => {
-  console.log("deleting file at ", fileUrl)
-  try {
-    let fileRef = ref(storage, fileUrl);
-    await deleteObject(fileRef);
-    return null;
-  } catch (err) {
-    console.log("Delete from storage error", err)
-    return err;
-  }  
-
-}
-
 controller.deleteVideo = async (videoId, video) => {
   // FIXME: add deleteImageFromStorage
   const docRef = doc(db, "video", videoId);
@@ -138,7 +139,27 @@ controller.deleteVideo = async (videoId, video) => {
   }
 }
 
+controller.uploadImagePG = async (videoId, imageFile) => {
+  // videoId from Postgres
+  console.log("Type of PG id", typeof videoId);
 
+  try {
+      const fileRef = ref(storage, 'thumbnails/'+videoId+'/'+imageFile.name);
+      console.log("Storage reference: ", fileRef.fullPath);
+      await uploadBytes(fileRef, imageFile);
+      const url = await getDownloadURL(fileRef);
+      console.log("Saved succesfully to Storage.");
+      return {error: null, url: url};
+
+  } catch (err) {
+      console.error(err);
+      return {error: err, url: null};
+  }
+}
+
+//========================================================
+
+// deprecated
 controller.addImageToVideo = async (videoId, imageFile) => {
   console.log("Adding image to video", videoId);
 
@@ -160,7 +181,7 @@ controller.addImageToVideo = async (videoId, imageFile) => {
     }
 
     // upload and update img url
-    const {error, url} = await uploadImage(videoId, imageFile);
+    const {error, url} = await uploadImage_(videoId, imageFile);
     
     if (error) return {
       error:error
@@ -188,7 +209,8 @@ controller.addImageToVideo = async (videoId, imageFile) => {
 }
 
 
-const uploadImage = async (videoId, imageFile) => {
+// deprecated
+const uploadImage_ = async (videoId, imageFile) => {
   if (typeof(videoId) !== 'string') {
     console.log("Upload Image error: videoId is not string");
     return {
@@ -210,5 +232,7 @@ const uploadImage = async (videoId, imageFile) => {
       return {error: err, url: null};
   }
 }
+
+
 
 export default controller;

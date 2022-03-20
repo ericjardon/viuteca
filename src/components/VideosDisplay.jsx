@@ -7,6 +7,7 @@ import { Spinner } from "reactstrap";
 import { searchVideo } from '../firebase/search'
 import { useLocation } from 'react-router-dom'
 import { useQueryParams, StringParam, withDefault } from "use-query-params";
+import { getAllVideos } from "../models/videos";
 
 const names = {
   'owner': 'el Autor',
@@ -57,7 +58,13 @@ const VideosDisplay = (props) => {
     } else {
       console.log("Fetching all videos...");
       setresultsLabel("Videos más recientes");
-      const videos = await Video.getAllVideos();
+      const videos = await Video.getAllVideos();  // with camelCase properties
+      try {
+        const videos_sql = await getAllVideos();  // with underscore properties
+        console.log("Videos from SQL", videos_sql)
+      } catch (err) {
+        console.error(err);
+      }
       setVideos(videos);
       setLoading(false);
     }

@@ -9,7 +9,7 @@ import Home from './Home'
 import Error404 from './404';
 import NewVideo from './NewVideo'
 import VideoDetail from './VideoDetail';
-import Group from './GroupProfile';
+import Group from './Profile';
 import EditProfile from './EditProfile';
 import { useState } from 'react'
 import { QueryParamProvider } from 'use-query-params'

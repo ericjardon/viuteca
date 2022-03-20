@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import md5 from 'md5'
-import styles from './styles/GroupProfile.module.scss'
+import styles from './styles/Profile.module.scss'
 import {Spinner, Button} from 'reactstrap'
 import VButton from './VButton'
 import Group from '../firebase/groups'
@@ -10,14 +10,19 @@ import ProfileVideos from './ProfileVideos'
 import { auth } from '../base'
 import { AiTwotoneEdit } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
-import { DEFAULT_BIO, EXAMPLE_TAGS } from '../utils/constants'
+import { DEFAULT_BIO } from '../utils/constants'
+import {getProfile} from '../models/profiles'
+import {emails} from '../utils/ids_temp';
 
-
-const GroupProfile = (props) => {
-
-    const [profileData, setprofileData] = useState(null);
+const Profile = (props) => {
+    const [profileData, setprofileData] = useState({
+        name:'',
+        description:'',
+        tags: ["Grupo Estudiantil", "ITESM"],
+        ig:'',
+        fb:'',
+    });
     const [loading, setLoading] = useState(true);
-    const [tags, setTags] = useState(["Grupo Estudiantil", "ITESM"])
 
     const [errorNotFound, seterrorNotFound] = useState(null);
     const [profilePicURL, setProfilePicURL] = useState("");
@@ -26,30 +31,30 @@ const GroupProfile = (props) => {
 
     // FETCH THE GROUP PROFILE DATA FROM URL
     useEffect(() => {
-        const groupId = props.match.params.id;
-        console.log("Group id", groupId);
+        const groupUid = props.match.params.id;  // holds fb uid
+        console.log("Group id", groupUid);
+        const email = emails[groupUid];
+
         async function fetchData() {
-            const group = await Group.getGroupById(groupId);
-            if (group.error) {
-                setLoading(false)
-                seterrorNotFound(group.error);
-                return
-            }
-            group.id = groupId;
-            setprofileData(group);
-            setLoading(false);
-            console.log("Profile Data:\n", group)
-            setProfilePicURL(getGravatarURL(groupId));
+            
+            getProfile(groupUid).then(data => {
+                console.log('PG Profile:\n', data)
+                setprofileData(data);
+                setLoading(false);
+                setProfilePicURL(getGravatarURL(data.email));
 
-            if (group.tags) {
-                setTags(group.tags);
-            }
+                const currentUser = auth.currentUser
+                if (currentUser) {
+                    console.log("Is profile owner");
+                    setisOwner(data.email == currentUser.email)
+                }
 
-            const currentUser = auth.currentUser
-            if (currentUser) {
-                console.log("Is profile owner");
-                setisOwner(groupId == currentUser.email)
-            }
+                
+            }).catch((err) => {
+                console.log('error fetching profile');
+                seterrorNotFound(JSON.stringify(err));
+                setLoading(false);
+            });
         }
 
         fetchData();
@@ -82,12 +87,12 @@ const GroupProfile = (props) => {
                 <div className={styles.nameAndDesc}>
                     <p className={styles.profileName}>{profileData.name}</p>
                     <p className={styles.profileDesc}>
-                        {profileData.desc ||
+                        {profileData.description ||
                             DEFAULT_BIO(profileData.name)}
                     </p>
                     <SocialMedia ig={profileData.ig} fb={profileData.fb}/>
                     <div className={styles.categories}>
-                        {tags.map(t => <Tag>{t}</Tag>)}
+                        {profileData.tags.map((t, i) => <Tag key={i}>{t}</Tag>)}
                     </div>
                     {isOwner && (<div className={styles.editBtnContainer}>
                         <Link to={profileData.id ? `/p/edit/${profileData.id}` : ''}>
@@ -98,7 +103,7 @@ const GroupProfile = (props) => {
             </div>
 
             <div className={styles.postedVideos}>
-                <ProfileVideos ownerEmail={profileData.id} ownerName={profileData.name}/>
+                <ProfileVideos ownerUid={profileData.id} ownerName={profileData.name}/>
             </div>
         </div>
     )
@@ -109,4 +114,4 @@ const getGravatarURL = (email) => {
     return `https://gravatar.com/avatar/${md5(email)}?s=128`;
 }
 
-export default GroupProfile;
+export default Profile;
