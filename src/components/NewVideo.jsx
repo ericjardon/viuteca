@@ -95,8 +95,6 @@ export default function NewVideo() {
     }
 
     const onSubmit = async () => {
-        //CHECK USER
-        //let dateStr = (new Date()).toISOString().split('T')[0]
         setShowSpinner(true);
         setAlert(null);
 
@@ -178,7 +176,6 @@ export default function NewVideo() {
         }
 
         setShowSpinner(false);
-
     }
 
     return (

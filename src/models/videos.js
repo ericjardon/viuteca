@@ -26,7 +26,7 @@ export const getVideoById = async (videoId) => new Promise((resolve, reject) => 
 
 
 export const createVideo = async (videoData) => new Promise((resolve, reject) => {
-    /* Creates video without image url */
+    /* Creates video without an image url */
     let {
         title,
         description,

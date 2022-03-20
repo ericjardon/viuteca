@@ -10,8 +10,8 @@ const FB = 'https://fb.com/'
 
 export default function SocialMedia({fb, ig}) {
 
-    const hasFB = (fb !== undefined && fb !== null);
-    const hasIG = (ig !== undefined && ig !== null);
+    const hasFB = (fb !== undefined && fb !== null && fb.trim() !== '');
+    const hasIG = (ig !== undefined && ig !== null && ig.trim() !== '');
     const hasSM = hasFB || hasIG;
 
     return (

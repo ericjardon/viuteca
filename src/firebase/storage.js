@@ -1,19 +1,6 @@
 /* Firebase Storage Manager */
 import { db, storage } from "../base"
 import {getDownloadURL, ref, uploadBytes, deleteObject} from 'firebase/storage'
-import {
-  doc,
-  query,
-  where,
-  collection,
-  getDocs,
-  getDoc,
-  addDoc,
-  deleteDoc,
-  updateDoc,
-  orderBy
-} from 'firebase/firestore';
-
 
 /* ======== IMAGES ======== */
 
