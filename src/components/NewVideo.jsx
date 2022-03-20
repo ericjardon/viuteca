@@ -10,6 +10,7 @@ import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { refLink } from './styles/Home.module.scss'
 import { MAX_LENGTH_TITLE, MONTH_NAMES_ES } from '../utils/constants'
 import {getMonthName_ES, getMonthValue} from '../utils/dates'
+import axios from 'axios';
 
 /* Component for the main screen with listed videos */
 export default function NewVideo() {
@@ -100,7 +101,7 @@ export default function NewVideo() {
         setAlert(null);
 
         let dateStr = buildDate();
-        console.log(dateStr);
+
         let dt;
         try {
             let d = new Date(dateStr);
@@ -144,7 +145,7 @@ export default function NewVideo() {
             setShowAlert(true);
             setShowSpinner(false);
 
-            console.log(video)
+
             return
         }
 
@@ -166,11 +167,16 @@ export default function NewVideo() {
                 const imgUpload = await Video.addImageToVideo(dbRes.id, file);
                 if (imgUpload.error) {
                     console.error("imgUpload ERROR", imgUpload.error);
+                    setAlert(<Alert color="warning">¡Ups! Hubo un error al cargar la imagen. Intenta de nuevo.</Alert>)
+                    setShowSpinner(false);
                 } else {
                     console.log("Succesful image upload", imgUpload);
+                    await createToSQL(videoFinal, dateStr, imgUpload.url);
                     redirect()
                 }
             } else {
+                // Upload to SQL
+                await createToSQL(videoFinal, dateStr);
                 redirect()
             }
         }
@@ -260,12 +266,31 @@ export default function NewVideo() {
     )
 }
 
-/* 
-const MonthSelector = ({onChange}) => {
-    return (
-        <select onChange={onChange} name="month" value="">
-            {Object.entries(MONTHS).map(([key, value]) => <option value={value}>{key.charAt(0).toUpperCase()+key.slice(1)}</option>)}
-        </select>
-    )
+const createToSQL = async (videoData, dt, img_url = null) => {
+    console.log("Video object");
+    console.log(videoData);
+    console.log('current uid', auth.currentUser?.uid);
+    console.log('dt string', dt);
+    let video = {
+        dt,
+        img_url,
+        duration_hrs: videoData.durationHrs ?? null,
+        duration_mins: videoData.durationMins ?? null,
+        duration_secs: videoData.durationSecs ?? null,
+        likes: videoData.likes ?? 0,
+        profile_id: auth.currentUser?.uid,
+        title: videoData.title,
+        description: videoData.description,
+        video_url: videoData.url
+    }
+
+    return axios.post('http://localhost:3010/videos/', video)
+    .then(res => {
+        console.log("Saved to PG Database")
+        console.log(res);
+    })
+    .catch(err => {
+        console.error("Error saving to database")
+        console.log(err);
+    })
 }
- */

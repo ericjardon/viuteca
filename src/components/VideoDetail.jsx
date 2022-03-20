@@ -22,7 +22,7 @@ export default function VideoDetail(props) {
     const [isOwner, setisOwner] = useState(false);
     const [redirect, setRedirect] = useState(false);
     const [clapFirstTime, setClapFirstTime] = useState(() => localStorage.getItem(videoId) === null)
-    console.log("Can update likes count?", clapFirstTime)
+
     const toggle = () => {
         setToggleDescription(toggleDescription => !toggleDescription);
     }

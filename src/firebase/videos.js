@@ -42,7 +42,7 @@ controller.getAllVideos = async () => {
     }
     videos.push(video)
   });
-  console.log(videos);
+
   return videos;
 }
 
@@ -174,14 +174,16 @@ controller.addImageToVideo = async (videoId, imageFile) => {
     }
 
     return {
-      message: "La foto se guardó exitosamente."
+      message: "La foto se guardó exitosamente.",
+      url: url,
     };
 
   } catch (err) {
     console.log("Storage Error", err.message);
 
     return {
-      error: err
+      error: err,
+      url: null,
     }
   }
 
