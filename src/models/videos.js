@@ -6,6 +6,18 @@ import Video from '../firebase/videos';
 const PATH = API_URL_DEV + '/videos/';
 
 
+export const getAllVideos = async () => new Promise((resolve, reject) => {
+    axios.get(PATH).then(
+        (response) => {
+            const videos = response.data;
+            resolve(videos)
+        }
+    ).catch(error => {
+        console.log('VIUTECA: ', error);
+        reject("Error al obtener la lista de videos");
+    })
+})
+
 export const getVideoById = async (videoId) => new Promise((resolve, reject) => {
     if (!videoId) {
         reject('Video id parameter is null');
