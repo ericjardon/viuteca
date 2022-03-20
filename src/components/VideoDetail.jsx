@@ -7,6 +7,7 @@ import LikeButton from './LikeButton'
 import { Link, Redirect } from 'react-router-dom'
 import { MdDeleteSweep } from 'react-icons/md'
 import { auth } from '../base'
+import axios from 'axios';
 
 export default function VideoDetail(props) {
 
@@ -68,6 +69,7 @@ export default function VideoDetail(props) {
             // Delete video
             const videoId = props.match.params.id;
             await Video.deleteVideo(videoId, video)
+            await deleteFromSQL(auth.currentUser?.uid, video.title);
             // Redirect to Feed 
             setRedirect(true);
         } else {
@@ -144,4 +146,14 @@ export default function VideoDetail(props) {
         <div className={styles.attribution}><a href="https://www.flaticon.com/free-icons/clap" title="clap icons">Clap icons created by Smashicons - Flaticon</a></div>
         </>
     )
+}
+
+const deleteFromSQL = (profile_id, title) => {
+    let endpoint = `https://viuteca-api.herokuapp.com/videos/by-name/${profile_id}/${title}`;
+
+    return axios.delete(endpoint).then( res => {
+        console.log("Deleted succesfully <", title,">");
+    }).catch( err => {
+        console.error("Error deleting from sql", err);
+    });
 }

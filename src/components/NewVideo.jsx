@@ -66,7 +66,7 @@ export default function NewVideo() {
                 [e.target.name]: e.target.value
             }))
         }
-        console.log(video)
+
         setShowAlert(false);
     }
 
@@ -284,7 +284,7 @@ const createToSQL = async (videoData, dt, img_url = null) => {
         video_url: videoData.url
     }
 
-    return axios.post('http://localhost:3010/videos/', video)
+    return axios.post('https://viuteca-api.herokuapp.com/videos/', video)
     .then(res => {
         console.log("Saved to PG Database")
         console.log(res);

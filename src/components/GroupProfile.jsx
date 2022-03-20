@@ -47,7 +47,6 @@ const GroupProfile = (props) => {
 
             const currentUser = auth.currentUser
             if (currentUser) {
-                console.log("Is profile owner");
                 setisOwner(groupId == currentUser.email)
             }
         }
