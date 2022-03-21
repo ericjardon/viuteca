@@ -31,10 +31,9 @@ const VideosDisplay = (props) => {
   const resultMessage = () => `No se encontraron videos con ${names[searchType]}: "${searchTerm}" 😭`
 
   async function fetchData() {
-    console.log("Query: ", query)
     setLoading(true);
     if (searchTerm !== "" && searchType !== "") {
-      console.log("Fetching videos from search:", searchTerm);
+
       const videos = await searchVideo(searchType, searchTerm);
       setVideos(videos);
       setLoading(false);
@@ -55,7 +54,7 @@ const VideosDisplay = (props) => {
       }
 
     } else {
-      console.log("Fetching all videos...");
+
       setresultsLabel("Videos más recientes");
       const videos = await Video.getAllVideos();
       setVideos(videos);
